@@ -1,5 +1,5 @@
 CFLAGS = -Wall -g
 all:
-	make $(CFALGS) ex3
+	make $(CFALGS) ex3_crash
 clean:
-	rm -f ex3
+	rm -f ex3_crash
