@@ -1,0 +1,19 @@
+#!/bin/bash
+
+echo ""
+echo "  GIT checkout"
+echo ""
+git lsm | awk '{print NR, $1}'
+echo -n "SELECT: "
+read SELECTION
+
+if [ "$SELECTION" == " " ]; then
+    echo "is NULL"
+    exit
+fi
+
+if [ "$SELECTION" == "0" ]; then
+    echo "NOT $SELECTION"
+else
+    git checkout $(git lsm | awk "NR==$SELECTION{print}")
+fi
