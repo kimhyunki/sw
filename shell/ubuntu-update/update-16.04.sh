@@ -1,6 +1,6 @@
 #!/bin/bash
 
-OK=o
+OK=a
 CMP=a
 
 
@@ -14,7 +14,8 @@ sudo apt-get update
 sudo apt install -y vim openssh-server git-core subversion minicom \
 			build-essential lzop u-boot-tools ctags \
 			texi2html apt-file genext2fs texinfo lib32ncurses5-dev \
-			xinetd tftpd tftp
+			xinetd tftpd tftp terminator samba cifs-utils
+exit
 
 else 
 
@@ -43,7 +44,12 @@ else
 	echo "find /etc/xinetd.d/tftp"
 fi
 
-
+mkdir ~/docker
+cd ~/docker
+sudo wget -qO- https://get.docker.io/ | sh
+sudo usermod -aG docker ${USER}
+sudo gpasswd -a ${USER} docker
+sudo service docker restart
 
 exit
 
