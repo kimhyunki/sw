@@ -3,8 +3,6 @@ CONTAINER=armgpu
 /usr/bin/docker run -it --rm  \
   -h ${CONTAINER} \
   -u $(id -u):$(id -g) -e HOME=${HOME} -e USER=${USER} -v ${HOME}:${HOME} \
-  --privileged \
-  -v /dev/bus/usb:/dev/bus/usb \
   -v /etc/passwd:/etc/passwd:ro \
   -v /etc/group:/etc/group:ro \
   -v /etc/shadow:/etc/shadow:ro \
