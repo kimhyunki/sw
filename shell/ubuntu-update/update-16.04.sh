@@ -14,7 +14,8 @@ sudo apt-get update
 sudo apt install -y vim openssh-server git-core subversion minicom \
 			build-essential lzop u-boot-tools ctags \
 			texi2html apt-file genext2fs texinfo lib32ncurses5-dev \
-			xinetd tftpd tftp terminator samba cifs-utils
+			xinetd tftpd tftp terminator samba cifs-utils nfs-kernel-server
+
 exit
 
 else 

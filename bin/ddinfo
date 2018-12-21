@@ -1,0 +1,1 @@
+sudo kill -USR1 $(ps a | grep -Iw "sudo dd" | head -1 | awk  '{ print $1 }')
