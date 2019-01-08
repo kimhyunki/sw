@@ -5,7 +5,7 @@
 static int __init simple_init(void)
 {
 	 printk(KERN_INFO "simple driver init!\n");
-	  return 0;
+	 return 0;
 }
 static void __exit simple_exit(void) 
 {
