@@ -4,8 +4,9 @@
 
 #include <linux/fs.h>
 
+/* char driver */
 #define DEV_NAME	"simple-ioctl"
-#define NUM_MAJOR	0
+static int dev_major = -1;
 
 static long dev_ioctl (struct file *file, unsigned int cmd, unsigned long arg)
 {
@@ -27,18 +28,19 @@ static int __init simple_init(void)
 
 	printk(KERN_INFO "ioctl simple driver init!\n");
 
-	ret = register_chrdev(NUM_MAJOR, DEV_NAME, &ioc_fops);
-	if (ret < 0) {
-		printk(KERN_ERR "chrdev register failed: %d\n", ret);
-		return ret;
+	dev_major = register_chrdev(0, DEV_NAME, &ioc_fops);
+	if (dev_major < 0) {
+		printk(KERN_ERR "chrdev register failed: %d\n", dev_major);
+		return dev_major;
 	}
+	printk(KERN_INFO "Chardev register major num=%d\n", dev_major);
 
 	return 0;
 }
 static void __exit simple_exit(void) 
 {
 
-	unregister_chrdev(NUM_MAJOR, DEV_NAME);
+	unregister_chrdev(dev_major, DEV_NAME);
 
 	printk(KERN_INFO "simple driver exit!\n");
 }
