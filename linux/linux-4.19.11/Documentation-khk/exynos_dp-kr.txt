@@ -1,0 +1,11 @@
+
+
+액시노스 디스플레이 포트 인터페이스는 연결된 판넬의 타입에 따라 구성되어야 합니다.
+
+아래 2개의 노드를 사용합니다.
+
+	dp-controller node
+	dptx-phy node (dp-controller node 안에 정의되어 있다.) 
+
+DP-PHY 초기화의 경우, dptx-phy 노드를 사용해야 합니다.
+
