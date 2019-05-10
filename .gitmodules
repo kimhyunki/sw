@@ -1,3 +1,0 @@
-[submodule "git/submodules/test"]
-	path = git/submodules/test
-	url = ssh://git@git.falinux.com:10022/khkraining/test.git
