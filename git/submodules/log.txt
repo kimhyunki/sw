@@ -1,1000 +1,124 @@
- 1458  ls
- 1459  cd /home/khk/work/
- 1460  ls
- 1461  cd fa
- 1462  ls
- 1463  cd ondevice/
- 1464  ls
- 1465  ls -al
- 1466  mv fbo/ /media/khk/4TB/work/falinux/ondevice/
- 1467  ls -al
- 1468  mv libX11-20181018.tar.gz /media/khk/4TB/work/falinux/ondevice/
- 1469  ls
- 1470  ls -la
- 1471  cd app/
- 1472  ls
- 1473  cat main.c 
- 1474  ls
- 1475  cd ..
- 1476  ls
- 1477  mv app/ /media/khk/4TB/work/falinux/
- 1478  ls
- 1479  cd -
- 1480  ls
- 1481  ls -al
- 1482  cd ..
- 1483  ls
- 1484  cd -
- 1485  ls
- 1486  mv icezero-board-adv7533/ /media/khk/4TB/work/falinux/ondevice/ -
- 1487  mv icezero-board-adv7533/ /media/khk/4TB/work/falinux/ondevice/
- 1488  ks
- 1489  ;ls
- 1490  ls
- 1491  fg
- 1492  sudo minicom -ow --color=on -D /dev/ttyUSB1
- 1493  sudo minicom -ow --color=on -D /dev/ttyUSB0
- 1494  sudo shutdown -r now
- 1495  니
- 1496  ㄴ
- 1497  ls
- 1498  cd work/
- 1499  ls
- 1500  cd work/
- 1501  ls
- 1502  cd falinux/
- 1503  ls
- 1504  mv foxitreader/ ../
- 1505  ls
- 1506  cd ..
- 1507  ls
- 1508  cd ..
- 1509  ls
- 1510  mv work/foxitreader/ .
- 1511  fg
- 1512  ls
- 1513  cd work/
- 1514  ls
- 1515  du -h
- 1516  du -h | grep G
- 1517  du -h | grep G > du-log.txt
- 1518  sudo minicom -ow --color=on -D /dev/ttyUSB0
- 1519  lks
- 1520  ls
- 1521  df -h
- 1522  ls -al
- 1523  ll
- 1524  vi /etc/fstab 
- 1525  ls
- 1526  cd network/
- 1527  ls
- 1528  cd ..
- 1529  ls
- 1530  cd bin/
- 1531  ls
- 1532  ls -al
- 1533  cd wo
- 1534  ls
- 1535  cd ..
- 1536  ls
- 1537  cd work/
- 1538  ls
- 1539  cd bin/
- 1540  ls
- 1541  cd ..
- 1542  ls
- 1543  mv bin/ work/hoseo/
- 1544  ls
- 1545  cd ..
- 1546  ls
- 1547  cd work/
- 1548  ls
- 1549  sudo vi /etc/fstab 
- 1550  ls
- 1551  cd
- 1552  ls
- 1553  cd network/
- 1554  ls
- 1555  ls -al
- 1556  cd net
- 1557  ls
- 1558  cd ..
- 1559  ls
- 1560  cd 10.1
- 1561  cd 10.
- 1562  cd 10.15/
- 1563  ls
- 1564  ls 
- 1565  cd ..
- 1566  ls
- 1567  rm /tftpboot/imx6s/laringoscope/uImage 
- 1568  ls
- 1569  s
- 1570  l;s
- 1571  cd work/
- 1572  ls
- 1573  cd work/
- 1574  ls
- 1575  cd ..
- 1576  ls
- 1577  ls -al
- 1578  cd work/
- 1579  ls
- 1580  cd ..
- 1581  ls
- 1582  cd work/
- 1583  ls
- 1584  mv falinux/ ../
- 1585  ls
- 1586  cd ..
- 1587  ls
- 1588  cd f
- 1589  ls
- 1590  cd falinux/
- 1591  ls
- 1592  df -h
- 1593  cd work/
- 1594  ls
- 1595  ssh khk@192.168.10.15
- 1596  sudo shutdown -r now
- 1597  ls
- 1598  cd network/
- 1599  ls
- 1600  cd ..
- 1601  ls
- 1602  cd 10.11-staff3/
- 1603  ls
- 1604  cd ..
- 1605  ls
- 1606  rm 10.11-staff3/ -rf
- 1607  ls
- 1608  cd 10.15/
- 1609  ls
- 1610  cd ..
- 1611  ls
- 1612  rm 10.15/ -rf
- 1613  ls
- 1614  cd 10.30/
- 1615  ls
- 1616  cd ..
- 1617  ls
- 1618  rm 10.30/
- 1619  rm 10.30/ -rf
- 1620  ls
- 1621  ls 10.31
- 1622  rm 10.31/ -rf
- 1623  ls 10.33/
- 1624  rm 10.33/
- 1625  rm 10.33/ -rf
- 1626  ls
- 1627  cd network/
- 1628  ls
- 1629  cd ..
- 1630  ls
- 1631  rm prg/ -rf
- 1632  ls
- 1633  cd network/
- 1634  l;s
- 1635  ls
- 1636  ls 10.
- 1637  ls 10.15/
- 1638  ls
- 1639  ls
- 1640  vi ~/.config/terminator/config 
- 1641  fg
- 1642  ls
- 1643  ls
- 1644  cd work/
- 1645  ls
- 1646  cd tes
- 1647  ls
- 1648  cd work/
- 1649  ls
- 1650  cd ..
- 1651  ls
- 1652  cd falinux/
- 1653  ls
- 1654  cd ...
- 1655  ls
- 1656  cd ..
- 1657  ls
- 1658  cd falinux/
- 1659  ls
- 1660  ls -al
- 1661  ls
- 1662  cd ..
- 1663  ls
- 1664  cd work/
- 1665  s
- 1666  ls
- 1667  cd ..
- 1668  ls
- 1669  cd work/
- 1670  ls
- 1671  cd hoseo/
- 1672  ls
- 1673  cd ..
- 1674  ls
- 1675  cd utils/
- 1676  ls
- 1677  cd ..
- 1678  s
- 1679  ls
- 1680  cd ..
- 1681  ls
- 1682  d work/
- 1683  ls
- 1684  cd work/
- 1685  ls
- 1686  cd study/
- 1687  ls
- 1688  ls git
- 1689  grep git -rn *
- 1690  grep cone -rn *
- 1691  grep clone -rn *
- 1692  cd ..
- 1693  ls
- 1694  cd ..
- 1695  ls
- 1696  mv work/_memo/ .
- 1697  ls
- 1698  cd _memo/
- 1699  ls
- 1700  grep clone --total
- 1701  grep clone *
- 1702  ls
- 1703  find . -name txt
- 1704  find . -name "*.txt"
- 1705  find . -type d
- 1706  find . -type f
- 1707  gedit git_190508_원격디렉토리_분리하기
- 1708  gedit git_190508_원격디렉토리_분리하기 &
- 1709  l;s
- 1710  ls
- 1711  cd ..
- 1712  ls
- 1713  cd work/
- 1714  ls
- 1715  cd ..
- 1716  ls
- 1717  mkdir study
- 1718  cd study/
- 1719  ls
- 1720  git clone git@github.com/khkraining/sw
- 1721  git clone ssh://git@github.com/khkraining/sw
- 1722  git clone https://git@github.com/khkraining/sw
- 1723  git clone ssh://git@github.com/kimhyunki/sw
- 1724  cd wo
- 1725  ls
- 1726  cd sw/
- 1727  ls
- 1728  cd st
- 1729  ls
- 1730  cd doc
- 1731  ls
- 1732  cd en/
- 1733  ls
- 1734  cd ..
- 1735  ls
- 1736  cd ..
- 1737  ls
- 1738  cat README.md 
- 1739  ls
- 1740  vi README.md 
- 1741  git add README.md 
- 1742  git commit README.md 
- 1743  git push
- 1744  git commit README.md -m "README.md update"
- 1745  git push
- 1746  ls
- 1747  cd test/
- 1748  ls
- 1749  cd ..
- 1750  ls
- 1751  mkdir git
- 1752  cd git/
- 1753  ls
- 1754  mkdir split_remote_direcoty
- 1755  cd split_remote_direcoty/
- 1756  ls
- 1757  vi run.sh
- 1758  chmod +x run.sh 
- 1759  ls
- 1760  vi run.sh 
- 1761  ./run.sh 
- 1762  vi run.sh 
- 1763  ./run.sh 
- 1764  ls
- 1765  vi run.sh 
- 1766  cd test.git/
- 1767  ls
- 1768  cd ..
- 1769  ls
- 1770  cd -
- 1771  ls
- 1772  git remote -v
- 1773  vi ../
- 1774  cd ..
- 1775  vi run.sh 
- 1776  ./run.sh 
- 1777  fg
- 1778  ./run.sh 
- 1779  vi run.sh 
- 1780  ./run.sh 
- 1781  fg
- 1782  .,/ru
- 1783  ./run.sh 
- 1784  fg
- 1785  ./run.sh 
- 1786  ls
- 1787  vi run.sh 
- 1788  fg
- 1789  vi run.sh 
- 1790  fg
- 1791  ls
- 1792  vi ~/.config/terminator/
- 1793  ls
- 1794  cd work/
- 1795  ls
- 1796  cd _memo/
- 1797  ls
- 1798  cd ..
- 1799  ls
- 1800  cd work/
- 1801  ls
- 1802  cd ..
- 1803  ls
- 1804  cd study/
- 1805  ls
- 1806  cd sw/
- 1807  ls
- 1808  cd git/
- 1809  ls
- 1810  cd split_remote_direcoty/
- 1811  ls
- 1812  ls -al
- 1813  history | grep remote
- 1814  vi main.c
- 1815  cc loop main.c
- 1816  ls
- 1817  cc -o loop main.c
- 1818  ls
- 1819  ./loop 
- 1820  ls
- 1821  rm loop 
- 1822  rm main.c 
- 1823  ls
- 1824  ls
- 1825  cd work/
- 1826  ls
- 1827  cd study/
- 1828  ls
- 1829  cd gi
- 1830  cd sw/
- 1831  ls
- 1832  cd git/ls
- 1833  cd git/
- 1834  ls
- 1835  cd subtree/
- 1836  ls
- 1837  cd test
- 1838  ls
- 1839  cd a/
- 1840  ls
- 1841  git ls
- 1842  cd ..
- 1843  ls
- 1844  git ls
- 1845  git pull
- 1846  ls
- 1847  mkdir l
- 1848  touch l/.empty
- 1849  ls
- 1850  git add .
- 1851  git commit . -m "l add"
- 1852  git push
- 1853  ro
- 1854  ls
- 1855  cd ..
- 1856  ls
- 1857  cd ..
- 1858  ls
- 1859  cd -
- 1860  ls
- 1861  git clone ssh://git@git.falinux.com:10022/khkraining/test.git a
- 1862  cd a/
- 1863  ls
- 1864  cd ..
- 1865  ls
- 1866  rm a -rf
- 1867  ls
- 1868  vi run.sh 
- 1869  cd ..ls
- 1870  cd ..
- 1871  ls
- 1872  cd filter-branch/
- 1873  ls
- 1874  cd test
- 1875  ls
- 1876  git pull
- 1877  ls
- 1878  cd ..
- 1879  ls
- 1880  rm test* -rf
- 1881  ls
- 1882  cd ..
- 1883  ls
- 1884  find . -name test -type d
- 1885  git clone ssh://git@git.falinux.com:10022/khkraining/test.git
- 1886  cd test/
- 1887  ls
- 1888  mkdir target
- 1889  touch target/.empty
- 1890  git add target/
- 1891  git commit target -m "target add":
- 1892  gitp ush
- 1893  git push
- 1894  ls
- 1895  cd .
- 1896  ls
- 1897  cd ..
- 1898  ls
- 1899  cd test/
- 1900  ls
- 1901  git clone ssh://git@git.falinux.com:10022/khkraining/test.git
- 1902  cd test/
- 1903  ls
- 1904  cd target/
- 1905  ls
- 1906  cp /home/khk/work/_memo/ondevice/* .
- 1907  ls
- 1908  ls -la
- 1909  git add .
- 1910  git commit -m "file add" 
- 1911  git push
- 1912  ls
- 1913  cd ..
- 1914  ls
- 1915  cd ../../../
- 1916  ls
- 1917  cd -
- 1918  ls
- 1919  cd git/
- 1920  ls
- 1921  cd test/
- 1922  ls
- 1923  echo "git clone ssh://git@git.falinux.com:10022/khkraining/test.git" >> run.sh 
- 1924  chmod +x run.sh 
- 1925  ls
- 1926  cd ..
- 1927  ls
- 1928  cd remote_mirror/
- 1929  ls
- 1930  vi run.sh 
- 1931  ls
- 1932  cd ..
- 1933  ls
- 1934  cd test/
- 1935  ls
- 1936  vi run.sh 
- 1937  git clone ssh://git@git.falinux.com:10022/khkraining/test.git 
- 1938  cd test/
- 1939  ls
- 1940  cd target/
- 1941  ls
- 1942  rm * -rf
- 1943  ls
- 1944  git add .
- 1945  git commit -m "file del"
- 1946  git push
- 1947  ls
- 1948  cd ..
- 1949  ls
- 1950  cd ..
- 1951  ls
- 1952  cd test/
- 1953  ls
- 1954  git pull
- 1955  cd target/
- 1956  ls
- 1957  fg
- 1958  ls
- 1959  sar -P ALL 1
- 1960  roo
- 1961  sar -P ALL 1 1
- 1962  sar -P ALL 1 
- 1963  ls
- 1964  ls -al
- 1965  ls
- 1966  ifconfig
- 1967  ls
- 1968  ls -al
- 1969  ls
- 1970  cd work/
- 1971  ls
- 1972  cd study/
- 1973  ls
- 1974  cd sw/
- 1975  ls
- 1976  cd git/
- 1977  ls
- 1978  cd sub
- 1979  ls
- 1980  cd submodules/
- 1981  ls
- 1982  ls -al
- 1983  cd test0/
- 1984  ls
- 1985  ls -al
- 1986  cd test1/
- 1987  ls
- 1988  git submodule update --remote --merge
- 1989  cd ..
- 1990  ls
- 1991  git submodule update --remote --merge
- 1992  ls
- 1993  cd test1/
- 1994  ls
- 1995  cd ..
- 1996  ls
- 1997  git st .
- 1998  git branch
- 1999  ls
- 2000  git checkout -- .
- 2001  git submodule update
- 2002  git st .
- 2003  ls
- 2004  cd test1/
- 2005  ls
- 2006  cd ..
- 2007  ls
- 2008  git chkecout -b stable
- 2009  git checkout -b stable
- 2010  git submodule update -- remote --merge
- 2011  git submodule update --remote --merge
- 2012  ls
- 2013  cd ../
- 2014  ls
- 2015  rm test0/ -rf
- 2016  ls
- 2017  ./run2.sh 
- 2018  ls
- 2019  cd test0/
- 2020  ls
- 2021  cd test1/
- 2022  ls
- 2023  ls -al
- 2024  cd ..
- 2025  ls
- 2026  git st .
- 2027  ls
- 2028  cd test1/
- 2029  ls
- 2030  touch 5
- 2031  git submodule update --remote --rebase
- 2032  cd ../
- 2033  ls
- 2034  git submodule update --remote --rebase
- 2035  ls
- 2036  cd test1/
- 2037  ls
- 2038  rm 4 
- 2039  ls
- 2040  git ls
- 2041  ls
- 2042  cd ..
- 2043  ls
- 2044  git st .
- 2045  git submodule update
- 2046  git submodule update --remote --merge
- 2047  vi test1/4 
- 2048  ls
- 2049  git ls
- 2050  ls
- 2051  git submodule update --remote --rebase
- 2052  cd test1/
- 2053  ls
- 2054  vi 4 
- 2055  ls
- 2056  git commit -am 'unicode support'
- 2057  git add .
- 2058  git commit -am 'unicode support'
- 2059  ls
- 2060  cd ../
- 2061  ls
- 2062  git submodule update --remote --rebase
- 2063  git submodule update --remote 
- 2064  ls
- 2065  git st .
- 2066  git diff
- 2067  git diff --submodules
- 2068  git diff --submodule
- 2069  ls
- 2070  cd test1/
- 2071  ls
- 2072  ls -al
- 2073  cd ..
- 2074  ls
- 2075  git branch
- 2076  git submodule update --remote --rebase
- 2077  ls
- 2078  cd ..
- 2079  ls
- 2080  rm test0 -rf
- 2081  ls
- 2082  ./run2.sh 
- 2083  cd test1/
+ 2083  cd submodule_dir/
  2084  ls
- 2085  cd ..
- 2086  ls
- 2087  cd test
- 2088  cd test0/
- 2089  ls
- 2090  cd test1/
- 2091  ls
- 2092  cd ..
- 2093  ls
- 2094  git submodule update --remote --rebase
- 2095  cd test1/
- 2096  git submodule update --remote --rebase
- 2097  ls
- 2098  cd ..
- 2099  ls
- 2100  cd ../
- 2101  ls
- 2102  rm test0/ -rf
- 2103  ls
- 2104  ./run2.sh 
- 2105  fg
- 2106  ls
- 2107  cd test0/test1/
- 2108  ls
- 2109  git st .
- 2110  ls
- 2111  cd ..
- 2112  ls
- 2113  cd -
- 2114  ls
- 2115  cd ..
- 2116  ls
- 2117  cd ..
+ 2085  touch 3
+ 2086  git commit am "3 add test0 repo"
+ 2087  git commit -am "3 add test0 repo"
+ 2088  git commit -a "3 add test0 repo"
+ 2089  git commit -a -m "3 add test0 repo"
+ 2090  git add .
+ 2091  git commit -am "3 add test0 repo"
+ 2092  git submodule update --remote -reabse
+ 2093  git submodule update --remote -reblase
+ 2094  git submodule update --remote --reblase
+ 2095  git submodule update --remote --rebase
+ 2096  cd ..
+ 2097  git submodule update --remote --rebase
+ 2098  git st .
+ 2099  git add .
+ 2100  git commit -a -m "submodule update --remote --rebase"
+ 2101  git push
+ 2102  ls
+ 2103  cd submodule_dir/
+ 2104  ls
+ 2105  git push
+ 2106  git pull
+ 2107  git pull origin
+ 2108  git pull origin master
+ 2109  git pull
+ 2110  git pull origin master
+ 2111  git push origin master
+ 2112  git branch
+ 2113  git checkout master 
+ 2114  git st .
+ 2115  git branch
+ 2116  git st .
+ 2117  git ls
  2118  ls
- 2119  rm test0/ -rf
+ 2119  cd ..
  2120  ls
- 2121  ./run2.sh 
- 2122  ls
- 2123  cd test0/
+ 2121  git st .
+ 2122  cd -
+ 2123  cd .
  2124  ls
- 2125  cd test1/1
- 2126  ls
- 2127  cd test1/
+ 2125  git submodule update --remote
+ 2126  git st .
+ 2127  history
  2128  ls
- 2129  git ls
- 2130  cd ..
- 2131  ls
+ 2129  cd ..
+ 2130  ls
+ 2131  git submodule update --remote
  2132  git ls
  2133  ls
- 2134  git submodule update --remote
- 2135  git submodule update --remote --merge
- 2136  ls
- 2137  touch test1/5
- 2138  git submodule update --remote --merge
- 2139  cd 0
- 2140  cd test1/
- 2141  ls
- 2142  git add . 
- 2143  git commit -am "union support"
- 2144  ls
- 2145  cd ..
- 2146  ls
- 2147  git submodule update --remote --merge
- 2148  git diff
- 2149  git push --recuse-submodules=check
- 2150  git push --recurse-submodules=check
- 2151  cd test1/
- 2152  git push --recurse-submodules=check
- 2153  ls
- 2154  git st .
- 2155  cd ..
+ 2134  cd submodule_dir/
+ 2135  ls
+ 2136  cd ..
+ 2137  ls
+ 2138  git ls
+ 2139  git st .
+ 2140  git add .
+ 2141  git commit -m "asdf"
+ 2142  git push
+ 2143  git submodule update --remote --merge
+ 2144  cd submodule_dir/
+ 2145  l
+ 2146  touch 3 
+ 2147  git commit -am 'submodule repo touch 3"
+ 2148  git commit -am 'submodule repo touch 3'
+ 2149  git add .
+ 2150  git commit -am 'submodule repo touch 3"
+ 2151  git commit -am 'submodule repo touch 3'
+ 2152  git submodule update --remote --rebase
+ 2153  cd ..
+ 2154  git submodule update --remote --rebase
+ 2155  git submodule update --remote 
  2156  ls
- 2157  git st .
- 2158  git push --recurse-submodules=on-demand
- 2159  ls
- 2160  cd test1/1
- 2161  cd test1/
- 2162  ls
- 2163  git -rev-parse HEAD
- 2164  git rev-parse HEAD
- 2165  git pull
- 2166  git pull test1 master
- 2167  git pull origin master
- 2168  ls
- 2169  cd ..
- 2170  ls
- 2171  git pull
- 2172  git pull origin master
- 2173  ls
- 2174  cd test1/
- 2175  git submodule update --remote
- 2176  cd ..
- 2177  git submodule update --remote
- 2178  git submodule update --remote --merge
- 2179  git diff
- 2180  ls
- 2181  git ls
- 2182  cd test1/
- 2183  ls
- 2184  git st .
- 2185  touch 5
- 2186  it add .
- 2187  git add .
- 2188  git commit . -m "union support"
- 2189  ls
- 2190  ls -al
- 2191  cd ..
- 2192  ls
- 2193  git sl
- 2194  git ls
- 2195  git st .
- 2196  git submodule update --remote --merge
- 2197  git st .
- 2198  ls
- 2199  cd test1/
- 2200  ls
- 2201  ls -al
- 2202  cd ..
- 2203  ls
- 2204  git diff
- 2205  cd test1/
- 2206  git dif
- 2207  git diff
- 2208  git diff -submodules
- 2209  git diff -submodule
- 2210  git diff --submodule
- 2211  cd ..
- 2212  git diff --submodule
- 2213  git push --recuse-submodules
- 2214  git push --recuse-submodules=check
- 2215  git push --recurse-submodules=check
- 2216  git pull
- 2217  ls
- 2218  ls -al
- 2219  git st
- 2220  git commit -a
- 2221  git diff -submodule
- 2222  git diff --submodule
- 2223  git diff --submodules
- 2224  git diff -submodules
- 2225  git ls
- 2226  git push --recurse-submodules=check
- 2227  git push
- 2228  git st .
- 2229  ls
- 2230  git checktou master
- 2231  git checkout master
- 2232  git st .
- 2233  git ls
- 2234  git diff --submodule
- 2235  git submodule update --remote --merge
- 2236  git st .
- 2237  git ls
- 2238  git st .
- 2239  git commit -am "test"
- 2240  git push --recurse-submodules=check
- 2241  git config push.recurseSubmodules check
- 2242  git push
- 2243  git push --recurse-submodules=on-demand
- 2244  git pull
- 2245  git push --recurse-submodules=on-demand
- 2246  git st .
- 2247  git ls
- 2248  git reset HEAD^1
- 2249  git st .
- 2250  git push --recurse-submodules=on-demand
- 2251  git push --recurse-submodules=check
- 2252  ls
- 2253  cd test1/
- 2254  ls
- 2255  git st .
- 2256  cd ..
- 2257  ls
- 2258  git ls
- 2259  git sl
- 2260  ls
- 2261  git ls
- 2262  git st .
- 2263  cd ..
- 2264  ls
- 2265  rm test0\ -rf
- 2266  ls
- 2267  rm test0/ -rf
- 2268  ls
- 2269  ./run2.sh 
- 2270  ls
- 2271  cd test
- 2272  ls
- 2273  cd test0/
- 2274  ls
- 2275  git st .
- 2276  git add .
- 2277  git commit -a "test1 add"
- 2278  git push 
- 2279  git st .
- 2280  git commit -am "test1 add"
- 2281  git push
- 2282  ls
- 2283  git ps
- 2284  git st .
- 2285  git ls
- 2286  git push --recurse-submodules=check
- 2287  git st .
- 2288  ls
- 2289  cd ts
- 2290  cd test1/
- 2291  ls
- 2292  cd ..
- 2293  ls
- 2294  cd ..
- 2295  ls
- 2296  rm test0 -rf
- 2297  ls
- 2298  ./run2.sh 
- 2299  ls
- 2300  cd test0/
- 2301  ls
- 2302  cd test1/
- 2303  ls
- 2304  cd ..
- 2305  ls
- 2306  git st .
- 2307  git ls
- 2308  cd -
- 2309  ls
- 2310  git ls
- 2311  cd ../
- 2312  ls
- 2313  git add .
- 2314  git commit . -m "test test1 add"
- 2315  git push --recurce-submodules=check
- 2316  git push --recurse-submodules=check
- 2317  git push --recurse-submodules=on-demand
- 2318  gi tpush
- 2319  git push
- 2320  git push --recurse-submodules=on-demand
- 2321  git pull
- 2322  git diff
- 2323  ls
- 2324  cd ..
- 2325  ls
- 2326  rm test0/ -rf
- 2327  ls
- 2328  ./run2.sh 
- 2329  cd test0/
- 2330  ls
- 2331  cd test1/
- 2332  ls
- 2333  ls -al
- 2334  git pull
- 2335  git pull origin master
- 2336  git push
- 2337  git st .
- 2338  ls
- 2339  cd ..
- 2340  ls
- 2341  cd ..
- 2342  ls
- 2343  rm test0/ -rf
- 2344  ls
- 2345  ./run2.sh 
- 2346  ls
- 2347  cd test
- 2348  ls
- 2349  cd test0/
- 2350  ls
- 2351  git push
- 2352  git ls
- 2353  cd test1/
- 2354  ls
- 2355  git push
- 2356  ls
- 2357  cd ..
- 2358  ls
- 2359  cd ..
- 2360  ls
- 2361  rm test0/ -rf
- 2362  ls
- 2363  ./run2.sh 
- 2364  ls
- 2365  cd test0/test1/
- 2366  ls
- 2367  git push
- 2368  git push origin master
- 2369  git st .
- 2370  git ls
- 2371  cd ..
- 2372  ls
- 2373  git push origin master
- 2374  cd test1/
- 2375  ls
- 2376  git push
- 2377  cd ..
- 2378  ls
- 2379  git st .
- 2380  git ls
- 2381  git log
- 2382  ls
- 2383  ls -al
- 2384  ls
- 2385  cd test1/
- 2386  ls
- 2387  git pull
- 2388  git push 
- 2389  git push origin master
- 2390  cd ..
- 2391  ls
- 2392  cd ..
- 2393  ls
- 2394  cd test
- 2395  ls
- 2396  cd test0/
- 2397  ls
- 2398  cd test1/1
- 2399  cd test1/
- 2400  ls
- 2401  git ls
- 2402  git st .
- 2403  touch 3
- 2404  git add .
- 2405  git commit -am "3 add"
- 2406  cd ..
- 2407  ls
- 2408  git st .
- 2409  git submodule update --remote --rebase
- 2410  git st .
- 2411  git add .
- 2412  git commit -am "test test1 3 add"
- 2413  git push
- 2414  ls
- 2415  cd test1/
- 2416  ls
- 2417  git push
- 2418  git push origin master
- 2419  history
- 2420  git push --recurse-submodules=on-demand
- 2421  cd ..
- 2422  git push --recurse-submodules=on-demand
- 2423  cd tes1
- 2424  cd test1/
- 2425  git push
- 2426  git push origin master
- 2427  history | grep push
- 2428  git push --recurse-submodules=check
- 2429  git push --recurse-submodules=on-demand
- 2430  ls
- 2431  cd ..
- 2432  ls
- 2433  git st .
- 2434  git ls
- 2435  git push
- 2436  git push origin master
- 2437  ls -al
- 2438  cat .git
- 2439  cat .gitmodules 
- 2440  ls
- 2441  cd test1/
- 2442  ls
- 2443  git st .
- 2444  git pull
- 2445  git pull origin master
- 2446  git push
- 2447  git push origin master
- 2448  git push --recurse-submodules=on-demand
- 2449  cd ..
- 2450  git push --recurse-submodules=on-demand
- 2451  cd -
- 2452  git push origin master
- 2453  git ls
- 2454  history 
- 2455  vi ~/.bash_history 
- 2456  history
- 2457  history > log.txt
+ 2157  cd submodule_dir/
+ 2158  ls
+ 2159  touch 3
+ 2160  git add .
+ 2161  git commit -am "test repository touch 3 "
+ 2162  cd ..
+ 2163  ls
+ 2164  git submodule update --remote --merge
+ 2165  git st .
+ 2166  git add .
+ 2167  git commit -m "merge"
+ 2168  git push
+ 2169  ls
+ 2170  cd submodule_dir/
+ 2171  ls
+ 2172  git push
+ 2173  git pull origin master
+ 2174  git push
+ 2175  git push origin master
+ 2176  ls
+ 2177  cd ..
+ 2178  ls
+ 2179  git submodule update --retmoe
+ 2180  git submodule update --remote
+ 2181  git add .
+ 2182  git commit -am "asdf"
+ 2183  git push
+ 2184  ls
+ 2185  cd submodule_dir/
+ 2186  ls
+ 2187  touch 3
+ 2188  git add .
+ 2189  git commit -am "touch 3 add"
+ 2190  git push
+ 2191  git branch
+ 2192  git checkout master
+ 2193  git st .
+ 2194  ls
+ 2195  git pull
+ 2196  ls
+ 2197  touch 3
+ 2198  git ls
+ 2199  ls
+ 2200  git add .
+ 2201  git commit -a "test repo touch 3"
+ 2202  git commit -am "test repo touch 3"
+ 2203  git push
+ 2204  ls
+ 2205  history
+ 2206  history > ../../log.txt 
