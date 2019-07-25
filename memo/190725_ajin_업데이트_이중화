@@ -1,0 +1,122 @@
+
+@ 부팅 순서
+
+    1. boot 0로 부팅한다.
+        
+        - 정상 부팅
+            부팅 모드를 normal 모드로 부팅 파티션을 구동 2로 변경
+            
+        - 부팅이 실패 했다. 
+            
+    2. 
+
+@ 부팅 모드 
+    eeprom 영역 0x00
+
+    0 : NORMAL mode
+        
+        emmc booting mode
+        
+    1 : FUSING mode
+
+        퓨징 중 
+            
+    2 : ING mode
+
+        퓨징 완료
+
+@ 현재 부팅 파티션 
+   
+    eeprom 영역 0x01
+   
+    1 : 구동 1 
+        
+        BOOT1
+        
+    2 : 구동 2
+            
+        BOOT2
+            
+    3 : 공장초기
+
+     
+--------------
+
+i2cset -y 0 0x50 0x00 0x01 0x01 i
+
+i2c md 0x50 0x00.2 10
+i2c read 0x50 0.2 1 0x80000000
+
+
+
+-------------------
+
+i2cset -y 0 0x50 0x00 0x01 0x02
+
+
+if test "${boot_dir}" = "${boot0}"; then echo "BOOT0"; fi
+if test "${boot_dir}" = "${boot1}"; then echo "BOOT1"; fi
+if test "${boot_dir}" = "${boot2}"; then echo "BOOT2"; fi
+
+mmc dev ${mmcdev}; fatload mmc 0 0x80800000 am335x-ajin.dtb; fatload mmc 0 0x81000000 boot/uimage; fatload mmc 0 0x82000000 boot/rootfs.cpio.uboot;; bootm 0x81000000 0x82000000 0x80800000"
+        
+i2cset -y 0 0x50 0x00 0x01 0x01
+i2c read 0x50 0.2 1 0x80000000
+
+
+@ fusing mode setting on bootloader
+
+    i2c dev 0; i2c mw 0x50 0.2 2; 
+
+@ 부팅후 세팅 
+
+    i2cset -y 0 0x50 0x00 0x00 0x01 i
+    i2cset -y 0 0x50 0x00 0x00 0x02 i
+    i2cset -y 0 0x50 0x00 0x00 0x03 i
+
+    eeprog -xf -16 /dev/i2c-0 0x50 -r 0x00:0x20
+
+
+@ 부트로더에서 세팅 
+    i2c dev 0
+    i2c md 0x50 0x00.2 1
+
+    mw\.w 0x80000000 0 1           
+    i2c read 0x50 0.2 1 0x80000000
+
+    md\.b 0x80000000 1
+
+    setenv bootmode_normal 1
+    setenv bootmode_fusing 2
+    setenv bootmode_doing    3
+
+    setenv normalboot 1
+    setenv fusingboot 2
+    setenv ingboot    3
+
+    setenvram.bd bootmode 0x80000000
+
+    if test "${normalboot}" = "${bootmode}"; then echo "NORMAL BOOT"; fi
+    if test "${fusingboot}" = "${bootmode}"; then echo "NORMAL BOOT"; fi
+    if test "${ingboot}" = "${bootmode}"; then echo "NORMAL BOOT"; fi
+
+
+#define CONFIG_EEPCOM_COMPARE \
+     "bootmode=1\0" \
+     "bootmode_normal=1\0" \
+     "bootmode_fusing=2\0" \
+     "bootmode_doing=3\0" \
+     "read_i2c_bootmode=i2c dev 0; i2c read 0x50 0.2 1 0x80000000; setenvram.bd bootmode 0x80000000;\0" \
+     "write_fusing_mode=i2c dev 0; i2c mw 0x50 0.2 ${bootmode_normal};\0" \
+     "write_normal_mode=i2c dev 0; i2c mw 0x50 0.2 ${bootmode_fusing};\0" \
+     "write_doing_mode=i2c dev 0; i2c mw 0x50 0.2 ${bootmode_doing};\0"
+ 
+#define CONFIG_USB_ETHER_SETTING \
+     "setenv set_usbnet=setenv ethact sms0; setenv ethaddr FA:12:34:56:78:90; setenv serverip 192.168.3.70; setenv ipaddr 192.168.3.75; usb start\0" \
+     "setenv emmc_update=run set_usbnet; run read_net_bootbin; run calc_size; mmc dev 1; run write_raw_bootbin; reset\0" 
+ 
+
+
+setenv set_usbnet "setenv ethact sms0; setenv ethaddr FA:12:34:56:78:90; setenv serverip 192.168.3.70; setenv ipaddr 192.168.3.75; usb start"
+setenv emmc_update "run set_usbnet; run read_net_bootbin; run calc_size; mmc dev 1; run write_raw_bootbin; reset"
+
