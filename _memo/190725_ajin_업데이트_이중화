@@ -1,14 +1,58 @@
 
+@ EMMC
+
+    /dev/mmcblk1
+    mmc dev 1
+    
+@ SD
+
+    /dev/mmcblk0
+    mmc dev 0
+
 @ 부팅 순서
 
-    1. boot 0로 부팅한다.
+    1. 구동 1로 부팅한다. 
         
         - 정상 부팅
-            부팅 모드를 normal 모드로 부팅 파티션을 구동 2로 변경
             
-        - 부팅이 실패 했다. 
+            부팅 모드   : normal
+            부팅 파티션 : 구동 2
             
-    2. 
+        - 부팅 실패 #1
+        
+            부팅 모드   : normal
+            부팅 파티션 : 구동 2
+            
+        - 부팅 실패 #2
+        
+            부팅 모드   : normal
+            부팅 파티션 : 팩토리모드
+
+
+    2. 구동 2로 부팅한다.
+
+        - 정상 부팅
+            
+            부팅 모드   : normal
+            부팅 파티션 : 구동 1
+            
+        - 부팅 실패 #1
+            
+            부팅 모드   : normal
+            부팅 파티션 : 구동 1
+    
+        - 부팅 실패 #2
+        
+            부팅 모드   : normal
+            부팅 파티션 : 팩토리모드
+            
+
+--------------------------
+
+
+
+----------------------
+
 
 @ 부팅 모드 
     eeprom 영역 0x00
@@ -16,14 +60,17 @@
     0 : NORMAL mode
         
         emmc booting mode
+        i2cset -y 0 0x50 0x00 0x00 0x00 i
         
     1 : FUSING mode
 
-        퓨징 중 
+        퓨징 중
+        i2cset -y 0 0x50 0x00 0x00 0x01 i
             
     2 : ING mode
 
-        퓨징 완료
+        진행중 
+        i2cset -y 0 0x50 0x00 0x00 0x02 i
 
 @ 현재 부팅 파티션 
    
@@ -31,18 +78,26 @@
    
     1 : 구동 1 
         
-        BOOT1
+        BOOT0
+        i2cset -y 0 0x50 0x00 0x01 0x01 i
         
     2 : 구동 2
             
-        BOOT2
+        BOOT1
+        i2cset -y 0 0x50 0x00 0x01 0x02 i
             
     3 : 공장초기
 
+        factory
+        i2cset -y 0 0x50 0x00 0x01 0x03 i
      
 --------------
 
-i2cset -y 0 0x50 0x00 0x01 0x01 i
+@ 부팅해서 구동 1 로 설정
+    i2cset -y 0 0x50 0x00 0x01 0x01 i
+
+eeprog -xf -16 /dev/i2c-0 0x50 -r 0x00:0x20
+    
 
 i2c md 0x50 0x00.2 10
 i2c read 0x50 0.2 1 0x80000000

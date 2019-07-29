@@ -18,8 +18,6 @@ else
 	echo "${REPO} is a valid git repo! Proceeding..." >> ${LOG}
 fi
 
-cd ${REPO}
-${MKDOCS} build --clean >> ${LOG}
 ${GIT} add --all . >> ${LOG}
 ${GIT} commit -m "Automated commit on ${COMMIT_TIMESTAMP}" >> ${LOG}
 ${GIT} push git@bitbucket.org:username/repo.git master >> ${LOG}
