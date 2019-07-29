@@ -20,7 +20,7 @@ fi
 
 ${GIT} add --all . >> ${LOG}
 ${GIT} commit -m "Automated commit on ${COMMIT_TIMESTAMP}" >> ${LOG}
-${GIT} push git@bitbucket.org:username/repo.git master >> ${LOG}
+${GIT} push >> ${LOG}
 
 # Depends on libnotify
 ${NOTIFY} 'KB notification' 'Changes were pushed to Bitbucket.' --icon=dialog-information >> ${LOG}
