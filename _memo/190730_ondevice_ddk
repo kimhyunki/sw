@@ -1,0 +1,202 @@
+fbset "640x480-60" -depth 32
+root@localhost:/work/mali# fbset "640x480-60" -depth 32
+root@localhost:/work/mali# ./mali_base_jd_test 
+^[[ATEST PASSED
+root@localhost:/work/mali# LD_LIBRARY_PATH=. ./mali_egl_integration_tests 
+=======================================================
+UTF: Platform Provenance
+=======================================================
+
+  Hardware: T88X r2p0
+  OS:       Linux
+
+=======================================================
+UTF: Running egl_surface_suite
+=======================================================
+surface_stability_simple_content: Swapped 4500 frames in 5000060111 nanosecs (899.989 fps)
+surface_stability_simple_content: Swapped 4585 frames in 5000710420 nanosecs (916.870 fps)
+surface_stability_simple_content: Swapped 4420 frames in 5001384496 nanosecs (883.755 fps)
+surface_stability_simple_content: Swapped 3914 frames in 5000916727 nanosecs (782.657 fps)
+surface_stability_simple_content: Swapped 3164 frames in 5000661112 nanosecs (632.716 fps)
+surface_stability_simple_content: Total swapped 23740 frames in 30001664978 nanosecs (791.289 fps)
+surface_stability_simple_content: Swapped 257 frames in 5007349496 nanosecs (51.325 fps)
+surface_stability_simple_content: Swapped 254 frames in 5015667073 nanosecs (50.641 fps)
+surface_stability_simple_content: Swapped 252 frames in 5004720381 nanosecs (50.352 fps)
+surface_stability_simple_content: Swapped 252 frames in 5017858958 nanosecs (50.221 fps)
+surface_stability_simple_content: Swapped 251 frames in 5000022189 nanosecs (50.200 fps)
+surface_stability_simple_content: Total swapped 1515 frames in 30002515324 nanosecs (50.496 fps)
+surface_stability_simple_content: Total swapped 94672 frames in 300001399862 nanosecs (315.572 fps)
+surface_stability_simple_content: Total swapped 14094 frames in 300004327901 nanosecs (46.979 fps)
+surface_swap_interval : (Swap interval = 0) Swapped 17681 frames in 20000889370 nanosecs (884.011 fps)
+surface_swap_interval : (Swap interval = 1) Swapped 17414 frames in 20000241947 nanosecs (870.690 fps)
+surface_swap_interval : (Swap interval = 0) Swapped 17490 frames in 20000562831 nanosecs (874.475 fps)
+surface_drawing_to_pixmap_surface_with_GLES: Testing config r=8, g=8, b=8, a=8...
+surface_drawing_to_pixmap_surface_with_GLES: Actual matched config r=8, g=8, b=8, a=8...
+surface_drawing_to_pixmap_surface_with_GLES: ...passed!
+surface_drawing_to_pixmap_surface_with_GLES: Testing config r=8, g=8, b=8, a=8...
+surface_drawing_to_pixmap_surface_with_GLES: Actual matched config r=8, g=8, b=8, a=8...
+surface_drawing_to_pixmap_surface_with_GLES: ...passed!
+surface_drawing_to_pixmap_surface_with_GLES: Testing config r=8, g=8, b=8, a=8...
+surface_drawing_to_pixmap_surface_with_GLES: Actual matched config r=8, g=8, b=8, a=8...
+surface_drawing_to_pixmap_surface_with_GLES: ...passed!
+surface_drawing_to_pixmap_surface_with_GLES: Testing config r=8, g=8, b=8, a=8...
+surface_drawing_to_pixmap_surface_with_GLES: Actual matched config r=8, g=8, b=8, a=8...
+surface_drawing_to_pixmap_surface_with_GLES: ...passed!
+surface_drawing_to_pixmap_surface_with_GLES: Testing config r=5, g=6, b=5, a=0...
+surface_drawing_to_pixmap_surface_with_GLES: Actual matched config r=5, g=6, b=5, a=0...
+surface_drawing_to_pixmap_surface_with_GLES: ...passed!
+surface_drawing_to_pixmap_surface_with_GLES: Testing config r=5, g=6, b=5, a=0...
+surface_drawing_to_pixmap_surface_with_GLES: Actual matched config r=5, g=6, b=5, a=0...
+surface_drawing_to_pixmap_surface_with_GLES: ...passed!
+surface_drawing_to_pixmap_surface_with_GLES: Testing config r=5, g=6, b=5, a=0...
+surface_drawing_to_pixmap_surface_with_GLES: Actual matched config r=5, g=6, b=5, a=0...
+surface_drawing_to_pixmap_surface_with_GLES: ...passed!
+surface_drawing_to_pixmap_surface_with_GLES: Testing config r=5, g=6, b=5, a=0...
+surface_drawing_to_pixmap_surface_with_GLES: Actual matched config r=5, g=6, b=5, a=0...
+surface_drawing_to_pixmap_surface_with_GLES: ...passed!
+surface_drawing_to_pixmap_surface_with_GLES: Testing config r=8, g=8, b=8, a=0...
+surface_drawing_to_pixmap_surface_with_GLES: Actual matched config r=8, g=8, b=8, a=0...
+surface_drawing_to_pixmap_surface_with_GLES: ...passed!
+surface_drawing_to_pixmap_surface_with_GLES: Testing config r=8, g=8, b=8, a=0...
+surface_drawing_to_pixmap_surface_with_GLES: Actual matched config r=8, g=8, b=8, a=0...
+surface_drawing_to_pixmap_surface_with_GLES: ...passed!
+surface_drawing_to_pixmap_surface_with_GLES: Testing config r=8, g=8, b=8, a=0...
+surface_drawing_to_pixmap_surface_with_GLES: Actual matched config r=8, g=8, b=8, a=0...
+surface_drawing_to_pixmap_surface_with_GLES: ...passed!
+surface_drawing_to_pixmap_surface_with_GLES: Testing config r=5, g=5, b=5, a=1...
+surface_drawing_to_pixmap_surface_with_GLES: Actual matched config r=5, g=5, b=5, a=1...
+surface_drawing_to_pixmap_surface_with_GLES: ...passed!
+surface_drawing_to_pixmap_surface_with_GLES: Testing config r=5, g=5, b=5, a=1...
+surface_drawing_to_pixmap_surface_with_GLES: Actual matched config r=5, g=5, b=5, a=1...
+surface_drawing_to_pixmap_surface_with_GLES: ...passed!
+surface_drawing_to_pixmap_surface_with_GLES: Testing config r=4, g=4, b=4, a=4...
+surface_drawing_to_pixmap_surface_with_GLES: Actual matched config r=4, g=4, b=4, a=4...
+surface_drawing_to_pixmap_surface_with_GLES: ...passed!
+surface_drawing_to_pixmap_surface_with_GLES: Testing config r=4, g=4, b=4, a=4...
+surface_drawing_to_pixmap_surface_with_GLES: Actual matched config r=4, g=4, b=4, a=4...
+surface_drawing_to_pixmap_surface_with_GLES: ...passed!
+surface_drawing_to_pixmap_surface_with_GLES: Testing config r=8, g=8, b=8, a=8...
+surface_drawing_to_pixmap_surface_with_GLES: Actual matched config r=8, g=8, b=8, a=8...
+surface_drawing_to_pixmap_surface_with_GLES: ...passed!
+surface_drawing_to_pixmap_surface_with_GLES: Testing config r=5, g=6, b=5, a=0...
+surface_drawing_to_pixmap_surface_with_GLES: Actual matched config r=5, g=6, b=5, a=0...
+surface_drawing_to_pixmap_surface_with_GLES: ...passed!
+surface_drawing_to_pixmap_surface_with_GLES: Testing config r=8, g=8, b=8, a=0...
+surface_drawing_to_pixmap_surface_with_GLES: Actual matched config r=8, g=8, b=8, a=0...
+surface_drawing_to_pixmap_surface_with_GLES: ...passed!
+surface_drawing_to_pixmap_surface_with_GLES: Testing config r=8, g=8, b=8, a=8...
+surface_drawing_to_pixmap_surface_with_GLES: Actual matched config r=8, g=8, b=8, a=8...
+surface_drawing_to_pixmap_surface_with_GLES: ...passed!
+surface_drawing_to_pixmap_surface_with_GLES: Testing config r=5, g=6, b=5, a=0...
+surface_drawing_to_pixmap_surface_with_GLES: Actual matched config r=5, g=6, b=5, a=0...
+surface_drawing_to_pixmap_surface_with_GLES: ...passed!
+surface_drawing_to_pixmap_surface_with_GLES: Testing config r=8, g=8, b=8, a=0...
+surface_drawing_to_pixmap_surface_with_GLES: Actual matched config r=8, g=8, b=8, a=0...
+surface_drawing_to_pixmap_surface_with_GLES: ...passed!
+=======================================================
+UTF: Running egl_winsys_suite
+=======================================================
+Testing EGLConfig 0
+Testing EGLConfig 1
+Testing EGLConfig 2
+Testing EGLConfig 3
+Testing EGLConfig 4
+Testing EGLConfig 5
+Testing EGLConfig 6
+Testing EGLConfig 7
+Testing EGLConfig 8
+Testing EGLConfig 9
+Testing EGLConfig 10
+Testing EGLConfig 11
+Testing EGLConfig 12
+Testing EGLConfig 13
+Testing EGLConfig 14
+Testing EGLConfig 15
+Testing EGLConfig 16
+Testing EGLConfig 17
+Testing EGLConfig 18
+Testing EGLConfig 19
+Testing EGLConfig 20
+Testing YUV format  0
+winsys_swap_interval : (Swap interval = 0) Swapped 1071 frames in 20003074024 nanosecs (53.542 fps)
+winsys_swap_interval : (Swap interval = 1) Swapped 1063 frames in 20018421216 nanosecs (53.101 fps)
+winsys_swap_interval : (Swap interval = 0) Swapped 1062 frames in 20009705140 nanosecs (53.074 fps)
+=======================================================
+UTF: Running egl_config_suite
+=======================================================
+=======================================================
+UTF: Running egl_image_suite
+=======================================================
+=======================================================
+UTF: Running egl_damage_suite
+=======================================================
+=======================================================
+UTF: Running egl_customer_visibility_suite
+=======================================================
+=======================================================
+UTF: Result Details
+=======================================================
+=======================================================
+UTF: Result Summary
+=======================================================
+  All assertions passed
+
+  133  tests considered
+  129  tests passed
+  4    tests skipped
+  0    tests expected to fail
+  0    tests failed
+
+  All 6 suites passed
+
+  Run time 13m 28s
+=======================================================
+root@localhost:/work/mali# 
+
+root@exynos:/work/mali# LD_LIBRARY_PATH=. ./mali_gles_integration_suite                                                        
+=======================================================
+  Mali GLES integration tests
+=======================================================
+
+=======================================================
+UTF: Platform Provenance
+=======================================================
+
+  Hardware: T88X r2p0
+  OS:       Linux
+
+=======================================================
+UTF: Running gles1_api_integration
+=======================================================
+=======================================================
+UTF: Running gles2_api_integration
+=======================================================
+=======================================================
+UTF: Running gles2_api_integration_large_fbo
+=======================================================
+=======================================================
+UTF: Running gles3_api_integration
+=======================================================
+=======================================================
+UTF: Running gles31_api_integration
+=======================================================
+=======================================================
+UTF: Result Details
+=======================================================
+=======================================================
+UTF: Result Summary
+=======================================================
+  All assertions passed
+
+  All 15 tests passed
+
+  All 5 suites passed
+
+  Run time 0m 0s
+=======================================================
+root@exynos:/work/mali# 
+CTRL-A Z for help | 115200 8N1 | NOR | Minicom 2.7 | VT102 | Offline | ttyUSB1                                                
+
+
+
+

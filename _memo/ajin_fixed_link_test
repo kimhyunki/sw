@@ -1,0 +1,24 @@
+U-Boot# 
+U-Boot# printenv emmc_update     
+emmc_update=run set_usbnet; run read_net_bootbin; run calc_size; mmc dev 0; run write_raw_bootbin; reset
+U-Boot# printenv set_usbnet 
+set_usbnet=setenv ethact sms0; setenv ethaddr FA:12:34:56:78:90; setenv serverip 192.168.3.70; setenv ipaddr 192.168.3.75; usb start
+U-Boot# 
+
+
+
+setenv set_usbnet "setenv ethact sms0; setenv ethaddr FA:12:34:56:78:90; setenv serverip 192.168.3.70; usb start"
+setenv sd_update "run set_usbnet; tftpboot am335x/ajin/BOOT.bin; mmc dev 0; mmc write 0x82000000 100 0x700;" 
+
+openCL_OopenGL_응용소프트웨어_개발
+
+Exynos8890_하드웨어_기반_OpenCL_OpenGL_EGL_응용소프트웨어_개발
+
+EGL 1.4 기능 확인
+OpenGL ES 1.1 기능 확인
+OpenGL ES 2.0, OpenGL ES 3.0, OpenGL ES 3.1, and OpenGL ES 3.2 entry points 기능 확인
+OpenCL 1.2 Full Profile entry points  라이브러리 기능 확인
+Implements core DDK user-side functionality
+mali_kbase.ko Implements kernel-side control of the GPU
+ump.ko Implements inter-process memory buffer sharing
+kds.ko Kernel dependency system implements intra- and inter-process memory synchronization

@@ -1,0 +1,48 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides: bluez5
+# Default-Start:  5
+# Default-Stop:   016
+# Short-Description: run bluez5 daemon
+# Description: Linux Bluetooth stack V5 userland components..
+### END INIT INFO
+
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/var/run/dbus/system_bus_socket
+
+test -x /usr/libexec/bluetooth/bluetoothd || exit 0
+
+case "$1" in
+    start)
+        echo -n "Starting bluetooth"
+        start-stop-daemon --start --quiet --background --exec /usr/libexec/bluetooth/bluetoothd
+        start-stop-daemon --start --quiet --background --exec /usr/bin/bt-network -- -s gn pan0
+        start-stop-daemon --start --quiet --background --exec /usr/bin/bt-agent -- -c NoInputNoOutput
+        /usr/bin/hciconfig hci0 up
+        /usr/bin/hciconfig hci0 piscan 
+        /usr/sbin/brctl addbr pan0
+        /usr/sbin/brctl stp pan0 off
+        /usr/sbin/brctl setfd pan0 0
+        /sbin/ifconfig pan0 10.10.10.1 netmask 255.255.0.0
+        echo "."
+        ;;
+    stop)
+        echo -n "Stopping bluetooth"
+        start-stop-daemon --stop --quiet --exec /usr/libexec/bluetooth/bluetoothd
+        start-stop-daemon --stop --quiet --background --exec /usr/bin/bt-network
+        start-stop-daemon --stop --quiet --background --exec /usr/bin/bt-agent
+        /usr/bin/hciconfig hci0 down
+        /sbin/ifconfig pan0 down
+        /usr/sbin/brctl delbr pan0
+        echo "."
+        ;;
+    restart)
+        $0 stop
+        $0 start
+        ;;
+    *)
+        echo "Usage: /etc/init.d/S45bluetooth {start|stop|restart}"
+        exit 1
+        ;;
+esac
+

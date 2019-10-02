@@ -1,0 +1,7 @@
+
+
+ext4load mmc 1:2 0x80800000 /boot/am335x-bbb.dtb
+
+ext4ls mmc 1:2 /boot
+
+sed "/\/dev\/mmcblk1/d" /etc/fstab

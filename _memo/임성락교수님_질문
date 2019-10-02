@@ -1,0 +1,87 @@
+2.4.37 kernel
+include/linux/fs.h 
+440 line
+struct inode {
+ 492     __u32           i_generation;
+ 493     union {
+ 494         struct minix_inode_info     minix_i;
+ 495         struct ext2_inode_info      ext2_i;
+ 496         struct ext3_inode_info      ext3_i;
+ 497         struct hpfs_inode_info      hpfs_i;
+ 498         struct ntfs_inode_info      ntfs_i;
+ 499         struct msdos_inode_info     msdos_i;
+ 500         struct umsdos_inode_info    umsdos_i;
+ 501         struct iso_inode_info       isofs_i;
+ 502         struct nfs_inode_info       nfs_i;
+ 503         struct sysv_inode_info      sysv_i;
+ 504         struct affs_inode_info      affs_i;
+ 505         struct ufs_inode_info       ufs_i;
+ 506         struct efs_inode_info       efs_i;
+ 507         struct romfs_inode_info     romfs_i;
+ 508         struct shmem_inode_info     shmem_i;
+ 509         struct coda_inode_info      coda_i;
+ 510         struct smb_inode_info       smbfs_i;
+ 511         struct hfs_inode_info       hfs_i;
+ 512         struct adfs_inode_info      adfs_i;
+ 513         struct qnx4_inode_info      qnx4_i;
+ 514         struct reiserfs_inode_info  reiserfs_i;
+ 515         struct bfs_inode_info       bfs_i;
+ 516         struct udf_inode_info       udf_i;
+ 517         struct ncp_inode_info       ncpfs_i;
+ 518         struct proc_inode_info      proc_i;
+ 519         struct socket           socket_i;
+ 520         struct usbdev_inode_info        usbdev_i;
+ 521         struct jffs2_inode_info     jffs2_i;
+ 522         void                *generic_ip;
+ 523     } u;
+
+};
+
+2.4.37 kernel
+
+fs/ext2/inode.c
+
+  38 /*
+  39  * Test whether an inode is a fast symlink.
+  40  */
+  41 static inline int ext2_inode_is_fast_symlink(struct inode *inode)
+  42 {
+  43         int ea_blocks = inode->u.ext2_i.i_file_acl ?
+  44                 (inode->i_sb->s_blocksize >> 9) : 0;
+  45 
+  46         return (S_ISLNK(inode->i_mode) &&
+  47                 inode->i_blocks - ea_blocks == 0);
+  48 }
+  
+2.6.11 kernel
+  43 /*
+  44  * Test whether an inode is a fast symlink.
+  45  */
+  46 static inline int ext2_inode_is_fast_symlink(struct inode *inode)
+  47 {
+  48         int ea_blocks = EXT2_I(inode)->i_file_acl ?
+  49                 (inode->i_sb->s_blocksize >> 9) : 0;
+  50 
+  51         return (S_ISLNK(inode->i_mode) &&
+  52                 inode->i_blocks - ea_blocks == 0);
+  53 }
+
+ 77 static inline struct ext2_inode_info *EXT2_I(struct inode *inode)
+ 78 {
+ 79     return container_of(inode, struct ext2_inode_info, vfs_inode);
+ 80 }
+ 81 
+
+내용을 참고 해주세요.
+
+https://www.win.tue.nl/~aeb/linux/lk/lk-8.html
+
+http://www.iamroot.org/xe/index.php?mid=Kernel&document_srl=176951&listStyle=viewer&page=7
+
+
+
+
+
+
+
+

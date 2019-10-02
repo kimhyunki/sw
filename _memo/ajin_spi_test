@@ -1,0 +1,20 @@
+MCASP0_FSX     spi1_d0      
+MCASP0_AHCLKR  spi1_cs0  
+MCASP0_ACLKX   spi1_sclk  
+MCASP0_AXR0    spi1_d1     
+
+
+watch -n 1 /app/app-spi -H -O -D /dev/spidev1.0 -p "\x03\x00\xff"
+
+/app/app-spi -H -O -D /dev/spidev1.0 -p "\x03\x00\x00"  --speed 25000000
+/app/app-spi -H -O -D /dev/spidev1.0 -p "\x03\x00\xff"  --speed 25000000
+
+/app/app-spi -H -O -D /dev/spidev1.0 -p "\x02\x01\x00" --speed 25000000
+/app/app-spi -H -O -D /dev/spidev1.0 -p "\x02\x01\x41" --speed 25000000
+
+/app/app-spi -H -O -D /dev/spidev1.0 -p "\x02\x01\x41"
+
+
+
+
+date; dd if=/dev/zero of=./test count=100 bs=1M; sync; date

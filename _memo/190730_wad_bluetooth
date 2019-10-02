@@ -1,0 +1,267 @@
+
+@ bluetooth test pan
+
+# step 1
+
+    server:
+
+    hciconfig hci0 up
+    /usr/libexec/bluetooth/bluetoothd -d &
+    bluetoothctl 
+        discoverable on
+
+
+    client:
+    
+        bluetoothctl
+          scan on
+          pair <server MAC> 
+          scan off
+
+# step 2 
+
+    server:
+      trust <client MAC>
+      bluetoothctl
+        exit
+
+    server:
+        brctl addbr pan0
+        brctl stp pan0 off
+        brctl setfd pan0 0
+        bt-network -s gn pan0 -d
+
+    client:
+        bluetoothctl
+            connect <Server MAC>
+            exit
+
+        bt-network -c <Server MAC> gn &
+        Network service is connected
+        
+# step 3
+
+    server:
+    
+        ifconfig pan0 10.10.10.1 netmask 255.255.0.0
+
+    client:
+    
+        sudo ifconfig bnep0 10.10.10.10 netmask 255.255.0.0
+        ./ssh.sh root@10.10.10.1 (ssh -i ssh_host_rsa_key root@10.10.10.1)
+
+# step 4
+
+    server: 
+    
+        iperf -s
+        ------------------------------------------------------------
+        Server listening on TCP port 5001
+        TCP window size: 85.3 KByte (default)
+        ------------------------------------------------------------
+        [  4] local 10.10.10.1 port 5001 connected with 10.10.10.10 port 58428
+        [ ID] Interval       Transfer     Bandwidth
+        [  4]  0.0-13.5 sec  2.75 MBytes  1.70 Mbits/sec
+
+        
+    client: 
+    
+        iperf -c 10.10.10.1
+        ------------------------------------------------------------
+        Client connecting to 10.10.10.1, TCP port 5001
+        TCP window size: 85.0 KByte (default)
+        ------------------------------------------------------------
+        [  3] local 10.10.10.10 port 58428 connected with 10.10.10.1 port 5001
+        [ ID] Interval       Transfer     Bandwidth
+        [  3]  0.0-10.1 sec  2.75 MBytes  2.28 Mbits/sec
+
+
+
+@ test pan
+
+https://wiki.polaire.nl/doku.php?id=network_over_bluetooth
+
+server:
+
+hciconfig hci0 up
+/usr/libexec/bluetooth/bluetoothd -d &
+
+hciconfig hci0 up
+    
+
+brctl addbr pan0
+brctl stp pan0 off
+brctl setfd pan0 0
+bt-network -s gn pan0 -d
+    
+
+bt-network -s gn bnep0 -d
+ifconfig bnep0 10.10.10.1/24
+
+
+client:
+
+bluetoothctl
+
+    scan on
+    
+
+bluetoothctl: connect
+bt-network -c 00:19:86:00:1C:CD gn &
+
+
+
+
+
+@ buildroot config diff
+
+BR2_PACKAGE_CHECK
+BR2_PACKAGE_LIBICAL
+
+
+@ buildroot 추가 컨피큐 파일
+
+    BR2_PACKAGE_CONNMAN_BLUETOOTH
+    
+    
+    BR2_PACKAGE_BLUEZ5_UTILS
+    BR2_PACKAGE_PYTHON3
+    BR2_PACKAGE_DBUS_PYTHON
+    BR2_PACKAGE_PYTHON_XMLTODICT
+    BR2_PACKAGE_BLUEZ5_UTILS_DEPRECATED
+    BR2_PACKAGE_BRIDGE_UTILS
+    BR2_PACKAGE_BLUEZ_TOOLS
+        
+    ./make.sh busybox-menuconfig 
+   
+        CONFIG_RFKILL
+
+
+
+@ bluez 5.x 버전으로 실행
+
+rfkill unblock bluetooth
+hciconfig hci0 up
+/usr/libexec/bluetooth/bluetoothd -d &
+brctl addbr br0
+brctl setfd br0 0
+ifconfig br0 up
+bt-network --server gn br0
+
+
+@ bluez 3.x 버전으로 실행
+
+    Machine1: server / NAP: (am335x)
+
+        rfkill unblock bluetooth
+        hciconfig hci0 up
+        hciconfig hci0 piscan
+        bluetoothd
+        brctl addbr br0
+        brctl setfd br0
+        bt-network --server nap br0
+
+
+    Machine2: client / PANU: (PC ubuntu 16.04)
+
+        sudo hciconfig hci1 up
+        sudo hciconfig hci1 piscan
+        sudo sdptool search NAP
+        bt-network --connect 00:19:86:00:1C:62 nap &
+
+@ 블루투스 PAN 연결 Galaxy Note5
+
+    - 안드로이드에서 받아주는 프로그램이 필요하다. 
+    
+    - am335x 세팅 
+    
+        rfkill unblock bluetooth
+        hciconfig hci0 up
+        /usr/libexec/bluetooth/bluetoothd -C &
+
+        bluetoothctl
+
+        bt-network --adapter=hci0 --connect 00:19:86:00:1C:CD panu
+
+        bt-device -c A0:C5:89:0F:82:40
+        sdptool browse A0:C5:89:0F:82:40
+
+        bt-network -c  A0:C5:89:0F:82:40 nap 
+
+        bt-device -c 28:27:BF:F3:E0:67
+
+        bt-device -c 28:27:BF:F3:E0:67 nap
+        
+        sdptool browse 28:27:BF:F3:E0:67
+
+        
+       
+       
+@ 우분투 와 BBB 간 PAN 진행하기
+
+    khk@ubuntu:~$ hciconfig 
+    hci0:	Type: BR/EDR  Bus: USB
+	    BD Address: A0:C5:89:0F:82:40  ACL MTU: 1021:4  SCO MTU: 96:6
+	    UP RUNNING PSCAN 
+	    RX bytes:7236 acl:18 sco:0 events:281 errors:0
+	TX bytes:9118 acl:18 sco:0 commands:198 errors:0
+
+    [CHG] Device A0:C5:89:0F:82:40 TxPower: 7
+
+28:27:BF:F3:E0:67
+
+hciconfig hci0 up
+/usr/libexec/bluetooth/bluetoothd -C &
+bluetoothctl
+
+/usr/lib/bluez/test/test-network 28:27:BF:F3:E0:67 nap
+
+bt-network -c 28:27:BF:F3:E0:67 nap
+
+@ 우분투 16.04 에서 실행함(PC)
+
+    같은 펌웨어를 이용하여 디바이스 인식됨.
+    https://github.com/winterheart/broadcom-bt-firmware.git
+
+    hci1:	Type: BR/EDR
+      Bus: USB
+	    BD Address: 00:19:86:00:1C:62  ACL MTU: 1021:8  SCO MTU: 64:1
+	    DOWN 
+	    RX bytes:3374 acl:0 sco:0 events:409 errors:0
+	    TX bytes:36332 acl:0 sco:0 commands:408 errors:0
+
+    khk@ubuntu:~$ sudo rfkill list
+    0: phy0: Wireless LAN
+	    Soft blocked: no
+	    Hard blocked: no
+    1: hci0: Bluetooth
+	    Soft blocked: yes
+	    Hard blocked: no
+    3: hci1: Bluetooth
+	    Soft blocked: yes
+	    Hard blocked: no
+
+    khk@ubuntu:~$ sudo rfkill unblock bluetooth
+    khk@ubuntu:~$ sudo rfkill list
+    0: phy0: Wireless LAN
+	    Soft blocked: no
+	    Hard blocked: no
+    1: hci0: Bluetooth
+	    Soft blocked: no
+	    Hard blocked: no
+    3: hci1: Bluetooth
+	    Soft blocked: no
+	    Hard blocked: no
+	    
+    khk@ubuntu:~$ hciconfig hci1 up
+    hci1:	Type: BR/EDR  Bus: USB
+	    BD Address: 00:19:86:00:1C:62  ACL MTU: 1021:8  SCO MTU: 64:1
+	    UP RUNNING 
+	    RX bytes:3984 acl:0 sco:0 events:445 errors:0
+	    TX bytes:37036 acl:0 sco:0 commands:444 errors:0
+
+
+@ 부트로더 커널 업데이트 
+
+setenv emmc_update "setenv serverip 192.168.3.70; usb start; setenv ethact sms0; run bootbin; run kernel; run dtb;"
+setenv emmc_update "setenv serverip 192.168.3.70; usb start; setenv ethact sms0;"

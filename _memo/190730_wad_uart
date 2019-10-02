@@ -1,0 +1,17 @@
+speed 9600 baud; line = 0;
+intr = ^C; quit = ^\; erase = ^?; kill = ^U; eof = ^D; eol = <undef>; eol2 = <undef>; swtch = <undef>; start = ^Q; stop = ^S; susp = ^Z; rprnt = ^R; werase = ^W; lnext = ^V; flush = ^O; min = 1; time = 0;
+-brkint -imaxbel
+
+root@BBB:~# stty -F /dev/ttyS4 
+speed 115200 baud; line = 0;
+intr = <undef>; quit = <undef>; erase = <undef>; kill = <undef>; eof = <undef>; eol = <undef>; eol2 = <undef>; swtch = <undef>; start = <undef>; stop = <undef>; susp = <undef>; rprnt = <undef>; werase = <undef>; lnext = <undef>;
+flush = <undef>; min = 0; time = 0;
+-brkint -icrnl -imaxbel
+-opost -onlcr
+-isig -iexten -echo -echoe -echok -echoctl -echoke
+
+
+stty -F /dev/ttyO4 115200
+cat /dev/ttyO4
+
+

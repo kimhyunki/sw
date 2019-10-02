@@ -1,0 +1,42 @@
+
+
+
+bootcmd=if test ${boot_fit} -eq 1; then run update_to_fit;fi;run findfdt; run init_console; run envboot; run distro_bootcmd
+
+
+bbb 보드에서 테스트 
+
+우리꺼 MLO (ajin)
+
+CCCCCCCCCCCCCCCC
+U-Boot SPL 2015.04 (Aug 22 2019 - 19:17:54)
+detected max. frequency: 1000 - retuning MPU-PLL to: 1000 MHz.
+Using default environment
+
+reading u-boot.img
+spl_load_image_fat: error reading image u-boot.img, err - -1
+### ERROR ### Please RESET the board ###
+
+
+
+bbb sdk MLO
+
+
+U-Boot SPL 2016.05-00319-gcf14e63-dirty (Aug 26 2019 - 18:45:32)
+Trying to boot from MMC1
+reading args
+spl_load_image_fat_os: error reading image args, err - -1
+reading u-boot.img
+spl_load_image_fat: error reading image u-boot.img, err - -1
+Failed to mount ext2 filesystem...
+spl_load_image_ext_os: ext4fs mount err - 0
+Failed to mount ext2 filesystem...
+spl_load_image_ext: ext4fs mount err - 0
+
+bbb sdk MLO & 우리꺼 uboot 
+
+메시지가 안나온다.
+
+
+
+
