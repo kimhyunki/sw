@@ -1,0 +1,20 @@
+
+커널에서 설정을 활성화 한다.
+
+    CONFIG_PRINTK_TIME
+    CONFIG_KALLSYMS
+    CONFIG_LOG_BUF_SHIFT 14 -> 18
+
+부트로더에서 부트커멘드를 정해준다.
+
+    printk.time=1
+    initcall_debug=1
+
+부팅하여 dmesg 커멘드의 메시지를 파일로 저장한다.
+
+커널에서 bootgraph.pl 을 이용하여 만든다.
+
+    cat dmesg.txt | perl kernel/scripts/bootgraph.pl > bootlog.svg
+
+
+

@@ -1,0 +1,50 @@
+https://raspberrypi.stackexchange.com/questions/39845/how-compile-a-loadable-kernel-module-without-recompiling-kernel
+
+udo apt-get install raspberrypi-kernel-headers
+
+and then when your files are in place :
+
+make -C /lib/modules/$(uname -r)/build M=$(pwd) modules
+
+Example
+
+Create the hello directory, go inside and create the following files : hello.c and Makefile.
+
+I recommend working as your normal user, not root, only insmod, rmmod, and make modules_install commands require root permissions, and the necessary sudo is shown in the following commands.
+
+hello.c (unchanged, your file)
+
+#include <linux/init.h>  
+#include <linux/kernel.h> 
+#include <linux/module.h>
+
+MODULE_LICENSE("GPL");
+MODULE_DESCRIPTION("Do-nothing test driver");
+MODULE_VERSION("0.1");
+
+static int __init hello_init(void){
+   printk(KERN_INFO "Hello, world.\n");
+   return 0;
+}
+
+static void __exit hello_exit(void){
+   printk(KERN_INFO "Goodbye, world.\n");
+}
+
+module_init(hello_init);
+module_exit(hello_exit);
+Makefile (changed)
+
+obj-m+=hello.o
+
+all:
+    make -C /lib/modules/$(shell uname -r)/build M=$(pwd) modules
+
+clean:
+    make -C /lib/modules/$(shell uname -r)/build M=$(pwd) clean
+
+modules_install: all
+    $(MAKE) -C $(KERNEL_SRC) M=$(SRC) modules_install
+    $(DEPMOD)   
+
+

@@ -7,16 +7,19 @@ SRCS        = main_tcp_client.c
 
 LIBDIR      = ../../lib
 LIB_FANET   = $(LIBDIR)/fanet
+LIB_COMMON  = $(LIBDIR)/common
 
 SRCS_FANET  = $(LIB_FANET)/pollmng.c
+SRCS_COMMON = $(LIB_COMMON)/tlist.c
 
-INC         = ../../include/fanet
+INC_FANET   = ../../include/fanet
+INC_COMMON  = ../../include/common
 
-INCS        = -I. -I$(INC)
+INCS        = -I. -I$(INC_FANET) -I$(INC_COMMON)
 
 CFLAGS      = $(INCS)
 
-SRCS       += $(SRCS_FANET)
+SRCS       += $(SRCS_FANET) $(SRCS_COMMON)
 OBJS        = $(SRCS:.c=.o)
 
 CC          = $(CROSS_PREFIX)-gcc

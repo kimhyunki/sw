@@ -4,12 +4,14 @@
  * author kim hyun-ki
  */
 
+#include <stdlib.h>
+
 #include <tlist.h>
 
 tlist *tlist_create (void)
 {
-	tlist list;
-	list = (tlist *) malloc(sizeof(list));
+	tlist *list;
+	list = (tlist *) malloc(sizeof(tlist));
 	if (list) {
 		list->flist = NULL;
 		list->fcount = 0;

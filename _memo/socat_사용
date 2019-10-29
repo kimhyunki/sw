@@ -1,0 +1,76 @@
+
+잘되는 명령어
+
+socat -v -x /dev/ttymxc1,b115200,raw,echo=0,crnl /dev/ttyUSB0,b115200,raw,echo=0,crnl
+
+
+
+테스트
+
+
+
+
+socat /dev/ttymxc1,b115200,raw,echo=0,crnl /dev/ttyUSB0,b115200,raw,echo=0,crnl &
+
+
+
+socat  -d -d -lf /dev/stdout -x -v 2> dump.txt READLINE,history=./s.hist /dev/ttymxc1,b115200,raw,echo=0,crnl /dev/ttyUSB0,b115200,raw,echo=0,crnl
+
+
+
+
+
+----------------
+
+
+socat /dev/ttyS0,b115200,raw,echo=0,icanon=0 PTY,link=/tmp/ttyV0,raw,echo=0,icanon=0
+ 
+socat /dev/ttymxc0,b115200,raw,echo=0,icanon=0 PTY,link=/tmp/ttyV0,raw,echo=0,icanon=0 &
+socat /dev/ttyUSB0,b115200,raw,echo=0,icanon=0 PTY,link=/tmp/ttyV1,raw,echo=0,icanon=0 &
+
+socat /dev/ttyS0,raw,echo=0,crnl /dev/ttyS1,raw,echo=0,crnl
+
+socat /dev/ttymxc0,raw,echo=0,escape=0x03 /dev/ttyUSB0,raw,echo=0,nonblock ; stty sane
+
+stty -F /dev/ttymxc0 115200 cs8 ixoff
+socat readline,history=/etc/socat.history /dev/ttymxc0,raw,echo=0 &
+
+stty -F /dev/ttyUSB0 115200 cs8 ixoff
+
+socat /dev/ttymxc0,raw,echo=0,escape=0x03 /dev/ttyUSB0,raw,echo=0,nonblock ; stty sane
+
+socat -v /dev/ttymxc0,raw,echo=0,crnl /dev/ttyUSB0,raw,echo=0,crnl
+
+-------
+
+socat link=/dev/ttyUSB0,pty,raw,echo=0,crnl link=/dev/ttymxc0,pty,raw,echo=0,crnl
+
+
+serial port in
+
+    socat /dev/ttyUSB0,b115200,raw,echo=0,crnl - 
+    socat /dev/ttymxc0,b115200,raw,echo=0,crnl - 
+    
+    
+    socat -d -d -v PTY,raw,echo=0,link=/tmp/ttyV0 PTY,raw,echo=0,link=/tmp/ttyV1 &
+    socat -d -d -v PTY,raw,echo=0,link=/tmp/ttyV2 PTY,raw,echo=0,link=/tmp/ttyV3 &
+    
+    socat -d -d -v PTY,raw,echo=0,nonblock,link=/dev/ttymxc1 PTY,raw,echo=0,nonblock,link=/tmp/ttyV0 &
+    socat -d -d -v PTY,raw,echo=0,nonblock,link=/dev/ttymxc1 PTY,raw,echo=0,nonblock,link=/tmp/ttyV1 &  
+    socat -d -d -v PTY,raw,echo=0,nonblock,link=/dev/ttyUSB0 PTY,raw,echo=0,nonblock,link=/tmp/ttyV2 &
+    socat -d -d -v PTY,raw,echo=0,nonblock,link=/dev/ttyUSB0 PTY,raw,echo=0,nonblock,link=/tmp/ttyV3 &   
+    
+    cat /tmp/ttyV0 > /tmp/ttyV2 &
+    cat /tmp/ttyV3 > /tmp/ttyV1 &
+    
+    socat PTY,raw,echo=0,nonblock,link=/dev/ttyUSB0 -,crPTY,raw,echo=0,nonblock,link=/dev/ttymxc0 -
+    
+    socat /dev/ttymxc1,b115200,raw,echo=0,crnl /dev/ttyUSB0,b115200,raw,echo=0,crnl
+    
+    
+    socat -u -u pty,raw,echo=0,link=/dev/ttymxc1 pty,raw,echo=0,link=/dev/ttyUSB0
+    socat /dev/ttyUSB0 /dev/ttymxc1
+
+    
+    fres-news.com
+
