@@ -1,7 +1,7 @@
 #!/bin/sh
 
 USER='khk'
-REPO=$PWD
+REPO=/home/khk/work/khk/
 COMMIT_TIMESTAMP=`date +'%Y-%m-%d %H:%M:%S %Z'`
 DATELOG=`date +'%Y-%m-%d-%H-%M-%S'`
 LOG="/tmp/${DATELOG}.txt"
@@ -10,6 +10,7 @@ MKDOCS=`which mkdocs`
 GIT=`which git`
 NOTIFY=`which notify-send`
 
+cd $REPO
 # Only proceed if we have a valid repo.
 if [ ! -d ${REPO}/.git ]; then
 	echo "${REPO} is not a valid git repo! Aborting..." >> ${LOG}
