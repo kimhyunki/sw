@@ -1,0 +1,303 @@
+
+
+@ rk3399-upc 버전으로 시작한다.
+
+초기 상태로 변경
+
+
+------------------------------------
+
+
+sudo mount -t nfs -o nolock 192.168.3.70:/nfs nfs
+sudo mount /dev/mmcblk1p6 lib
+firefly@firefly:~/test$ 
+
+
+
+
+@ New_보드/Release_NewSrc
+
+
+./YoloKCF_SVR 
+./YoloKCF_SVR: error while loading shared libraries: libclBLAS.so.2: cannot open shared object file: No such file or directory
+
+
+@ clBLAS 설치 
+
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install cmake libblas-dev git gfortran -y
+
+sudo tar zxf ../../../../nfs/ondevice/rk3399/CL.tgz -C /usr/include/
+
+git clone https://github.com/clMathLibraries/clBLAS
+
+cd clBLAS/src
+mkdir build
+cd build
+
+
+
+cmake -DCMAKE_INSTALL_PREFIX=/usr/local -DOPENCL_INCLUDE_DIRS=/usr/include/CL -DCMAKE_BUILD_TYPE=Release ..
+
+make -j`nproc`
+make install
+
+sudo ln /usr/local/lib64/libclBLAS.so.2.12.0 /usr/lib/libclBLAS.so.2
+sudo ln -s /usr/lib/aarch64-linux-gnu/libOpenCL.so /usr/lib/libOpenCL.so.1
+
+
+
+@ release_new_보드/release_oldsrc
+
+    ./YoloKCF_SVR
+    
+    ./YoloKCF_SVR: error while loading shared libraries: libOpenCL.so.1: cannot open shared object file: No such file or directory
+
+
+
+
+
+
+@ find libOpenCL
+
+    /usr/lib/aarch64-linux-gnu/libOpenCL.so
+    /usr/lib/aarch64-linux-gnu/libMaliOpenCL.so
+
+
+
+
+
+
+
+@ 소프트웨어 링크
+
+
+sudo ln -s /usr/lib/aarch64-linux-gnu/libOpenCL.so /usr/lib/libOpenCL.so
+sudo ln -s /usr/lib/aarch64-linux-gnu/libOpenCL.so /usr/lib/libOpenCL.so.1
+./YoloKCF_SVR: /usr/lib/libOpenCL.so.1: version `OPENCL_1.0' not found (required by ./YoloKCF_SVR)
+
+sudo ln -s /usr/lib/aarch64-linux-gnu/libMaliOpenCL.so /usr/lib/libOpenCL.so.1
+
+
+
+
+
+
+@ 패키지 설치 
+
+sudo apt-get install clinfo
+sudo apt-get install ocl-icd-opencl-dev
+sudo apt install gfortran
+
+firefly@firefly:~/test/nfs/ondevice/rk3399/Old_보드/Release_OldSrc$ ./YoloKCF_SVR 
+Start main()InitializeVariables_NaeulTech()
+Number of available platforms : 1
+platform info : OpenCL 1.2 v1.r14p0-01rel0-git(966ed26).f44c85cb3d2ceb87e8be88e7592755c3
+DeviceID : 1
+DeviceInfo : Mali-T860
+layer     filters    size              input                output
+   0 conv      8  3 x 3 / 1   160 x 160 x   1   ->   160 x 160 x   8 0.004 BF
+   1 max          2 x 2 / 2   160 x 160 x   8   ->    80 x  80 x   8 0.000 BF
+   2 conv     16  3 x 3 / 1    80 x  80 x   8   ->    80 x  80 x  16 0.015 BF
+   3 max          2 x 2 / 2    80 x  80 x  16   ->    40 x  40 x  16 0.000 BF
+   4 conv     32  3 x 3 / 1    40 x  40 x  16   ->    40 x  40 x  32 0.015 BF
+   5 max          2 x 2 / 2    40 x  40 x  32   ->    20 x  20 x  32 0.000 BF
+   6 conv     64  3 x 3 / 1    20 x  20 x  32   ->    20 x  20 x  64 0.015 BF
+   7 max          2 x 2 / 2    20 x  20 x  64   ->    10 x  10 x  64 0.000 BF
+   8 conv    128  3 x 3 / 1    10 x  10 x  64   ->    10 x  10 x 128 0.015 BF
+   9 max          2 x 2 / 2    10 x  10 x 128   ->     5 x   5 x 128 0.000 BF
+  10 conv    256  3 x 3 / 1     5 x   5 x 128   ->     5 x   5 x 256 0.015 BF
+  11 max          2 x 2 / 1     5 x   5 x 256   ->     5 x   5 x 256 0.000 BF
+  12 conv    512  3 x 3 / 1     5 x   5 x 256   ->     5 x   5 x 512 0.059 BF
+  13 conv    128  1 x 1 / 1     5 x   5 x 512   ->     5 x   5 x 128 0.003 BF
+  14 conv    256  3 x 3 / 1     5 x   5 x 128   ->     5 x   5 x 256 0.015 BF
+  15 conv     18  1 x 1 / 1     5 x   5 x 256   ->     5 x   5 x  18 0.000 BF
+  16 yolo
+  17 route  13
+  18 conv    128  1 x 1 / 1     5 x   5 x 128   ->     5 x   5 x 128 0.001 BF
+  19 upsample            2x     5 x   5 x 128   ->    10 x  10 x 128
+  20 route  19 8
+  21 conv    128  3 x 3 / 1    10 x  10 x 256   ->    10 x  10 x 128 0.059 BF
+  22 conv     18  1 x 1 / 1    10 x  10 x 128   ->    10 x  10 x  18 0.000 BF
+  23 yolo
+Total BFLOPS 0.215 
+Loading weights from model/Net_Laser_160_gray/yolov3-tiny_2class_final.weights...
+ seen 64 
+Done!
+TargetTracking_NaeulTech(0)
+
+
+
+
+
+
+   1  ifconfig
+    2  ifconfig -a
+    3  reboot
+    4  sudo reboot
+    5  ls
+    6  mkdir test
+    7  mount -t nfs -o nolock 192.168.3.70:/nfs test/
+    8  sudo mount -t nfs -o nolock 192.168.3.70:/nfs test/
+    9  ls
+   10  sudo apt update
+   11  sudo apt install nfs-common
+   12  sudo mount -t nfs -o nolock 192.168.3.70:/nfs test/
+   13  ls
+   14  cd test/
+   15  ls
+   16  reset
+   17  ls
+   18  cd ondevice/
+   19  ls
+   20  cd rk3399
+   21  ls
+   22  cd Old_보드/
+   23  ls
+   24  cd Release_OldSrc/
+   25  ls
+   26  chmod +x YoloKCF_SVR 
+   27  ./YoloKCF_SVR 
+   28  ls
+   29  cd ../
+   30  ls
+   31  cd ..
+   32  ls
+   33  cd New_보드/
+   34  ls
+   35  cd Release_OldSrc/
+   36  ls
+   37  ./YoloKCF_SVR 
+   38  ls
+   39  cd ../
+   40  ls
+   41  cd Release_NewSrc/
+   42  ls
+   43  chmod +x YoloKCF_SVR 
+   44  ./YoloKCF_SVR 
+   45  cd ..
+   46  ls
+   47  cd ..
+   48  ls
+   49  cd New_보드/
+   50  ls
+   51  cd ..
+   52  ls
+   53  cd New_보드/
+   54  ls
+   55  cd Release_NewSrc/
+   56  ls
+   57  ./YoloKCF_SVR 
+   58  ls
+   59  cd model/
+   60  ls
+   61  cd ..
+   62  ls
+   63  cd data/
+   64  ls
+   65  cat coco.data 
+   66  ls
+   67  cd ../
+   68  ls
+   69  cd model/
+   70  ls
+   71  cat Net_Laser_160_gray/
+   72  cd Net_Laser_160_gray/
+   73  ls
+   74  ls -al
+   75  cat 2class.data 
+   76  cd ../../
+   77  ls
+   78  find . -name "*.txt"
+   79  ls
+   80  cd ../
+   81  ls
+   82  cd Release_OldSrc/
+   83  ls
+   84  ./YoloKCF_SVR 
+   85  find /usr -name "*OpenCL*"
+   86  ln -s /usr/lib/aarch64-linux-gnu/libMaliOpenCL.so /usr/lib/libOpenCL.so.1
+   87  sudo ln -s /usr/lib/aarch64-linux-gnu/libMaliOpenCL.so /usr/lib/libOpenCL.so.1
+   88  ls
+   89  ./YoloKCF_SVR 
+   90  find /usr -name "*OpenCL*"
+   91  rm /usr/lib/libOpenCL.so.1 
+   92  sudo rm /usr/lib/libOpenCL.so.1 
+   93  ifconfig
+   94  ps aux | grep ssh
+   95  ifconfig -a
+   96  dmesg 
+   97  cat /var/log/auth.log 
+   98  vi /etc/pam.d/login 
+   99  vi /etc/pam.d/passwd 
+  100  cat /var/log/auth.log 
+  101  history
+
+    1  ifconfig
+    2  ifconfig -a
+    3  reboot
+    4  sudo reboot
+    5  ls
+    6  cd test/
+    7  ls
+    8  cd ondevice/
+    9  ls
+   10  cd rk3399
+   11  ls
+   12  cd New_보드/
+   13  ls
+   14  cd Release_
+   15  cd ..
+   16  ls
+   17  cd Old_보드/
+   18  ls
+   19  cd Release_OldSrc/
+   20  ls
+   21  ./YoloKCF_SVR 
+   22  cd ../
+   23  ls
+   24  cd ..
+   25  ls
+   26  cd New_보드/
+   27  ls
+   28  cd Release_NewSrc/
+   29  ls
+   30  ./YoloKCF_SVR 
+   31  find /usr -name "*OpenCL*"
+   32  ln -s /usr/lib/aarch64-linux-gnu/libOpenCL.so /usr/lib/libOpenCL.so.1
+   33  sudo ln -s /usr/lib/aarch64-linux-gnu/libOpenCL.so /usr/lib/libOpenCL.so.1
+   34  ./YoloKCF_SVR 
+   35  sudo apt-cache search libclBLAS
+   36  sudo apt-get install libclblas-dev 
+   37  ./YoloKCF_SVR 
+   38  apt-get install libstdc++6
+   39  sudo apt-get install libstdc++6
+   40  apt-get -f install
+   41  sudo apt-get -f install
+   42  apt-get -f install
+   43  sudo apt-get -f install
+   44  ./YoloKCF_SVR 
+   45  sudo apt-get purge libclblas-dev 
+   46  sudo apt-get install libstdc++6
+   47  sudo apt-get purge libclblas-dev 
+   48  ./YoloKCF_SVR 
+   49  sudo apt-get purge libclblas-dev 
+   50  find /usr -name "*OpenCL*"
+   51* 
+   52  find /usr -name "*libstdc++*"
+   53  ls /usr/lib/aarch64-linux-gnu/libstdc++.so.6
+   54  ls /usr/lib/aarch64-linux-gnu/libstdc++.so.6 -al
+   55  ls -al /usr/lib/aarch64-linux-gnu/libstdc++.so.6.0.21
+   56  ln -s /usr/lib/aarch64-linux-gnu/libstdc++.so.6.0.21 /usr/lib/aarch64-linux-gnu/libstdc++.so.6
+   57  strings /usr/lib/aarch64-linux-gnu/libstdc++.so.6 | grep GLIBXX
+   58  strings /usr/lib/aarch64-linux-gnu/libstdc++.so.6 | grep GLIB
+   59  strings /usr/lib/aarch64-linux-gnu/libstdc++.so.6 | grep GLIBCXX
+   60  ./YoloKCF_SVR 
+   61  sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+   62  sudo apt-get update
+   63  sudo apt-get install gcc-4.9
+   64  sudo apt-get install --only-upgrade libstdc++6
+   65  ./YoloKCF_SVR 
+   66  history
+

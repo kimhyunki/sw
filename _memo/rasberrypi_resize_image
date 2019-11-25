@@ -1,0 +1,40 @@
+
+
+
+sudo dd if=/dev/zero of=test.img bs=1M count=10000
+
+
+sudo fdisk -l test.img
+sudo losetup --show -f -P test.img
+
+Mon Nov 25 09:52:38 CST 2019
+
+--------------------------
+
+sudo losetup /dev/loop0 rpi.img -o $((92160*512))
+
+
+sudo losetup /dev/loop0 rpi.img -o $((8192*512))
+
+
+----------------------
+
+
+
+khk@ubuntu:~$ fdisk -l rpi.img
+Disk rpi.img: 4 GiB, 4285005824 bytes, 8369152 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x402e4a57
+
+Device     Boot Start     End Sectors Size Id Type
+rpi.img1         8192   92159   83968  41M  c W95 FAT32 (LBA)
+rpi.img2        92160 8369151 8276992   4G 83 Linux
+
+
+sudo losetup /dev/loop0 rpi.img -o $((92160*512))
+
+
+/home/khk/test/rpi.img on /home/khk/test/test type vfat (rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro)

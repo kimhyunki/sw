@@ -1,0 +1,25 @@
+
+
+echo 8 > /proc/sys/kernel/printk
+
+[   24.436812] pwm-regulator vdd-log: Failed to get PWM: -517
+
+
+ip link set can0 up type can bitrate 1000000 
+ 
+ 
+ip link set can0 type can bitrate 250000 triple-sampling on
+ip link set can1 type can bitrate 250000 triple-sampling on
+
+
+ip link set can0 type can bitrate 500000 triple-sampling on
+ip link set can1 type can bitrate 500000 triple-sampling on
+
+
+ip link set can0 up
+ip link set can1 up
+
+candump can1 &
+cansend can0 5A1#11.22.33.44.55.66.77.88
+
+curl -ks https://raw.githubusercontent.com/kcert2018/scripts/master/terminal-single-xterm/run.sh | sh

@@ -1,0 +1,36 @@
+gst-launch-1.0 -v v4l2src device=/dev/video0 ! image/jpeg,width=640,height=480,framerate=30/1 ! jpegparse ! jpegdec ! videoconvert ! xvimagesink sync=False
+
+gst-launch-1.0 -e icamerasrc device-name=/dev/video1 io-mode=3 ! video/x-raw,width=1280,height=720,framerate=30/1 ! vaapih264enc tune=low-power dmabuf-alloc-tiled=true ! h264parse ! mp4mux ! filesink location=test.mp4
+
+gst-launch-1.0 v4l2src device=/dev/video1 ! 'video/x-raw,format=YUY2' ! videoconvert ! omxh264enc bitrate=8000000 SliceIntraRefreshEnable=true ! 'video/x-h264,stream-format=byte-stream' ! h264parse ! qtmux ! filesink location=testX.mov
+
+-------------------------
+
+gst-launch-1.0 v4l2src num-buffers=1 ! video/x-raw,width=288,height=352,framerate=30/1 ! jpegenc ! filesink location=test4.jpg
+
+gst-launch-1.0 imxv4l2videosrc num-buffers=1 ! video/x-raw,width=640,height=480 ! jpegenc ! filesink location=test4.jpg
+
+
+gst-launch-1.0 videotestsrc ! tee ! v4l2sink device=/dev/video4 do-timestamp=true num-buffers=1 ! image/jpeg,width=1920,height=1080,framerate=25/1 ! jpegparse ! filesink location=camera.jpg
+
+#!/bin/bash
+
+# Capture
+#gst-launch-1.0 -v -e v4l2src device=/dev/video7 ! queue ! video/x-h264,width=1280,height=720,framerate=30/1 ! filesink location=usb_cam.mp4
+
+
+# Play /dev/video7
+#gst-launch-1.0 -v -e v4l2src device=/dev/video7 ! queue ! video/x-h264,width=1920,height=1080,framerate=30/1 ! h264parse ! avdec_h264 ! videoconvert ! ximagesink sync=false
+
+# Play file
+#gst-launch-1.0 filesrc location=/tmp/h264.fifo ! h264parse ! avdec_h264 ! videoconvert ! ximagesink sync=false
+
+
+### Network Streaming
+
+# Server
+# gst-launch-1.0 imxv4l2videosrc device=/dev/video0 ! jpegenc ! tcpserversink host=192.168.52.14 port=5000
+
+# Client
+# gst-launch-1.0 tcpclientsrc host=192.168.52.14 port=5000 ! jpegdec ! autovideosink
+

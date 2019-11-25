@@ -1,0 +1,108 @@
+
+
+echo "tcpdump src 192.168.0.199 and tcp port 9090 -x  -c 1 | tail -7 | awk -F':' '{ print $2 }'" > /app/tcpcap.sh 
+
+tcpdump src 192.168.0.199 and tcp port 9090 -x  -c 1 | tail -7 | awk -F':' '{ print $2 }' | ./app-tcpcap
+
+tcpdump src 192.168.0.199 and tcp port 9090 -x -c 1 | ./app-tcpcapjk
+
+
+1. win pc 의 고정 IP 설정 
+
+    192.168.0.200
+    192.168.0.1
+   
+2. sbc 의 ip
+
+    192.168.0.199
+    192.168.0.1
+
+3. IDP를 실행
+
+    TCP로 설정  
+    start server
+    아래 DEBUG 박스 누르면 통신 프로토콜 확인가능
+    비주기 MAX 제어
+    
+    
+4. CCT 실행 
+
+    422 프로그램
+
+5. PCUT 실행
+
+   port를 잘 확인
+    
+6. PCUT
+
+    전원반 상태정보 응답 
+        옆 '제어' 누르기
+        제어모드: 원격 
+    CAN 수신 데이터 / 국부 전원제어
+    
+        전원제어 : 장비제어기 클릭 
+        구성품   : #2 클릭
+    
+7. IDP 
+
+    제어 (비주기) : 화면의 오른쪽 상단 2번 째 박스
+    
+
+
+brctl addbr br0     
+brctl addif br0 eth0
+brctl addif br0 eth1
+brctl stp br0 off   
+ 
+ifconfig eth0 0.0.0.0   
+ifconfig eth1 0.0.0.0     
+ifconfig br0 192.168.3.75 netmask 255.255.0.0 up
+route add -net 0/0 gw 192.168.10.1
+
+    
+   
+tcpdump src 192.168.0.199 -nn -vvv -c 1 -xx | hexdump -v -e '"%07.1_ax | "' -e '8/1 "0x%02x " " |"' -e '8/1 " %3_c"' -e '"\n"'
+tcpdump src 192.168.0.199 -nn -vvv -c 1 -xx | hexdump -v -C
+
+tcpdump src 192.168.0.199 -nn -vvv -xx -c 10 | hexdump -v -C
+
+tcpdump src 192.168.0.199 -nn -vvv -xx -c 10 | hexdump -v -e '1/1 "X%02x"' | sed 's/X/\\x/g'
+
+tcpdump src 192.168.0.199 -x
+
+tcpdump src 192.168.0.199 -nn -vvv -c 1 -xx | hexdump -v -e '"%07.1_ax | "' -e '8/1 "0x%02x " "'
+
+
+---------------------------------------------------------------------------------------------------------------------
+root@am335x ~ # tcpdump dst 192.168.0.199 and tcp port 9090 -x
+
+aaaa aaaa aaaa aaaa 0011 0051 1389 012d 0000 0028 0000 0001 07e3 0903 0c1e e678 0000 0156 0100 0000  : MAX
+aaaa aaaa aaaa aaaa 0011 0051 1389 012d 0000 0028 0000 0001 07e3 0903 0c1e e678 0000 0156 0200 0000  : -3dB
+---------------------------------------------------------------------------------------------------------------------
+root@am335x ~ # tcpdump dst 192.168.0.199 and tcp port 49670 -x
+
+
+aaaa aaaa aaaa aaaa 0011 0051 1389 012d 0000 0028 0000 0001 07e3 0903 0c1e e678 0000 0156 0100 0000
+aaaa aaaa aaaa aaaa 0011 0051 1389 012d 0000 0028 0000 0001 07e3 0903 0c1e e678 0000 0156 0200 0000
+---------------------------------------------------------------------------------------------------------------------
+tcpdump dst 192.168.0.199 and tcp port 
+
+aaaa aaaa aaaa aaaa 0051 0011 1389 0065 0000 002c 0000 0d15 07e3 0904 0c1e e678 0000 0da6 012d 0000 0000 0000
+aaaa aaaa aaaa aaaa 0051 0011 1389 0065 0000 002c 0000 0d46 07e3 0904 0c1e e678 0000 0dd7 012d 0000 0000 0000
+
+
+aaaa aaaa aaaa aaaa 0051 0011 1389 0065 0000 002c 0000 0da6 07e3 0904 0c1e e678 0000 0e37 012d 0000 0000 0000
+aaaa aaaa aaaa aaaa 0051 0011 1389 0065 0000 002c 0000 0dc2 07e3 0904 0c1e e678 0000 0e53 012d 0000 0000 0000
+
+aaaa aaaa aaaa aaaa 0011 0051 1389 012d 0000 0028 0000 0001 07e3 0903 0c1e e678 0000 0156 0200 0000
+---------------------------------------------------------------------------------------------------------------------
+tcpdump src 192.168.0.200 and tcp port 9090
+
+tcpdump src 192.168.0.200 and tcp port 9090 -x
+
+tcpdump src 192.168.0.200 and tcp port 9090 -x and greater 70
+
+
+
+
+
