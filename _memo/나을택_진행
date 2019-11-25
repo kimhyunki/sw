@@ -5,14 +5,46 @@
 초기 상태로 변경
 
 
-------------------------------------
+
+
+mkdir test 
+cd test 
+mkdir nfs
 
 
 sudo mount -t nfs -o nolock 192.168.3.70:/nfs nfs
+
+cd nfs/ondevice/rk3399/New_보드/Release_NewSrc
+./YoloKCF_SVR
+
+@ clBLAS 설치 
+
+sudo apt-get update
+sudo apt-get install cmake libblas-dev git gfortran -y
+
+sudo tar zxf nfs/ondevice/rk3399/CL.tgz -C /usr/include/
+
+git clone https://github.com/clMathLibraries/clBLAS
+
+cd clBLAS/src
+mkdir build
+cd build
+
+cmake -DCMAKE_INSTALL_PREFIX=/usr/local -DOPENCL_INCLUDE_DIRS=/usr/include/CL -DCMAKE_BUILD_TYPE=Release ..
+
+make -j`nproc`
+sudo make install
+
+
+sudo ln /usr/local/lib64/libclBLAS.so.2.12.0 /usr/lib/libclBLAS.so.2
+sudo ln -s /usr/lib/aarch64-linux-gnu/libOpenCL.so /usr/lib/libOpenCL.so.1
+
+------------------------------------
+
+
+------------------------------
+
 sudo mount /dev/mmcblk1p6 lib
-firefly@firefly:~/test$ 
-
-
 
 
 @ New_보드/Release_NewSrc

@@ -1,0 +1,12 @@
+
+sudo vi  /usr/share/lightdm/lightdm.conf.d/10-autologin.conf
+
+[Seat:*]
+autologin-guest = false 
+autologin-user = firefly
+autologin-user-timeout = 0
+user-session = Lubuntu
+
+
+ 
+
