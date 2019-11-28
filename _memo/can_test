@@ -22,3 +22,41 @@ ip link set can1 up
 candump can0
 
 cansend can0 5A1#11.22.33.44.55.66.77.88
+
+
+
+
+
+firefly@firefly:~$ [  748.138171] mcp251x:mcp251x_spi_trans:324: mcp251x spi32766.0: bus_num=32766
+[  748.138870] mcp251x:mcp251x_spi_trans:324: mcp251x spi32766.0: bus_num=32766
+[  748.139717] mcp251x:mcp251x_spi_trans:324: mcp251x spi32766.0: bus_num=32766
+[  748.140515] mcp251x:mcp251x_spi_trans:324: mcp251x spi32766.0: bus_num=32766
+[  748.304351] mcp251x:mcp251x_hw_reset:637: mcp251x spi32766.0: bus_num=32766
+[  748.313057] mcp251x:mcp251x_spi_trans:324: mcp251x spi32766.0: bus_num=32766
+[  748.321857] mcp251x:mcp251x_spi_trans:324: mcp251x spi32766.0: bus_num=32766
+[  748.322853] mcp251x:mcp251x_spi_trans:324: mcp251x spi32766.0: bus_num=32766
+[  748.407537] mcp251x:mcp251x_hw_reset:637: mcp251x spi32766.0: bus_num=32766
+[  748.416236] mcp251x:mcp251x_spi_trans:324: mcp251x spi32766.0: bus_num=32766
+[  748.425191] mcp251x:mcp251x_spi_trans:324: mcp251x spi32766.0: bus_num=32766
+[  748.426154] mcp251x:mcp251x_do_set_bittiming:600: mcp251x spi32766.0: bus_num=32766
+[  748.426855] mcp251x:mcp251x_spi_trans:324: mcp251x spi32766.0: bus_num=32766
+[  748.427751] mcp251x:mcp251x_spi_trans:324: mcp251x spi32766.0: bus_num=32766
+[  748.428666] mcp251x:mcp251x_spi_trans:324: mcp251x spi32766.0: bus_num=32766
+[  748.429560] mcp251x:mcp251x_spi_trans:324: mcp251x spi32766.0: bus_num=32766
+[  748.430317] mcp251x:mcp251x_spi_trans:324: mcp251x spi32766.0: bus_num=32766
+[  748.431074] mcp251x:mcp251x_spi_trans:324: mcp251x spi32766.0: bus_num=32766
+[  748.431784] mcp251x:mcp251x_do_set_bittiming:614: mcp251x spi32766.0: CNF: 0x00 0xf5 0x01
+[  748.432553] mcp251x:mcp251x_spi_trans:324: mcp251x spi32766.0: bus_num=32766
+[  748.433311] mcp251x:mcp251x_spi_trans:324: mcp251x spi32766.0: bus_num=32766
+[  748.434048] mcp251x:mcp251x_spi_trans:324: mcp251x spi32766.0: bus_num=32766
+[  748.434759] mcp251x:mcp251x_spi_trans:324: mcp251x spi32766.0: bus_num=32766
+[  748.435527] mcp251x:mcp251x_spi_trans:324: mcp251x spi32766.0: bus_num=32766
+[  748.494703] mcp251x:mcp251x_spi_trans:324: mcp251x spi32766.0: bus_num=32766
+[  748.495559] mcp251x:mcp251x_spi_trans:324: mcp251x spi32766.0: bus_num=32766
+[  748.496848] mcp251x:mcp251x_spi_trans:324: mcp251x spi32766.0: bus_num=32766
+[  748.497636] mcp251x:mcp251x_spi_trans:324: mcp251x spi32766.0: bus_num=32766
+[  748.498424] mcp251x:mcp251x_spi_trans:324: mcp251x spi32766.0: bus_num=32766
+
+
+
+
