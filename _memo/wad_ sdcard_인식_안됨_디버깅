@@ -1,0 +1,10 @@
+ext4load mmc 1:2 $kernel_addr /boot/uImage
+
+ext4load mmc 1:2 $fdt_addr /boot/am335x-wad.dtb 
+
+fatload mmc 0:1 $kernel_addr uImage
+fatload mmc 0:1 $fdt_addr am335x-wad.dtb 
+
+
+run build_bootargs_mmc 
+bootm $kernel_addr - $fdt_addr

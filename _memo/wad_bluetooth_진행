@@ -1,0 +1,6 @@
+
+
+
+echo -e "power on" | bluetoothctl
+
+X Termainal
