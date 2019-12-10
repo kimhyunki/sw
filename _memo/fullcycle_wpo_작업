@@ -1,0 +1,56 @@
+
+
+
+
+https://github.com/?q=wpo
+
+kcert2-wpo-go-app
+kcert2-wpo-go
+
+가 같은 디렉토리에 있어야 한다.
+
+다운로드 해본다.
+
+
+키 등록을 하여도 ssh 로 안되는 문제가 있다.
+
+http로 다운로드 한다.
+
+git clone https://github.com/kcert2018/kcert2-wpo-go.git
+git clone https://github.com/kcert2018/kcert2-wpo-go-app.git
+
+khk@ubuntu:~/work/falinux/fullcycle/wpo/kcert2-wpo-go/docker$ ./build-dev.sh 
+Error: No such image: base/go-amd64-ds:0.1
+Error: No such image: base/go-arm-nuboton-ds:0.1
+./build-dev.sh: 줄 4: docker-compose: 명령어를 찾을 수 없음
+./build-dev.sh: 줄 5: docker-compose: 명령어를 찾을 수 없음
+
+
+sudo apt install docker-compose
+khk@ubuntu:~/work/falinux/fullcycle/wpo/kcert2-wpo-go/docker$ ./build-dev.sh 
+
+khk@ubuntu:~/work/falinux/fullcycle/wpo$ cd kcert2-wpo-go-app/
+
+
+cd /work/falinux/fullcycle/wpo/kcert2-wpo-go-app/docker
+
+./build-dev.sh 
+
+./init-wpo-agent.sh
+
+khk@ubuntu:~/work/falinux/fullcycle/wpo/kcert2-wpo-go-app/docker$ ./init-wpo-agent.sh 
+app-wpo-agent select
+Creating network "docker_default" with the default driver
+go mod init: go.mod already exists
+
+
+khk@ubuntu:~/work/falinux/fullcycle/wpo/kcert2-wpo-go-app/docker$ cat .select-src-target 
+app-wpo-agent
+
+
+khk@ubuntu:~/work/falinux/fullcycle/wpo/kcert2-wpo-go-app/docker$ ./run-install.sh 
+
+khk@ubuntu:~/work/falinux/fullcycle/wpo/kcert2-wpo-go-app/docker$ ./run-bin.sh 
+
+
+    
