@@ -1,0 +1,92 @@
+
+
+@ WPO
+
+    Web Pass On
+    
+@ 커널 인증 사업
+
+    커널 안정성
+    죽지 않는 리눅스
+    
+@ 인증 진행 서비스
+
+    어떻게 인증 받는지 모른다.
+    한번에 진행할 수 있게 해준다. (all in one)
+    그 중 하나가 '커널 인증 사업' 이다.    
+        
+@ 역사
+
+    webconnect -> wpo
+    
+    hot spun
+    
+    kernel certificate
+    
+
+@ webconnect OR WPO
+
+    call, callback 으로 이루어짐
+    emit
+    
+    
+    stdin
+    
+    stdout
+          
+@ hot spun
+
+    1) 로그 기록
+    
+    2) web booting (NFS)
+    
+    3) web storage
+    
+
+@ app-wpo-agent
+
+    runComm 
+        
+        pwd
+        
+    runProcess 
+    
+        apt-get
+        
+    runPty
+
+        특수 문자를 처리한다(linux kernel menuconfig).            
+        pty
+              
+
+@ app-wpo-power
+
+    LED stat
+    
+        - power    : OFF
+        - reset    : ON
+        - progress : 0.1 sec
+        - connect  :   1 sec
+        - link     : 0.5 sec
+    
+          
+@ app-wpo-boot
+
+    MAC 주소 기반 ID를 생성한다.
+                    
+           
+@ 주요 설명
+
+    call 
+        데이터를 주고 받는 것 
+        
+@ vsersion
+
+    a.b.c
+    
+        a: 호환이 안될 경우 버전을 올린다.        
+        b: 기능 추가될 경우 버전을 올린다.
+        c: 기능 추가 + 개선될 경우 버전을 올린다.
+        
+        
+        
