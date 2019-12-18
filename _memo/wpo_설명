@@ -64,8 +64,9 @@
     LED stat
     
         - power    : OFF
-        - reset    : ON
-        - progress : 0.1 sec
+        
+        - reset    : ON        
+        - program : 0.1 sec
         - connect  :   1 sec
         - link     : 0.5 sec
     

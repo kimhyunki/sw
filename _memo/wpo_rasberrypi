@@ -1,0 +1,25 @@
+1. 라즈베리파이 준비
+
+    static ip
+    check1. 
+       
+2.
+
+    wpo power 작성  go 언어로 부팅 LED 제어 POWER led 제어 
+        wpo id 는 mac 기반 
+    
+    web app single (call)
+    
+라즈베리파이에 app-wpo-aging
+
+
+3. 
+
+    firmware 관리 툴 ( 송)
+    
+    firmwirae boot ( wpo-boot )
+    
+        부팅 
+        wpo -boot 실행
+        /wpo/wpo_id/init.bin, package.yml
+    
