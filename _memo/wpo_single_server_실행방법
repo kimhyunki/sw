@@ -1,3 +1,8 @@
 
 
+cd /work/falinux/fullcycle/wpo/kcert2-home-wpo-single-server/docker
+
+./run-dev-as-service.sh
+
+localhost:8080 접속
 
