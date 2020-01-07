@@ -4,3 +4,4 @@ khk@ubuntu:~/bin$ docker exec -ti pensive_lalande /bin/bash
 
 https://ikchoi73.tistory.com/2
 
+http://jenkins-khk:8778/
