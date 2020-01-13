@@ -8,5 +8,83 @@
 
    
 
+FC-ANAL-HW15-ZYNQ
+FC-ANAL-HW15-PI
+FC-ANAL-HW15-IMJA
+
+
+I2C 
+    FC-ANAL-HW15-PI
+        wpo call
+    
+SPI 
+    FC-ANAL-HW15-PI
+        wpo call
+
+GPIO
+    FC-ANAL-HW15-ZYNQ
+        wpo call
+  
+PWM
+    
+    FC-ANAL-HW15-ZYNQ
+        wpo emit
+    
+    FC-ANAL-HW15-PI
+        wpo emit
+
+RS422
+    FC-ANAL-HW15-PI
+        wpo call
+ADC
+    FC-ANAL-HW15-PI
+        wpo call
+
+
+
+WIFI
+
+
+USB HOST
+
+
+Memory
+
+SD Card
+
+application 1 종( 특정 프로그램이 실행 중인지 분석)  
+
+ETHERNET
+
+Power supply
+
+
+RS485
+
+CAN
+
+
+
+FC-ANAL-HW15-ZYNQ
+FC-ANAL-HW15-PI
+FC-ANAL-HW15-IMJA
+
+
+I2C 
+SPI 
+GPIO
+PWM
+RS422
+ADC
+WIFI
+USB HOST
+Memory
+SD Card
+app
+Ethernet
+PowerSupply
+RS485
+CAN
+
 
 
