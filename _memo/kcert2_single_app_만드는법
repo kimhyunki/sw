@@ -1,0 +1,24 @@
+
+
+git clone git@github.com:kcert2018/kcert2-home-f-component-v2.git
+git clone git@github.com:kcert2018/kcert2-repo-single-app-templates.git
+
+git clone git@github.com:kcert2018/kcert2-home-wpo-admin.git
+
+git clone git@github.com:kcert2018/kcert2-home-generator-single-app-single.git
+
+
+
+cd kcert2-home-generator-single-app-single/docker
+./init-home-generator-single-app-single.sh
+./run-dev-as-service.sh
+
+---------------------------------
+
+홈페이지 접속 
+내가 만든 이름으로 템플릿 생성 (~/ 에 생성)
+
+
+khk@ubuntu:~/kcert2-home-test-single-view/docker$ ./init-home-test-single-view.sh 
+khk@ubuntu:~/kcert2-home-test-single-view/docker$ ./run-dev-as-service.sh 
+
