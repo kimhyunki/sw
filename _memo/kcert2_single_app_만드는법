@@ -22,3 +22,10 @@ cd kcert2-home-generator-single-app-single/docker
 khk@ubuntu:~/kcert2-home-test-single-view/docker$ ./init-home-test-single-view.sh 
 khk@ubuntu:~/kcert2-home-test-single-view/docker$ ./run-dev-as-service.sh 
 
+---------------------
+khk@ubuntu:~/work/falinux/fullcycle/wpo/fullcycle/org/kcert2-home-test-single-view/apps/home-test-single-view/src$ 
+drwxrwxr-x  2 khk  khk  4096  2월 11 16:02 plugins
+-rw-rw-r--  1 khk  khk   523  2월 11 16:02 router.js                # 경로 지정
+drwxrwxr-x  3 khk  khk  4096  2월 11 16:02 store                    # 제어 
+drwxrwxr-x  2 khk  khk  4096  2월 11 16:09 views                    # 화면 
+
