@@ -1,5 +1,5 @@
 #!/bin/sh
 
-npm install vue-cli -g
+sudo npm install vue-cli -g
 
 
