@@ -1,13 +1,14 @@
-<script src="https://unpkg.com/vue">
+
+<html>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <div id="app">
-    <p> {{ message }} </p>
+      {{ message }}
   </div>
-</script>
+</html>
 
-new Vue ({
-  el: '#app',
-  data: {
-    message: 'Hello vue.js'
-  }
+var app = new Vue({
+el: '#app',
+data: {
+message: '안녕하세요 Vue!'
+}
 })
-
