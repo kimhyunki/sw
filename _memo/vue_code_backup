@@ -56,3 +56,84 @@ var example2 = new Vue({
     ]
   }
 })
+
+
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>  
+  <body>
+    
+    <div id="example-3">
+    
+      <did v-if="Math.random() > 0.5">
+        
+      </did>
+    
+      <h1 v-if="ok">YES</h1>
+      <h1 v-else>NO</h1>
+      
+      <template v-if="ok">
+        <h1>
+          Title
+        </h1>
+        <p>
+          Paragraph 1
+        </p>
+        <p>
+          Paragraph 2
+        </p>
+      </template>
+      
+    </div>
+    
+    <li v-for="todo in todos" v-if="!todo.isComplete">
+      {{ todo }}
+    </li>
+    
+    <ul>
+      <template v-for="item in item">
+        <li> {{ item.msg }} </li>
+        <li class="divider" role="presentation"></li>
+      </template>
+    
+    </ul>
+    
+    <ul id="example-1">
+      <li v-for="item in items">
+        {{ item.message }}
+      </li>
+    </ul>
+    
+    <ul id="example-2">
+      <li v-for="(item, index) in items">
+        {{ parentMessage }} - {{ index }} - {{ item.message }}
+      </li>
+    </ul>
+    
+    <ul id="v-for-object" class="demo">
+      <li v-for="(value, name, index) in object">
+        {{ index }}. {{ name }}: {{ value }} 
+      </li> 
+
+      <li v-for="n in evenNumbers">
+          {{ n }}
+      </li>   
+    
+      <li v-for="n in even(numbers)"> 
+        {{ n }}
+      </li>
+      
+      <div>
+        <span v-for="n in 10">
+          {{ n }}
+        </span>
+      </div>
+    
+    </ul>
+
+
+   
+  </body>
+</html>
+
