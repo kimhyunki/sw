@@ -1,0 +1,58 @@
+var example3 = new Vue ({
+	el: '#example-3',
+  data: {
+  	ok: false,
+  }
+})
+
+example3.ok = true
+
+new Vue ({
+	el: '#v-for-object',
+  data: {
+  numbers: [
+    	1, 2, 3, 4, 5, 6, 7, 8, 9
+    ],
+  	object: {
+    	title: 'How to do lists in Vue',
+      author: 'kim hyun ki',
+      publishedAt: '2020-02-21'
+    }
+  },
+  computed: {
+  	evenNumbers: function () {
+    	return this.numbers.filter(function (number) {
+      	return number % 2 === 0
+      })
+    }
+  },
+  methods: {
+  	even: function (numbers) {
+    	return numbers.filter(function (number) {
+      	return number % 2 === 0
+      })
+    }
+  }
+})
+
+var example1 = new Vue({
+  el: '#example-1',
+  data: {
+    items: [
+      { message: 'Foo' },
+      { message: 'Bar' },
+      { message: '2' }
+    ]
+  }
+})
+
+var example2 = new Vue({
+	el: '#example-2',
+  data: {
+  	parentMessage: 'parent',
+    items: [
+    	{ message: 'foo' },
+      { message: 'bar' }
+    ]
+  }
+})
