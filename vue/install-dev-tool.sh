@@ -1,5 +1,10 @@
 #!/bin/sh
 
+sudo apt-get install cmdtest -y
+
 #git clone https://github.com/vuejs/vue-devtools.git
 
-sudo apt-get install cmdtest
+
+cd vew-devtools
+yarn install 
+yarn run dev
