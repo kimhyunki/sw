@@ -1,0 +1,27 @@
+[NAND]
+PATH=E:\workspace\06_FALINUX_NUVOTONDownLoader_1801\SOFTWARE\HEX_FILE\u-boot.bin
+TYPE=0
+EXECADDR=200
+OFFSET=100000
+ENC_EN=0
+ENC_SEL=-1
+SAVEPATH=C:\NAND_abc.bin
+nBlock=20
+sBlock=0
+nEBlock=20
+sEBlock=0
+uPageSize=2048
+uBlockPerFlash=1024
+uPagePerBlock=64
+
+
+
+head.address=0x00000010,head.filelen=368
+Nand_uPagePerBlock=0
+Nand_uPageSize=2048
+Nand_uSectorPerBlock=0
+Nand_uBlockPerFlash=0
+Nand_uBadBlockCount=0
+ParseFlashType-NAND_M
+Cannot find NAND(2048,0)
+
