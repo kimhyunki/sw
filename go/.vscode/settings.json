@@ -1,5 +1,5 @@
 {
-    "go.gopath" : "/usr/bin/go",
+    "go.gopath" : "/usr/lib/go/bin/",
     "go.inferGopath": true,
-    "go.toolsGopath": "/home/khk/work/khk/go/src"
+    "go.toolsGopath": "/home/khk/work/khk/go"
 }
