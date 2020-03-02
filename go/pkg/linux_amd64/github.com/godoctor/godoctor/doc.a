@@ -1,0 +1,1105 @@
+!<arch>
+__.PKGDEF       0           0     0     644     19492     `
+go object linux amd64 go1.6.2 X:none
+build id "13566fd8a841399dfd379478feab83db4761a890"
+
+$$
+package doc
+	import flag "flag"
+	import fmt "fmt"
+	import io "io"
+	import template "text/template"
+	import bytes "bytes"
+	import strings "strings"
+	import exec "os/exec"
+	import engine "github.com/godoctor/godoctor/engine"
+	import refactoring "github.com/godoctor/godoctor/refactoring"
+	type @"flag".Value interface { Set(? string) (? error); String() (? string) }
+	type @"flag".Flag struct { Name string; Usage string; Value @"flag".Value; DefValue string }
+	type @"flag".ErrorHandling int
+	type @"io".Writer interface { Write(@"io".p []byte) (@"io".n int, @"io".err error) }
+	import time "time" // indirect
+	type @"time".Duration int64
+	func (@"time".dÂ·2 @"time".Duration) Hours () (? float64) { var @"time".hourÂ·3 @"time".Duration; ; @"time".hourÂ·3 = @"time".dÂ·2 / @"time".Duration(0x34630b8a000); var @"time".nsecÂ·4 @"time".Duration; ; @"time".nsecÂ·4 = @"time".dÂ·2 % @"time".Duration(0x34630b8a000); return float64(@"time".hourÂ·3) + float64(@"time".nsecÂ·4) * float64(8190022623310637111963488201822504381538623676021880892417778544696899264837610290203272971060556344039023584360473938041055625214280336402169897364226048p-553) }
+	func (@"time".dÂ·2 @"time".Duration) Minutes () (? float64) { var @"time".minÂ·3 @"time".Duration; ; @"time".minÂ·3 = @"time".dÂ·2 / @"time".Duration(0xdf8475800); var @"time".nsecÂ·4 @"time".Duration; ; @"time".nsecÂ·4 = @"time".dÂ·2 % @"time".Duration(0xdf8475800); return float64(@"time".minÂ·3) + float64(@"time".nsecÂ·4) * float64(7678146209353722106395056769533233877065564876941352542109479049699919628723768656821910653339403201031675627614471533358284117434246264392176261853609984p-547) }
+	func (@"time".dÂ·2 @"time".Duration) Nanoseconds () (? int64) { return int64(@"time".dÂ·2) }
+	func (@"time".dÂ·2 @"time".Duration) Seconds () (? float64) { var @"time".secÂ·3 @"time".Duration; ; @"time".secÂ·3 = @"time".dÂ·2 / @"time".Duration(0x3b9aca00); var @"time".nsecÂ·4 @"time".Duration; ; @"time".nsecÂ·4 = @"time".dÂ·2 % @"time".Duration(0x3b9aca00); return float64(@"time".secÂ·3) + float64(@"time".nsecÂ·4) * float64(7198262071269114660816079141112770740375861891461678802759824945047098083990024106014198994535558872472104883612039846078596891298747423852523262413111296p-541) }
+	func (@"time".dÂ·2 @"time".Duration) String () (? string)
+	type @"flag".FlagSet struct { Usage func(); @"flag".name string; @"flag".parsed bool; @"flag".actual map[string]*@"flag".Flag; @"flag".formal map[string]*@"flag".Flag; @"flag".args []string; @"flag".errorHandling @"flag".ErrorHandling; @"flag".output @"io".Writer }
+	func (@"flag".fÂ·2 *@"flag".FlagSet "esc:0x32") Arg (@"flag".iÂ·3 int) (? string) { if @"flag".iÂ·3 < int(0x0) || @"flag".iÂ·3 >= len(@"flag".fÂ·2.@"flag".args) { return string("") }; return @"flag".fÂ·2.@"flag".args[@"flag".iÂ·3] }
+	func (@"flag".fÂ·2 *@"flag".FlagSet "esc:0x22") Args () (? []string) { return @"flag".fÂ·2.@"flag".args }
+	func (@"flag".fÂ·2 *@"flag".FlagSet "esc:0x9") Bool (@"flag".nameÂ·3 string, @"flag".valueÂ·4 bool, @"flag".usageÂ·5 string) (? *bool)
+	func (@"flag".fÂ·1 *@"flag".FlagSet "esc:0x9") BoolVar (@"flag".pÂ·2 *bool, @"flag".nameÂ·3 string, @"flag".valueÂ·4 bool, @"flag".usageÂ·5 string)
+	func (@"flag".fÂ·2 *@"flag".FlagSet "esc:0x9") Duration (@"flag".nameÂ·3 string, @"flag".valueÂ·4 @"time".Duration, @"flag".usageÂ·5 string) (? *@"time".Duration)
+	func (@"flag".fÂ·1 *@"flag".FlagSet "esc:0x9") DurationVar (@"flag".pÂ·2 *@"time".Duration, @"flag".nameÂ·3 string, @"flag".valueÂ·4 @"time".Duration, @"flag".usageÂ·5 string)
+	func (@"flag".fÂ·2 *@"flag".FlagSet "esc:0x9") Float64 (@"flag".nameÂ·3 string, @"flag".valueÂ·4 float64, @"flag".usageÂ·5 string) (? *float64)
+	func (@"flag".fÂ·1 *@"flag".FlagSet "esc:0x9") Float64Var (@"flag".pÂ·2 *float64, @"flag".nameÂ·3 string, @"flag".valueÂ·4 float64, @"flag".usageÂ·5 string)
+	func (@"flag".fÂ·1 *@"flag".FlagSet "esc:0x1") Init (@"flag".nameÂ·2 string, @"flag".errorHandlingÂ·3 @"flag".ErrorHandling) { @"flag".fÂ·1.@"flag".name = @"flag".nameÂ·2; @"flag".fÂ·1.@"flag".errorHandling = @"flag".errorHandlingÂ·3 }
+	func (@"flag".fÂ·2 *@"flag".FlagSet "esc:0x9") Int (@"flag".nameÂ·3 string, @"flag".valueÂ·4 int, @"flag".usageÂ·5 string) (? *int)
+	func (@"flag".fÂ·2 *@"flag".FlagSet "esc:0x9") Int64 (@"flag".nameÂ·3 string, @"flag".valueÂ·4 int64, @"flag".usageÂ·5 string) (? *int64)
+	func (@"flag".fÂ·1 *@"flag".FlagSet "esc:0x9") Int64Var (@"flag".pÂ·2 *int64, @"flag".nameÂ·3 string, @"flag".valueÂ·4 int64, @"flag".usageÂ·5 string)
+	func (@"flag".fÂ·1 *@"flag".FlagSet "esc:0x9") IntVar (@"flag".pÂ·2 *int, @"flag".nameÂ·3 string, @"flag".valueÂ·4 int, @"flag".usageÂ·5 string)
+	func (@"flag".fÂ·2 *@"flag".FlagSet "esc:0x1") Lookup (@"flag".nameÂ·3 string "esc:0x1") (? *@"flag".Flag) { return @"flag".fÂ·2.@"flag".formal[@"flag".nameÂ·3] }
+	func (@"flag".fÂ·2 *@"flag".FlagSet "esc:0x1") NArg () (? int) { return len(@"flag".fÂ·2.@"flag".args) }
+	func (@"flag".fÂ·2 *@"flag".FlagSet "esc:0x1") NFlag () (? int) { return len(@"flag".fÂ·2.@"flag".actual) }
+	func (@"flag".fÂ·2 *@"flag".FlagSet "esc:0x9") Parse (@"flag".argumentsÂ·3 []string) (? error)
+	func (@"flag".fÂ·2 *@"flag".FlagSet "esc:0x1") Parsed () (? bool) { return @"flag".fÂ·2.@"flag".parsed }
+	func (@"flag".fÂ·1 *@"flag".FlagSet "esc:0x9") PrintDefaults ()
+	func (@"flag".fÂ·2 *@"flag".FlagSet "esc:0x1") Set (@"flag".nameÂ·3 string, @"flag".valueÂ·4 string) (? error)
+	func (@"flag".fÂ·1 *@"flag".FlagSet "esc:0x1") SetOutput (@"flag".outputÂ·2 @"io".Writer) { @"flag".fÂ·1.@"flag".output = @"flag".outputÂ·2 }
+	func (@"flag".fÂ·2 *@"flag".FlagSet "esc:0x9") String (@"flag".nameÂ·3 string, @"flag".valueÂ·4 string, @"flag".usageÂ·5 string) (? *string)
+	func (@"flag".fÂ·1 *@"flag".FlagSet "esc:0x9") StringVar (@"flag".pÂ·2 *string, @"flag".nameÂ·3 string, @"flag".valueÂ·4 string, @"flag".usageÂ·5 string)
+	func (@"flag".fÂ·2 *@"flag".FlagSet "esc:0x9") Uint (@"flag".nameÂ·3 string, @"flag".valueÂ·4 uint, @"flag".usageÂ·5 string) (? *uint)
+	func (@"flag".fÂ·2 *@"flag".FlagSet "esc:0x9") Uint64 (@"flag".nameÂ·3 string, @"flag".valueÂ·4 uint64, @"flag".usageÂ·5 string) (? *uint64)
+	func (@"flag".fÂ·1 *@"flag".FlagSet "esc:0x9") Uint64Var (@"flag".pÂ·2 *uint64, @"flag".nameÂ·3 string, @"flag".valueÂ·4 uint64, @"flag".usageÂ·5 string)
+	func (@"flag".fÂ·1 *@"flag".FlagSet "esc:0x9") UintVar (@"flag".pÂ·2 *uint, @"flag".nameÂ·3 string, @"flag".valueÂ·4 uint, @"flag".usageÂ·5 string)
+	func (@"flag".fÂ·1 *@"flag".FlagSet "esc:0x9") Var (@"flag".valueÂ·2 @"flag".Value, @"flag".nameÂ·3 string, @"flag".usageÂ·4 string)
+	func (@"flag".fÂ·1 *@"flag".FlagSet "esc:0x9") Visit (@"flag".fnÂ·2 func(? *@"flag".Flag) "esc:0x1")
+	func (@"flag".fÂ·1 *@"flag".FlagSet "esc:0x9") VisitAll (@"flag".fnÂ·2 func(? *@"flag".Flag) "esc:0x1")
+	func (@"flag".fÂ·2 *@"flag".FlagSet "esc:0x9") @"flag".failf (@"flag".formatÂ·3 string "esc:0x9", @"flag".aÂ·4 ...interface {} "esc:0x9") (? error)
+	func (@"flag".fÂ·2 *@"flag".FlagSet "esc:0x22") @"flag".out () (? @"io".Writer) { if @"flag".fÂ·2.@"flag".output == nil { return @"os".Stderr }; return @"flag".fÂ·2.@"flag".output }
+	func (@"flag".fÂ·3 *@"flag".FlagSet "esc:0x9") @"flag".parseOne () (? bool, ? error)
+	func (@"flag".fÂ·1 *@"flag".FlagSet "esc:0x9") @"flag".usage ()
+	func @"".PrintInstallGuide (@"".aboutTextÂ·1 string, @"".flagsÂ·2 *@"flag".FlagSet "esc:0x1", @"".outÂ·3 @"io".Writer)
+	func @"".PrintManPage (@"".aboutTextÂ·1 string, @"".flagsÂ·2 *@"flag".FlagSet "esc:0x9", @"".outÂ·3 @"io".Writer)
+	type @"github.com/godoctor/godoctor/refactoring".Parameter struct { Label string; Prompt string; DefaultValue interface {} }
+	func (@"github.com/godoctor/godoctor/refactoring".pÂ·2 *@"github.com/godoctor/godoctor/refactoring".Parameter "esc:0x1") IsBoolean () (? bool)
+	type @"github.com/godoctor/godoctor/refactoring".Description struct { Name string; Synopsis string; Usage string; HTMLDoc string; Multifile bool; Params []@"github.com/godoctor/godoctor/refactoring".Parameter; OptionalParams []@"github.com/godoctor/godoctor/refactoring".Parameter; Hidden bool }
+	type @"".refacDesc struct { Key string; Description *@"github.com/godoctor/godoctor/refactoring".Description }
+	type @"".docContent struct { AboutText string; Flags []*@"flag".Flag; Refactorings []@"".refacDesc }
+	type @"".UserGuideContent struct { ? @"".docContent; ManPageHTML string; VimdocHTML string }
+	func @"".PrintUserGuide (@"".aboutTextÂ·1 string, @"".flagsÂ·2 *@"flag".FlagSet, @"".outÂ·3 @"io".Writer)
+	func @"".PrintUserGuideAsGiven (@"".aboutTextÂ·1 string, @"".flagsÂ·2 *@"flag".FlagSet, @"".ctntÂ·3 *@"".UserGuideContent, @"".outÂ·4 @"io".Writer)
+	func @"".PrintVimdoc (@"".aboutTextÂ·1 string, @"".flagsÂ·2 *@"flag".FlagSet "esc:0x9", @"".outÂ·3 @"io".Writer)
+	func @"".init ()
+	import os "os" // indirect
+	type @"os".dirInfo struct { @"os".buf []byte; @"os".nbuf int; @"os".bufp int }
+	type @"os".file struct { @"os".fd int; @"os".name string; @"os".dirinfo *@"os".dirInfo }
+	func (@"os".fileÂ·2 *@"os".file) @"os".close () (? error)
+	type @"os".FileMode uint32
+	func (@"os".mÂ·2 @"os".FileMode) IsDir () (? bool) { return @"os".mÂ·2 & @"os".FileMode(0x80000000) != @"os".FileMode(0x0) }
+	func (@"os".mÂ·2 @"os".FileMode) IsRegular () (? bool) { return @"os".mÂ·2 & @"os".FileMode(0x8f000000) == @"os".FileMode(0x0) }
+	func (@"os".mÂ·2 @"os".FileMode) Perm () (? @"os".FileMode) { return @"os".mÂ·2 & @"os".FileMode(0x1ff) }
+	func (@"os".mÂ·2 @"os".FileMode) String () (? string)
+	type @"time".zone struct { @"time".name string; @"time".offset int; @"time".isDST bool }
+	type @"time".zoneTrans struct { @"time".when int64; @"time".index uint8; @"time".isstd bool; @"time".isutc bool }
+	type @"time".Location struct { @"time".name string; @"time".zone []@"time".zone; @"time".tx []@"time".zoneTrans; @"time".cacheStart int64; @"time".cacheEnd int64; @"time".cacheZone *@"time".zone }
+	func (@"time".lÂ·2 *@"time".Location "esc:0x22") String () (? string)
+	func (@"time".lÂ·2 *@"time".Location "esc:0x1") @"time".firstZoneUsed () (? bool)
+	func (@"time".lÂ·2 *@"time".Location "esc:0x12") @"time".get () (? *@"time".Location)
+	func (@"time".lÂ·6 *@"time".Location "esc:0x32") @"time".lookup (@"time".secÂ·7 int64) (@"time".nameÂ·1 string, @"time".offsetÂ·2 int, @"time".isDSTÂ·3 bool, @"time".startÂ·4 int64, @"time".endÂ·5 int64)
+	func (@"time".lÂ·2 *@"time".Location "esc:0x1") @"time".lookupFirstZone () (? int)
+	func (@"time".lÂ·4 *@"time".Location "esc:0x1") @"time".lookupName (@"time".nameÂ·5 string "esc:0x1", @"time".unixÂ·6 int64) (@"time".offsetÂ·1 int, @"time".isDSTÂ·2 bool, @"time".okÂ·3 bool)
+	type @"time".Month int
+	func (@"time".mÂ·2 @"time".Month) String () (? string) { return @"time".months[@"time".mÂ·2 - @"time".Month(0x1)] }
+	type @"time".Weekday int
+	func (@"time".dÂ·2 @"time".Weekday) String () (? string) { return @"time".days[@"time".dÂ·2] }
+	type @"time".Time struct { @"time".sec int64; @"time".nsec int32; @"time".loc *@"time".Location }
+	func (@"time".tÂ·2 @"time".Time "esc:0x12") Add (@"time".dÂ·3 @"time".Duration) (? @"time".Time) { @"time".tÂ·2.@"time".sec += int64(@"time".dÂ·3 / @"time".Duration(0x3b9aca00)); var @"time".nsecÂ·4 int32; ; @"time".nsecÂ·4 = int32(@"time".tÂ·2.@"time".nsec) + int32(@"time".dÂ·3 % @"time".Duration(0x3b9aca00)); if @"time".nsecÂ·4 >= int32(0x3b9aca00) { @"time".tÂ·2.@"time".sec++; @"time".nsecÂ·4 -= int32(0x3b9aca00) } else { if @"time".nsecÂ·4 < int32(0x0) { @"time".tÂ·2.@"time".sec--; @"time".nsecÂ·4 += int32(0x3b9aca00) } }; @"time".tÂ·2.@"time".nsec = @"time".nsecÂ·4; return @"time".tÂ·2 }
+	func (@"time".tÂ·2 @"time".Time "esc:0x12") AddDate (@"time".yearsÂ·3 int, @"time".monthsÂ·4 int, @"time".daysÂ·5 int) (? @"time".Time)
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") After (@"time".uÂ·3 @"time".Time "esc:0x1") (? bool) { return @"time".tÂ·2.@"time".sec > @"time".uÂ·3.@"time".sec || @"time".tÂ·2.@"time".sec == @"time".uÂ·3.@"time".sec && @"time".tÂ·2.@"time".nsec > @"time".uÂ·3.@"time".nsec }
+	func (@"time".tÂ·2 @"time".Time "esc:0x9") AppendFormat (@"time".bÂ·3 []byte "esc:0x1a", @"time".layoutÂ·4 string "esc:0x9") (? []byte)
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") Before (@"time".uÂ·3 @"time".Time "esc:0x1") (? bool) { return @"time".tÂ·2.@"time".sec < @"time".uÂ·3.@"time".sec || @"time".tÂ·2.@"time".sec == @"time".uÂ·3.@"time".sec && @"time".tÂ·2.@"time".nsec < @"time".uÂ·3.@"time".nsec }
+	func (@"time".tÂ·4 @"time".Time "esc:0x1") Clock () (@"time".hourÂ·1 int, @"time".minÂ·2 int, @"time".secÂ·3 int)
+	func (@"time".tÂ·4 @"time".Time "esc:0x1") Date () (@"time".yearÂ·1 int, @"time".monthÂ·2 @"time".Month, @"time".dayÂ·3 int)
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") Day () (? int)
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") Equal (@"time".uÂ·3 @"time".Time "esc:0x1") (? bool) { return @"time".tÂ·2.@"time".sec == @"time".uÂ·3.@"time".sec && @"time".tÂ·2.@"time".nsec == @"time".uÂ·3.@"time".nsec }
+	func (@"time".tÂ·2 @"time".Time "esc:0x9") Format (@"time".layoutÂ·3 string "esc:0x9") (? string)
+	func (@"time".tÂ·2 *@"time".Time "esc:0x1") GobDecode (@"time".dataÂ·3 []byte "esc:0x1") (? error)
+	func (@"time".tÂ·3 @"time".Time "esc:0x1") GobEncode () (? []byte, ? error)
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") Hour () (? int)
+	func (@"time".tÂ·3 @"time".Time "esc:0x1") ISOWeek () (@"time".yearÂ·1 int, @"time".weekÂ·2 int)
+	func (@"time".tÂ·2 @"time".Time "esc:0x12") In (@"time".locÂ·3 *@"time".Location "esc:0x12") (? @"time".Time)
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") IsZero () (? bool) { return @"time".tÂ·2.@"time".sec == int64(0x0) && @"time".tÂ·2.@"time".nsec == int32(0x0) }
+	func (@"time".tÂ·2 @"time".Time "esc:0x12") Local () (? @"time".Time) { @"time".tÂ·2.@"time".loc = @"time".Local; return @"time".tÂ·2 }
+	func (@"time".tÂ·2 @"time".Time "esc:0x12") Location () (? *@"time".Location) { var @"time".lÂ·3 *@"time".Location; ; @"time".lÂ·3 = @"time".tÂ·2.@"time".loc; if @"time".lÂ·3 == nil { @"time".lÂ·3 = @"time".UTC }; return @"time".lÂ·3 }
+	func (@"time".tÂ·3 @"time".Time "esc:0x1") MarshalBinary () (? []byte, ? error)
+	func (@"time".tÂ·3 @"time".Time "esc:0x9") MarshalJSON () (? []byte, ? error)
+	func (@"time".tÂ·3 @"time".Time "esc:0x9") MarshalText () (? []byte, ? error)
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") Minute () (? int)
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") Month () (? @"time".Month)
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") Nanosecond () (? int) { return int(@"time".tÂ·2.@"time".nsec) }
+	func (@"time".tÂ·2 @"time".Time "esc:0x12") Round (@"time".dÂ·3 @"time".Duration) (? @"time".Time)
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") Second () (? int)
+	func (@"time".tÂ·2 @"time".Time "esc:0x9") String () (? string)
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") Sub (@"time".uÂ·3 @"time".Time "esc:0x1") (? @"time".Duration)
+	func (@"time".tÂ·2 @"time".Time "esc:0x12") Truncate (@"time".dÂ·3 @"time".Duration) (? @"time".Time)
+	func (@"time".tÂ·2 @"time".Time "esc:0x12") UTC () (? @"time".Time) { @"time".tÂ·2.@"time".loc = @"time".UTC; return @"time".tÂ·2 }
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") Unix () (? int64) { return @"time".tÂ·2.@"time".sec + int64(-0xe7791f700) }
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") UnixNano () (? int64) { return (@"time".tÂ·2.@"time".sec + int64(-0xe7791f700)) * int64(0x3b9aca00) + int64(@"time".tÂ·2.@"time".nsec) }
+	func (@"time".tÂ·2 *@"time".Time "esc:0x1") UnmarshalBinary (@"time".dataÂ·3 []byte "esc:0x1") (? error)
+	func (@"time".tÂ·2 *@"time".Time "esc:0x1") UnmarshalJSON (@"time".dataÂ·3 []byte "esc:0x1") (@"time".errÂ·1 error)
+	func (@"time".tÂ·2 *@"time".Time "esc:0x1") UnmarshalText (@"time".dataÂ·3 []byte "esc:0x1") (@"time".errÂ·1 error)
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") Weekday () (? @"time".Weekday)
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") Year () (? int)
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") YearDay () (? int)
+	func (@"time".tÂ·3 @"time".Time "esc:0x32") Zone () (@"time".nameÂ·1 string, @"time".offsetÂ·2 int)
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") @"time".abs () (? uint64)
+	func (@"time".tÂ·5 @"time".Time "esc:0x1") @"time".date (@"time".fullÂ·6 bool) (@"time".yearÂ·1 int, @"time".monthÂ·2 @"time".Month, @"time".dayÂ·3 int, @"time".ydayÂ·4 int)
+	func (@"time".tÂ·4 @"time".Time "esc:0x32") @"time".locabs () (@"time".nameÂ·1 string, @"time".offsetÂ·2 int, @"time".absÂ·3 uint64)
+	type @"os".FileInfo interface { IsDir() (? bool); ModTime() (? @"time".Time); Mode() (? @"os".FileMode); Name() (? string); Size() (? int64); Sys() (? interface {}) }
+	type @"os".File struct { @"os".? *@"os".file }
+	func (@"os".fÂ·2 *@"os".File "esc:0x22") Chdir () (? error)
+	func (@"os".fÂ·2 *@"os".File "esc:0x22") Chmod (@"os".modeÂ·3 @"os".FileMode) (? error)
+	func (@"os".fÂ·2 *@"os".File "esc:0x22") Chown (@"os".uidÂ·3 int, @"os".gidÂ·4 int) (? error)
+	func (@"os".fÂ·2 *@"os".File "esc:0x9") Close () (? error)
+	func (@"os".fÂ·2 *@"os".File "esc:0x1") Fd () (? uintptr) { if @"os".fÂ·2 == nil { return uintptr(0xffffffffffffffff) }; return uintptr(@"os".fÂ·2.@"os".file.@"os".fd) }
+	func (@"os".fÂ·2 *@"os".File "esc:0x32") Name () (? string) { return @"os".fÂ·2.@"os".file.@"os".name }
+	func (@"os".fÂ·3 *@"os".File "esc:0x102") Read (@"os".bÂ·4 []byte "esc:0x1") (@"os".nÂ·1 int, @"os".errÂ·2 error)
+	func (@"os".fÂ·3 *@"os".File "esc:0x102") ReadAt (@"os".bÂ·4 []byte "esc:0x1", @"os".offÂ·5 int64) (@"os".nÂ·1 int, @"os".errÂ·2 error)
+	func (@"os".fÂ·3 *@"os".File "esc:0x1") Readdir (@"os".nÂ·4 int) (@"os".fiÂ·1 []@"os".FileInfo, @"os".errÂ·2 error)
+	func (@"os".fÂ·3 *@"os".File "esc:0x1") Readdirnames (@"os".nÂ·4 int) (@"os".namesÂ·1 []string, @"os".errÂ·2 error)
+	func (@"os".fÂ·3 *@"os".File "esc:0x102") Seek (@"os".offsetÂ·4 int64, @"os".whenceÂ·5 int) (@"os".retÂ·1 int64, @"os".errÂ·2 error)
+	func (@"os".fÂ·3 *@"os".File "esc:0x10a") Stat () (? @"os".FileInfo, ? error)
+	func (@"os".fÂ·2 *@"os".File "esc:0x1") Sync () (? error)
+	func (@"os".fÂ·2 *@"os".File "esc:0x22") Truncate (@"os".sizeÂ·3 int64) (? error)
+	func (@"os".fÂ·3 *@"os".File "esc:0x102") Write (@"os".bÂ·4 []byte "esc:0x1") (@"os".nÂ·1 int, @"os".errÂ·2 error)
+	func (@"os".fÂ·3 *@"os".File "esc:0x102") WriteAt (@"os".bÂ·4 []byte "esc:0x1", @"os".offÂ·5 int64) (@"os".nÂ·1 int, @"os".errÂ·2 error)
+	func (@"os".fÂ·3 *@"os".File "esc:0x102") WriteString (@"os".sÂ·4 string "esc:0x1") (@"os".nÂ·1 int, @"os".errÂ·2 error)
+	func (@"os".fÂ·3 *@"os".File "esc:0x1") @"os".pread (@"os".bÂ·4 []byte "esc:0x1", @"os".offÂ·5 int64) (@"os".nÂ·1 int, @"os".errÂ·2 error)
+	func (@"os".fÂ·3 *@"os".File "esc:0x1") @"os".pwrite (@"os".bÂ·4 []byte "esc:0x1", @"os".offÂ·5 int64) (@"os".nÂ·1 int, @"os".errÂ·2 error)
+	func (@"os".fÂ·3 *@"os".File "esc:0x1") @"os".read (@"os".bÂ·4 []byte "esc:0x1") (@"os".nÂ·1 int, @"os".errÂ·2 error)
+	func (@"os".fÂ·3 *@"os".File "esc:0x1") @"os".readdir (@"os".nÂ·4 int) (@"os".fiÂ·1 []@"os".FileInfo, @"os".errÂ·2 error)
+	func (@"os".fÂ·3 *@"os".File "esc:0x1") @"os".readdirnames (@"os".nÂ·4 int) (@"os".namesÂ·1 []string, @"os".errÂ·2 error)
+	func (@"os".fÂ·3 *@"os".File "esc:0x1") @"os".seek (@"os".offsetÂ·4 int64, @"os".whenceÂ·5 int) (@"os".retÂ·1 int64, @"os".errÂ·2 error)
+	func (@"os".fÂ·3 *@"os".File "esc:0x1") @"os".write (@"os".bÂ·4 []byte "esc:0x1") (@"os".nÂ·1 int, @"os".errÂ·2 error)
+	var @"os".Stderr *@"os".File
+	var @"time".months [12]string
+	var @"time".days [7]string
+	var @"time".Local *@"time".Location
+	var @"time".UTC *@"time".Location
+
+$$
+_go_.o          0           0     0     644     107751    `
+go object linux amd64 go1.6.2 X:none
+
+!
+  go13ldflag.aio.atext/template.abytes.a
+fmt.aos/exec.astrings.aJgithub.com/godoctor/godoctor/engine.aTgithub.com/godoctor/godoctor/refactoring.a ş("".PrintInstallGuide  €  €dH‹%    HD$àH;A†  Hì    H    H‰\$`HÇD$h   H    H‰$è    H‹D$1íH‰(H‰hH‰hH‰hH‰h H‰h(H‰h0H‰h8H‰D$XH‹l$hH‰hH‹l$`€=     …  H‰(H‰D$8H‹\$8H‰\$@H‹[1íH9ë….  H    H‰$è    H‹\$H‰\$PH    H‰$HÇD$    HÇD$    HÇD$    è    H‹D$ H‹\$PHƒû „…  €=     …e  H‰H    H‰$HÇD$    HÇD$    HÇD$    è    H‹D$ H‹\$PHƒû „  €=     …ø  H‰C(H    H‰$HÇD$    HÇD$    HÇD$    è    H‹D$ H‹\$PHƒû „®  €=     …Š  H‰C0H‹\$@Hƒû „p  H‹l$P€=     …G  H‰kH‹\$8H‰$H    H‰\$HÇD$§!  è    H‹D$H‹T$ H‹L$(H‰$H‰”$   H‰T$H‰Œ$˜   H‰L$è    H‹\$H‰\$H1ÛH‰œ$€   H‰œ$ˆ   H‹œ$¨   H‰œ$€   H‹œ$°   H‰œ$ˆ   H    H‰$Hœ$€   H‰\$HÇD$    è    H\$H|$H‹H‰H‹KH‰OH‹\$HH‰$H‹œ$À   H‰\$H‹œ$È   H‰\$è    H‹D$(H‹L$0Hƒø t4H‰D$pH‰$H‰L$xH‰L$è    H\$H‹H‰$H‹KH‰L$è    HÄ    ÃLCL‰$H‰l$è    é¦şÿÿ‰é‰şÿÿLC0L‰$H‰D$è    écşÿÿ‰éKşÿÿLC(L‰$H‰D$è    éõıÿÿ‰éİıÿÿH‰$H‰D$è    é‹ıÿÿ‰étıÿÿH‰$H‰l$è    H‹D$Xéåüÿÿè    éNüÿÿÌÌÌÌÌÌÌÌÌÌÌÌÌÌ>
+      D  0go.string."installGuide"   n  6type.text/template.Template   €  "runtime.newobject   ş (runtime.writeBarrier   Ü  2type.text/template.common   î  "runtime.newobject     Ntype.map[string]*text/template.Template   Ø  runtime.makemap   Œ (runtime.writeBarrier   ®  4type.text/template.FuncMap   ö  runtime.makemap   ª (runtime.writeBarrier   Î  :type.map[string]reflect.Value   –  runtime.makemap   Ê (runtime.writeBarrier   ” (runtime.writeBarrier   Ê  ""..gostring.1   ğ  >text/template.(*Template).Parse   Ô  $text/template.Must   Ú	  @type.struct { AboutText string }   ˜
+  runtime.convT2E   ˜  Btext/template.(*Template).Execute   è  runtime.convI2E   œ  runtime.gopanic   Ô  .runtime.writebarrierptr     .runtime.writebarrierptr   Ì  .runtime.writebarrierptr   €  .runtime.writebarrierptr   ´  .runtime.writebarrierptr   Ò  0runtime.morestack_noctxt   PÀ  "".autotmp_0008 8type.*text/template.Template "".autotmp_0007 ?@type.struct { AboutText string } "".autotmp_0003 type.error "".autotmp_0002  8type.*text/template.Template $text/template.cÂ·2 Ÿ4type.*text/template.common $text/template.tÂ·1 ¿8type.*text/template.Template $text/template.tÂ·3 Ï8type.*text/template.Template *text/template.nameÂ·2 type.string "".err _type.error "".tmpl ¯8type.*text/template.Template "".out 0type.io.Writer "".flags  $type.*flag.FlagSet "".aboutText  type.string "Àü¿ÀŒ¿ À ( ™¢4	Œ 2 ?w5Œ”@(6
+R' TgclocalsÂ·d5a15a79b1f04b0121064612d964be95 TgclocalsÂ·84510d9aff15d4d8f2b045830ea8d023   Š/home/khk/work/khk/go/src/github.com/godoctor/godoctor/doc/install.goş"".PrintManPage  à  àdH‹%    H„$XÿÿÿH;A†}  Hì(  H‹œ$0  H‰$H‹œ$8  H‰\$H‹œ$@  H‰\$è    H‹\$H‰œ$¨   H‹\$ H‰œ$°   H‹\$(H‰œ$¸   H‹\$0H‰œ$À   H‹\$8H‰œ$È   H‹\$@H‰œ$Ğ   H‹\$HH‰œ$Ø   H‹\$PH‰œ$à   H    H‰\$xHÇ„$€      H    H‰$è    H‹D$1íH‰(H‰hH‰hH‰hH‰h H‰h(H‰h0H‰h8H‰D$pH‹¬$€   H‰hH‹l$x€=     …Z  H‰(H‰D$XH‹\$XH‰\$`H‹[1íH9ë….  H    H‰$è    H‹\$H‰\$hH    H‰$HÇD$    HÇD$    HÇD$    è    H‹D$ H‹\$hHƒû „Ù  €=     …¹  H‰H    H‰$HÇD$    HÇD$    HÇD$    è    H‹D$ H‹\$hHƒû „p  €=     …L  H‰C(H    H‰$HÇD$    HÇD$    HÇD$    è    H‹D$ H‹\$hHƒû „  €=     …Ş  H‰C0H‹\$`Hƒû „Ä  H‹l$h€=     …›  H‰kH‹\$XH‰$H    H‰\$HÇD$İ  è    H‹D$H‹T$ H‹L$(H‰$H‰”$˜   H‰T$H‰Œ$    H‰L$è    H‹\$H‰\$pH‹œ$¨   H‰œ$è   H‹œ$°   H‰œ$ğ   H‹œ$¸   H‰œ$ø   H‹œ$À   H‰œ$   H‹œ$È   H‰œ$  H‹œ$Ğ   H‰œ$  H‹œ$Ø   H‰œ$  H‹œ$à   H‰œ$   H    H‰$Hœ$è   H‰\$HÇD$    è    H\$H|$H‹H‰H‹KH‰OH‹\$pH‰$H‹œ$H  H‰\$H‹œ$P  H‰\$è    H‹D$(H‹L$0Hƒø t:H‰„$ˆ   H‰$H‰Œ$   H‰L$è    H\$H‹H‰$H‹KH‰L$è    HÄ(  ÃLCL‰$H‰l$è    éRşÿÿ‰é5şÿÿLC0L‰$H‰D$è    éşÿÿ‰é÷ıÿÿLC(L‰$H‰D$è    é¡ıÿÿ‰é‰ıÿÿH‰$H‰D$è    é7ıÿÿ‰é ıÿÿH‰$H‰l$è    H‹D$pé‘üÿÿè    é^ûÿÿÌÌÌÌÌÌÌÌÌÌÌÌÌÌ@
+      ’  "".prepare   ğ  go.string."man"      6type.text/template.Template   ²  "runtime.newobject   ¶ (runtime.writeBarrier   ”  2type.text/template.common   ¦  "runtime.newobject   È  Ntype.map[string]*text/template.Template     runtime.makemap   Ä (runtime.writeBarrier   æ  4type.text/template.FuncMap   ®  runtime.makemap   â (runtime.writeBarrier   †  :type.map[string]reflect.Value   Î  runtime.makemap   ‚	 (runtime.writeBarrier   Ì	 (runtime.writeBarrier   ‚
+  ""..gostring.2   ¨
+  >text/template.(*Template).Parse   Œ  $text/template.Must   ®  $type."".docContent   ì  runtime.convT2E   ì  Btext/template.(*Template).Execute   È  runtime.convI2E   ü  runtime.gopanic   ´  .runtime.writebarrierptr   ğ  .runtime.writebarrierptr   ¬  .runtime.writebarrierptr   à  .runtime.writebarrierptr   ”  .runtime.writebarrierptr   ²  0runtime.morestack_noctxt   PĞ  "".autotmp_0016 ï8type.*text/template.Template "".autotmp_0015 $type."".docContent "".autotmp_0014  8type.*text/template.Template "".autotmp_0010 Ÿtype.error "".autotmp_0009  8type.*text/template.Template $text/template.cÂ·2 ÿ4type.*text/template.common $text/template.tÂ·1 8type.*text/template.Template $text/template.tÂ·3 Ÿ8type.*text/template.Template *text/template.nameÂ·2 ßtype.string "".err ¿type.error "".ctnt ÿ$type."".docContent "".out 0type.io.Writer "".flags  $type.*flag.FlagSet "".aboutText  type.string ""ĞéÏĞŒÏ °	 ("“:Œ 8 Hz5Œâ@.6
+R' TgclocalsÂ·3e3decd2fff89ac2bb8cf1e2922f638b TgclocalsÂ·7ca107d5b8cb95a14bd193094477472d   ‚/home/khk/work/khk/go/src/github.com/godoctor/godoctor/doc/man.goş""".PrintUserGuide      dH‹%    H;avrHƒì0H    H‰$è    H‹D$H‰ÇHƒø tLWÀHƒÇàè    H‹\$8H‰$H‹\$@H‰\$H‹\$HH‰\$H‰D$H‹\$PH‰\$ H‹\$XH‰\$(è    HƒÄ0Ã‰ ë°è    éuÿÿÿÌÌÌÌÌ
+      ,  0type."".UserGuideContent   >  "runtime.newobject   r¢  runtime.duffzero   è  0"".PrintUserGuideAsGiven   „  0runtime.morestack_noctxt   P`  "".out 0type.io.Writer "".flags  $type.*flag.FlagSet "".aboutText  type.string `i_`_  :e 
+ r TgclocalsÂ·01f39aad45108f89f4e159d8e5a20cc9 TgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb   „/home/khk/work/khk/go/src/github.com/godoctor/godoctor/doc/user.goş0"".PrintUserGuideAsGiven  €  €dH‹%    H„$0ÿÿÿH;A†Ï  HìP  WÀ„$¨   H‹œ$X  H‰$H‹œ$`  H‰\$H‹œ$h  H‰\$è    H‹\$H‰œ$  H‹\$ H‰œ$  H‹\$(H‰œ$   H‹\$0H‰œ$(  H‹\$8H‰œ$0  H‹\$@H‰œ$8  H‹\$HH‰œ$@  H‹\$PH‰œ$H  H‹¬$p  Hƒı „  Hœ$  H‰l$H‰\$H    H‰$è    H‹œ$p  H‹[HHƒû …¾   H‹œ$X  H‰$H‹œ$`  H‰\$H‹œ$h  H‰\$è    H‹L$H‹D$ H‰Œ$è   H‰$H‰„$ğ   H‰D$H    H‰\$HÇD$   H    H‰\$ HÇD$(   è    H‹L$0H‹D$8H‹œ$p  Hƒû „8  H‰„$à   H‰CHH‰Œ$Ø   €=     …   H‰K@H‹œ$p  H‹[XHƒû …f  H‹œ$X  H‰$H‹œ$`  H‰\$H‹œ$h  H‰\$è    H‹\$H‰œ$È   H‹\$ H‰œ$Ğ   1ÛH‰œ$¨   H‰œ$°   Hœ$¨   Hƒû „v  HÇ„$      HÇ„$     H‰œ$ø   H    H‰$Hœ$È   H‰\$HÇD$    è    H‹L$H‹D$ H‹œ$ø   H‰Œ$˜   H‰H‰„$    €=     …ç  H‰CH    H‰$HÇD$   H‹œ$ø   H‰\$H‹œ$   H‰\$H‹œ$  H‰\$ è    H‹L$(H‹D$0H‹œ$p  Hƒû „€  H‰„$ğ   H‰CXH‰Œ$è   €=     …H  H‰KPH    H‰\$xHÇ„$€   	   H    H‰$è    H‹D$1íH‰(H‰hH‰hH‰hH‰h H‰h(H‰h0H‰h8H‰D$pH‹¬$€   H‰hH‹l$x€=     …»  H‰(H‰D$XH‹\$XH‰\$`H‹[1íH9ë….  H    H‰$è    H‹\$H‰\$hH    H‰$HÇD$    HÇD$    HÇD$    è    H‹D$ H‹\$hHƒû „:  €=     …  H‰H    H‰$HÇD$    HÇD$    HÇD$    è    H‹D$ H‹\$hHƒû „Ñ  €=     …­  H‰C(H    H‰$HÇD$    HÇD$    HÇD$    è    H‹D$ H‹\$hHƒû „c  €=     …?  H‰C0H‹\$`Hƒû „%  H‹l$h€=     …ü   H‰kH‹\$XH‰$H    H‰\$HÇD$0  è    H‹D$H‹T$ H‹L$(H‰$H‰”$¸   H‰T$H‰Œ$À   H‰L$è    H‹L$H‹„$p  H‰$H‹œ$x  H‰\$H‹Œ$€  H‰L$H    H‰Œ$˜   H‰L$H‰„$    H‰D$ è    H‹D$(H‹L$0Hƒø t:H‰„$ˆ   H‰$H‰Œ$   H‰L$è    H\$H‹H‰$H‹KH‰L$è    HÄP  ÃLCL‰$H‰l$è    éñşÿÿ‰éÔşÿÿLC0L‰$H‰D$è    é®şÿÿ‰é–şÿÿLC(L‰$H‰D$è    é@şÿÿ‰é(şÿÿH‰$H‰D$è    éÖıÿÿ‰é¿ıÿÿH‰$H‰l$è    H‹D$pé0ıÿÿLCPL‰$H‰L$è    é¥üÿÿ‰éyüÿÿLCL‰$H‰D$è    éüÿÿ‰éƒûÿÿLC@L‰$H‰L$è    éíúÿÿ‰éÁúÿÿ‰E éèùÿÿè    éùÿÿÌÌÌÌÌÌÌÌÌÌÌÌ`
+      ¨  "".prepare   Î  $type."".docContent   à  (runtime.typedmemmove   â  """.convertManPage   ¶  $go.string."<body>"   à  &go.string."</body>"   †  """.extractBetween   ò (runtime.writeBarrier   Š  "".printVimdoc   Ô	  type.string   ’
+  runtime.convT2E   è
+ (runtime.writeBarrier   Œ  :go.string."<pre>\n%s\n</pre>"   ş  fmt.Sprintf   ê (runtime.writeBarrier     *go.string."userGuide"   ¾  6type.text/template.Template   Ğ  "runtime.newobject   Ô (runtime.writeBarrier   ²  2type.text/template.common   Ä  "runtime.newobject   æ  Ntype.map[string]*text/template.Template   ®  runtime.makemap   â (runtime.writeBarrier   „  4type.text/template.FuncMap   Ì  runtime.makemap   € (runtime.writeBarrier   ¤  :type.map[string]reflect.Value   ì  runtime.makemap     (runtime.writeBarrier   ê (runtime.writeBarrier      ""..gostring.3   Æ  >text/template.(*Template).Parse   ª  $text/template.Must     2type.*"".UserGuideContent   Ì  Btext/template.(*Template).Execute   ¨  runtime.convI2E   Ü  runtime.gopanic   ”  .runtime.writebarrierptr   Ğ  .runtime.writebarrierptr   Œ  .runtime.writebarrierptr   À  .runtime.writebarrierptr   ô  .runtime.writebarrierptr   ¬  .runtime.writebarrierptr   è  .runtime.writebarrierptr   ¤  .runtime.writebarrierptr   Ö  0runtime.morestack_noctxt   `   ("".autotmp_0034 ¿8type.*text/template.Template "".autotmp_0033 ï"type.interface {} "".autotmp_0032 Ï(type.[1]interface {} "".autotmp_0029 ¯&type.[]interface {} "".autotmp_0024 ¯type.error "".autotmp_0023  8type.*text/template.Template "".autotmp_0022  type.string "".autotmp_0021 type.string "".autotmp_0020 ïtype.string "".autotmp_0019 Ïtype.string "".autotmp_0018 $type."".docContent $text/template.cÂ·2 Ï4type.*text/template.common $text/template.tÂ·1 ß8type.*text/template.Template $text/template.tÂ·3 ï8type.*text/template.Template *text/template.nameÂ·2 ¯type.string "".err type.error "".out @type.io.Writer "".ctnt 02type.*"".UserGuideContent "".flags  $type.*flag.FlagSet "".aboutText  type.string "" ÙŸ îŸ € `N-Ç5‰æšV:	Œ%	 @ Sµviz5ŒçR/ TgclocalsÂ·131f5c5fef94b8c22b16bfba8de7fed4 TgclocalsÂ·ec2d9eb592849fdab57ceceb37b8a474   „/home/khk/work/khk/go/src/github.com/godoctor/godoctor/doc/user.goş""".convertManPage  €  €dH‹%    H„$hÿÿÿH;A†  Hì  1ÀH‰„$8  H‰„$@  H„$è   H‹-    H‰(H‹-    H‰hH‹-    H‰hH‹-    H‰hH‹-    H‰h H‹-    H‰h(HÇÂ   HÇÁ   H    H‰$HÇD$   H‰„$Ğ   H‰D$H‰”$Ø   H‰T$H‰Œ$à   H‰L$ è    H‹\$(H‰\$@H    H‰$è    H‹\$H‰\$HH‹\$@H‰$è    H‹D$HH‹\$H‰\$PH‹\$H‰\$XH‹T$H‹L$ H‰”$€   H‰H‰Œ$ˆ   €=     …Ú  H‰HH‹(Hƒı „E  H‹H‹hH‰¬$ˆ   H‰,$H‰Œ$€   H‹Y ÿÓH‹\$H‰œ$   H‹\$H‰œ$˜   1ÛH‰\$pH‰\$xH\$pHƒû „è   HÇ„$À      HÇ„$È      H‰œ$¸   H    H‰$Hœ$   H‰\$HÇD$    è    H‹L$H‹D$ H‹œ$¸   H‰L$`H‰H‰D$h€=     ufH‰CH    H‰$HÇD$
+   H‹œ$¸   H‰\$H‹œ$À   H‰\$H‹œ$È   H‰\$ è    H‹L$(H‹D$0H‰Œ$8  H‰„$@  HÄ  ÃLCL‰$H‰D$è    ëŠ‰éÿÿÿH‹œ$   H‰\$H‹œ$(  H‰\$H‹œ$0  H‰\$ H‹\$PH‰\$(H‹\$XH‰\$0H‰D$8Ç$0   H    H‰D$è    H‹\$@H‰$è    H‹T$HH‹\$H‰œ$    H‹\$H‰œ$¨   H‹\$H‰œ$°   H‹L$ H‹D$(H‰Œ$€   H‰
+H‰„$ˆ   €=     …¬  H‰BH‹*Hƒı „E  H‹
+H‹jH‰¬$ˆ   H‰,$H‰Œ$€   H‹Y ÿÓH‹\$H‰œ$   H‹\$H‰œ$˜   1ÛH‰\$pH‰\$xH\$pHƒû „è   HÇ„$À      HÇ„$È      H‰œ$¸   H    H‰$Hœ$   H‰\$HÇD$    è    H‹L$H‹D$ H‹œ$¸   H‰L$`H‰H‰D$h€=     ufH‰CH    H‰$HÇD$
+   H‹œ$¸   H‰\$H‹œ$À   H‰\$H‹œ$È   H‰\$ è    H‹L$(H‹D$0H‰Œ$8  H‰„$@  HÄ  ÃLCL‰$H‰D$è    ëŠ‰éÿÿÿHÇ$    H‹œ$    H‰\$H‹œ$¨   H‰\$H‹œ$°   H‰\$è    H‹\$ H‰œ$8  H‹\$(H‰œ$@  HÄ  ÃLBL‰$H‰D$è    H‹T$Hé<şÿÿL@L‰$H‰L$è    H‹D$Héüÿÿè    éÀúÿÿF
+      ~  """.statictmp_0042   ’ """.statictmp_0042   ¨  """.statictmp_0042   ¾0 """.statictmp_0042   Ô@ """.statictmp_0042   êP """.statictmp_0042   œ  "go.string."groff"     os/exec.Command   °  type.error   Â  "runtime.newobject   ò  0os/exec.(*Cmd).StdinPipe   ê (runtime.writeBarrier   à       ”  type.string   Ò  runtime.convT2E   œ (runtime.writeBarrier   ¸  ,go.string."[ERROR] %s"   ª	  fmt.Sprintf   ’
+  .runtime.writebarrierptr   À  4"".convertManPage.func1Â·f   Ô  runtime.newproc   ğ  :os/exec.(*Cmd).CombinedOutput    (runtime.writeBarrier   „       ¸  type.string   ö  runtime.convT2E   À (runtime.writeBarrier   Ü  ,go.string."[ERROR] %s"   Î  fmt.Sprintf   ¶  .runtime.writebarrierptr   °  2runtime.slicebytetostring   ˜  .runtime.writebarrierptr   Ğ  .runtime.writebarrierptr   î  0runtime.morestack_noctxt   P°  *"".autotmp_0056  "type.interface {} "".autotmp_0055  (type.[1]interface {} "".autotmp_0053  *type.*[1]interface {} "".autotmp_0052  &type.[]interface {} "".autotmp_0051  type.error "".autotmp_0050 ï"type.interface {} "".autotmp_0049 Ï(type.[1]interface {} "".autotmp_0046 ¿&type.[]interface {} "".autotmp_0045 ¯type.error "".autotmp_0044 _type.[3]string "".autotmp_0041 type.[]string "".autotmp_0040  type.string "".autotmp_0039  type.string "".autotmp_0037 type.string "".&err Ÿtype.*error "".result ïtype.[]uint8 "".stdin &type.io.WriteCloser "".cmd ¯"type.*os/exec.Cmd "".~r2 0type.string "".flags  $type.*flag.FlagSet "".aboutText  type.string :"°Ø¯°‘¯°p¯°8¯
+ À
+ Dt4¡oÅXhÅV
+ J Æxxl4a‹xl4=4 TgclocalsÂ·490a2a9efb10252a7b0aa546b2e3be1f TgclocalsÂ·6779eed2d9f981460ee56f372a014e4a   „/home/khk/work/khk/go/src/github.com/godoctor/godoctor/doc/user.goş""".extractBetween      dH‹%    H;a†ì   Hƒì01ÛH‰\$hH‰\$pH‹\$8H‰$H‹\$@H‰\$H‹\$HH‰\$H‹\$PH‰\$è    H‹D$ H‰D$(Hƒø }1ÛH‰\$hH‰\$pHƒÄ0ÃH‹\$8H‰$H‹\$@H‰\$H‹\$XH‰\$H‹\$`H‰\$è    H‹D$ Hƒø }1ÛH‰\$hH‰\$pHƒÄ0ÃH‹L$PH‹\$(L‹D$@HËH‰ÅL9Àw&H9Ãw!L‹D$8H)İHƒı tML‰D$hH‰l$pHƒÄ0Ãè    è    é÷şÿÿÌÌÌÌÌÌÌ
+
+      –  strings.Index   °  "strings.LastIndex   ò  $runtime.panicslice   €  0runtime.morestack_noctxt   €`  "".autotmp_0060  type.int "".i type.int "".~r3 `type.string 
+"".to @type.string "".from  type.string "".s  type.string &`X_`G_`?_`_  (¢#11G  JÆ TgclocalsÂ·b9336996773e215995755fe256cd9398 TgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb   „/home/khk/work/khk/go/src/github.com/godoctor/godoctor/doc/user.goş"".printVimdoc  À  ÀdH‹%    HD$øH;A†¯  Hìˆ   1ÛH‰œ$¨   H‰œ$°   Ç$    H    H‰D$è    ƒø …g  H    H‰$è    H‹D$H‰D$8H‰D$0H‹    1íH9è„  H‹œ$   H‰$H‹œ$˜   H‰\$H‹œ$    H‰\$H‹L$0H‰D$PH‰D$H‰L$XH‰L$ è    H‹L$81ÛH‰\$@H‰\$H1íH9éu6H    HÇÁ   H‰T$@H‰”$¨   H‰L$HH‰Œ$°   è    HÄˆ   ÃH‹iL‹AL‹IL9ÅwZL‹I)èI)éIƒù tM*HÇ$    L‰T$pL‰T$L‰D$xL‰D$L‰Œ$€   L‰L$è    H‹T$ H‹L$(H‰T$`H‰L$hémÿÿÿè    H    H‰$H    H‰\$H    H‰\$è    H‹D$éÊşÿÿè    HÄˆ   Ãè    é/şÿÿÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌ"
+      v  ."".printVimdoc.func1Â·f   Š  "runtime.deferproc   ª  "type.bytes.Buffer   ¼  "runtime.newobject   è  >go.itab.*bytes.Buffer.io.Writer   †  "".PrintVimdoc   Ä  "go.string."<nil>"   ’  &runtime.deferreturn   Æ  2runtime.slicebytetostring   ‚  $runtime.panicslice   ”  $type.*bytes.Buffer   ª  type.io.Writer   Â  >go.itab.*bytes.Buffer.io.Writer   Ö   runtime.typ2Itab   ö  &runtime.deferreturn     0runtime.morestack_noctxt   P  "".autotmp_0066 Otype.string "".autotmp_0064 /type.[]uint8 "".autotmp_0062 ¯$type.*bytes.Buffer 
+"".&b Ÿ$type.*bytes.Buffer "".~r0 type.string "".~r2 0type.string "".flags  $type.*flag.FlagSet "".aboutText  type.string "õ± à &¾1!`À2 " DeE[H' TgclocalsÂ·babf67053e2268db034990a6005bd1e9 TgclocalsÂ·16f1c07421a53dc03f92fa721c56a33b   „/home/khk/work/khk/go/src/github.com/godoctor/godoctor/doc/user.goş"".prepare  à  àdH‹%    H„$ÿÿÿH;A†  Hìp  1ÛH‰œ$  H‰œ$˜  H‰œ$   H‰œ$¨  H‰œ$°  H‰œ$¸  H‰œ$À  H‰œ$È  1ÛH‰œ$0  H‰œ$8  H‰œ$@  H‰œ$H  H‰œ$P  H‰œ$X  H‰œ$`  H‰œ$h  H‹œ$x  H‰œ$0  H‹œ$€  H‰œ$8  H    H‰$è    H‹D$Hƒø „°  1Ò1ÉH‰„$   H‰„$@  H‰”$  H‰”$H  H‰Œ$  H‰Œ$P  H    H‰$è    H‹D$Hƒø „V  1Ò1ÉH‰„$è   H‰„$X  H‰”$ğ   H‰”$`  H‰Œ$ø   H‰Œ$h  Hœ$¨   H‰ØH-    H‰+H¬$0  H‰kH‹œ$ˆ  H‰$H‰D$è    1ÛH‹    H‹    H‹    H‰Œ$¸   H‰„$À   H‰”$È   H‰”$(  1ÒH‰„$   H‰D$@H‰Œ$  H‰ÈH‹l$@H9ê›  H‰D$PHƒø „v  H‹H‹hH‰T$HH‰Œ$ˆ   H‰¬$   1ÛH‰\$XH‰\$`H‰L$hH‰l$pH    H‰$H‹    H‰\$H‰Œ$˜   H‰L$H‰¬$    H‰l$è    H‹\$ Hƒû „ø  H‹H‹kH‰L$XH‰l$`H‰¬$€   H‰,$H‰L$xH‹Y ÿÓH‹\$¶[x€û …¹  H‹œ$€   H‰$H‹\$xH‹[ ÿÓH‹D$1ÛH‰œ$Ğ   H‰œ$Ø   H‰œ$à   H‹œ$ˆ   H‰œ$Ğ   H‹œ$   H‰œ$Ø   H‰„$à   H‹Œ$X  H‹„$`  H‹”$h  H‰ÃHÿÃH9Ó‡Ş   H‰œ$`  H‰ËH‰ÅHkíHëH¬$Ğ   H‰\$H‰l$H-    H‰,$è    H‹D$PH‹T$HHƒÀHÿÂH‹l$@H9êŒeşÿÿH‹œ$0  H‰œ$  H‹œ$8  H‰œ$˜  H‹œ$@  H‰œ$   H‹œ$H  H‰œ$¨  H‹œ$P  H‰œ$°  H‹œ$X  H‰œ$¸  H‹œ$`  H‰œ$À  H‹œ$h  H‰œ$È  HÄp  ÃH-    H‰,$H‰L$H‰D$H‰T$H‰\$ è    H‹L$(H‹D$0H‹T$8H‰ÃHÿÃH‰œ$`  H‰”$h  H‰Œ$X  éÔşÿÿéşşÿÿ‰éşÿÿ‰ éƒıÿÿ‰ é£üÿÿ‰ éIüÿÿè    éZûÿÿÌÌÌÌÌÌÌÌÌÌ(
+      ’  $type.[0]*flag.Flag   ¤  "runtime.newobject   ¸  (type.[0]"".refacDesc   Ê  "runtime.newobject   ô   "".prepare.func1   ¾  0flag.(*FlagSet).VisitAll   Ğ  ngithub.com/godoctor/godoctor/engine.refactoringsInOrder   Ş ngithub.com/godoctor/godoctor/engine.refactoringsInOrder   ì  ngithub.com/godoctor/godoctor/engine.refactoringsInOrder   Œ	  ˆtype.map[string]github.com/godoctor/godoctor/refactoring.Refactoring   ¢	  `github.com/godoctor/godoctor/engine.refactorings   ê	  4runtime.mapaccess1_faststr   Ü
+       ®       â  "type."".refacDesc   ô  (runtime.typedmemmove   Ğ  &type.[]"".refacDesc   Š  "runtime.growslice   º  0runtime.morestack_noctxt   °à  &"".autotmp_0084 ¿"type."".refacDesc "".autotmp_0083 ¯type.string "".autotmp_0082 ¿type.*string "".autotmp_0081 ßtype.int "".autotmp_0080 Ïtype.int "".autotmp_0077 &type.[]"".refacDesc "".autotmp_0075 ß"type.[]*flag.Flag "".autotmp_0071  type.string "".autotmp_0070 ¯type.[]string "".autotmp_0069 btype.struct { F uintptr; content *"".docContent } "".~r0 ¯rtype.github.com/godoctor/godoctor/refactoring.Refactoring `github.com/godoctor/godoctor/engine.shortNameÂ·2 type.string "".~r0 ïtype.[]string "".r ïrtype.github.com/godoctor/godoctor/refactoring.Refactoring "".key Ïtype.string "".content $type."".docContent "".~r2 0$type."".docContent "".flags  $type.*flag.FlagSet "".aboutText  type.string  "à‚ßàwß °	 H8dˆ!z|)¼ˆV , ÑÍÖ:)¢Ël TgclocalsÂ·cfef0af79bfc1068adf3cf64963f7fcd TgclocalsÂ·7024b982732eae976264a490eae42a7c   „/home/khk/work/khk/go/src/github.com/godoctor/godoctor/doc/util.goş"".PrintVimdoc  à  àdH‹%    H„$XÿÿÿH;A†}  Hì(  H‹œ$0  H‰$H‹œ$8  H‰\$H‹œ$@  H‰\$è    H‹\$H‰œ$¨   H‹\$ H‰œ$°   H‹\$(H‰œ$¸   H‹\$0H‰œ$À   H‹\$8H‰œ$È   H‹\$@H‰œ$Ğ   H‹\$HH‰œ$Ø   H‹\$PH‰œ$à   H    H‰\$xHÇ„$€      H    H‰$è    H‹D$1íH‰(H‰hH‰hH‰hH‰h H‰h(H‰h0H‰h8H‰D$pH‹¬$€   H‰hH‹l$x€=     …Z  H‰(H‰D$XH‹\$XH‰\$`H‹[1íH9ë….  H    H‰$è    H‹\$H‰\$hH    H‰$HÇD$    HÇD$    HÇD$    è    H‹D$ H‹\$hHƒû „Ù  €=     …¹  H‰H    H‰$HÇD$    HÇD$    HÇD$    è    H‹D$ H‹\$hHƒû „p  €=     …L  H‰C(H    H‰$HÇD$    HÇD$    HÇD$    è    H‹D$ H‹\$hHƒû „  €=     …Ş  H‰C0H‹\$`Hƒû „Ä  H‹l$h€=     …›  H‰kH‹\$XH‰$H    H‰\$HÇD$‡  è    H‹D$H‹T$ H‹L$(H‰$H‰”$˜   H‰T$H‰Œ$    H‰L$è    H‹\$H‰\$pH‹œ$¨   H‰œ$è   H‹œ$°   H‰œ$ğ   H‹œ$¸   H‰œ$ø   H‹œ$À   H‰œ$   H‹œ$È   H‰œ$  H‹œ$Ğ   H‰œ$  H‹œ$Ø   H‰œ$  H‹œ$à   H‰œ$   H    H‰$Hœ$è   H‰\$HÇD$    è    H\$H|$H‹H‰H‹KH‰OH‹\$pH‰$H‹œ$H  H‰\$H‹œ$P  H‰\$è    H‹D$(H‹L$0Hƒø t:H‰„$ˆ   H‰$H‰Œ$   H‰L$è    H\$H‹H‰$H‹KH‰L$è    HÄ(  ÃLCL‰$H‰l$è    éRşÿÿ‰é5şÿÿLC0L‰$H‰D$è    éşÿÿ‰é÷ıÿÿLC(L‰$H‰D$è    é¡ıÿÿ‰é‰ıÿÿH‰$H‰D$è    é7ıÿÿ‰é ıÿÿH‰$H‰l$è    H‹D$pé‘üÿÿè    é^ûÿÿÌÌÌÌÌÌÌÌÌÌÌÌÌÌ@
+      ’  "".prepare   ğ  go.string."vim"      6type.text/template.Template   ²  "runtime.newobject   ¶ (runtime.writeBarrier   ”  2type.text/template.common   ¦  "runtime.newobject   È  Ntype.map[string]*text/template.Template     runtime.makemap   Ä (runtime.writeBarrier   æ  4type.text/template.FuncMap   ®  runtime.makemap   â (runtime.writeBarrier   †  :type.map[string]reflect.Value   Î  runtime.makemap   ‚	 (runtime.writeBarrier   Ì	 (runtime.writeBarrier   ‚
+  ""..gostring.4   ¨
+  >text/template.(*Template).Parse   Œ  $text/template.Must   ®  $type."".docContent   ì  runtime.convT2E   ì  Btext/template.(*Template).Execute   È  runtime.convI2E   ü  runtime.gopanic   ´  .runtime.writebarrierptr   ğ  .runtime.writebarrierptr   ¬  .runtime.writebarrierptr   à  .runtime.writebarrierptr   ”  .runtime.writebarrierptr   ²  0runtime.morestack_noctxt   PĞ  "".autotmp_0095 ï8type.*text/template.Template "".autotmp_0094 $type."".docContent "".autotmp_0093  8type.*text/template.Template "".autotmp_0089 Ÿtype.error "".autotmp_0088  8type.*text/template.Template $text/template.cÂ·2 ÿ4type.*text/template.common $text/template.tÂ·1 8type.*text/template.Template $text/template.tÂ·3 Ÿ8type.*text/template.Template *text/template.nameÂ·2 ßtype.string "".err ¿type.error "".ctnt ÿ$type."".docContent "".out 0type.io.Writer "".flags  $type.*flag.FlagSet "".aboutText  type.string ""ĞéÏĞŒÏ °	 ("“:Œ 8 Hz5Œâ@.6
+R' TgclocalsÂ·3e3decd2fff89ac2bb8cf1e2922f638b TgclocalsÂ·7ca107d5b8cb95a14bd193094477472d   ˆ/home/khk/work/khk/go/src/github.com/godoctor/godoctor/doc/vimdoc.goş2"".convertManPage.func1.1  `  `dH‹%    H;avHƒìH\$ H‰$è    HƒÄÃè    ëÓÌÌÌ
+      :  "runtime.gorecover   N  0runtime.morestack_noctxt    0   0/ 0 †
+ 
+  TgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb TgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb   „/home/khk/work/khk/go/src/github.com/godoctor/godoctor/doc/user.goş."".convertManPage.func1      dH‹%    H;a†ê   Hƒì8Ç$    H    H‰D$è    ƒø …º   H    H‰$H‹\$XH‰\$H‹\$`H‰\$è    H\$H|$H‹H‰H‹KH‰OH‹\$@H‰$H‹\$HH‰\$H‹\$PH‰\$è    H‹\$`H‰$H‹\$XH‹[ ÿÓH‹T$H‹L$H‹\$hH‰T$(H‰H‰L$0€=     uH‰Kè    HƒÄ8ÃLCL‰$H‰L$è    ëáè    HƒÄ8Ãè    éùşÿÿÌÌÌÌÌÌÌÌÌ
+      B  8"".convertManPage.func1.1Â·f   V  "runtime.deferproc   v  type.io.Writer   °  runtime.convI2I   ¤  "".PrintManPage   Ğ        (runtime.writeBarrier   ª  &runtime.deferreturn   Ø  .runtime.writebarrierptr   è  &runtime.deferreturn   ü  0runtime.morestack_noctxt   `p  "".&err Ptype.*error "".stdin 0&type.io.WriteCloser "".flags  $type.*flag.FlagSet "".aboutText  type.string pÆopo  („!^=  *æ TgclocalsÂ·218e13df677c61453fa96b70d57ce5c3 TgclocalsÂ·23e8278e2b69a3a75fa59b23c49ed6ad   „/home/khk/work/khk/go/src/github.com/godoctor/godoctor/doc/user.goş("".printVimdoc.func1  `  `dH‹%    H;avHƒìH\$ H‰$è    HƒÄÃè    ëÓÌÌÌ
+      :  "runtime.gorecover   N  0runtime.morestack_noctxt    0   0/ 0 À
+ 
+  TgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb TgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb   „/home/khk/work/khk/go/src/github.com/godoctor/godoctor/doc/user.goş "".prepare.func1  €  €dH‹%    H;a†Õ   HƒìXH‹ZH‰\$PH‹SH‹CH‹K H‰ÅHÿÅH9Íw.H‰kHÂH‹l$`€=     uH‰+HƒÄXÃH‰$H‰l$è    ëëH    H‰$H‰T$H‰D$H‰L$H‰l$ è    H‹T$(H‹D$0H‹L$8H‹\$PH‰ÅH‰D$@HÿÅH‰kH‰K H‰T$H€=     u	H‰SétÿÿÿLCL‰$H‰T$è    H‹T$HH‹D$@éSÿÿÿè    éÿÿÿÌÌÌÌÌÌÌÌÌÌÌÌÌÌ
+      Œ (runtime.writeBarrier   ¾  .runtime.writebarrierptr   Ğ  "type.[]*flag.Flag   Š  "runtime.growslice   î (runtime.writeBarrier   ª  .runtime.writebarrierptr   Ò  "runtime.morestack   °  "".&content &type.*"".docContent "".flag  type.*flag.Flag  °=¯°“¯ €  >5ƒ  ^&P, TgclocalsÂ·37a2283f5c69c342946cad8073b58fca TgclocalsÂ·008e235a1392cc90d1ed9ad2f7e76d87   „/home/khk/work/khk/go/src/github.com/godoctor/godoctor/doc/util.goş"".init  €  €dH‹%    H;av\¶    €û t¶    €ûuÃè    Æ    è    è    è    è    è    è    è    è    è    Æ    Ãè    ëÌÌÌÌÌÌÌÌÌÌÌÌÌÌ 
+      $  "".initdoneÂ·   <  "".initdoneÂ·   R  "runtime.throwinit   b "".initdoneÂ·   n  flag.init   x  io.init   ‚  $text/template.init   Œ  bytes.init   –  fmt.init      os/exec.init   ª  strings.init   ´  Pgithub.com/godoctor/godoctor/engine.init   ¾  Zgithub.com/godoctor/godoctor/refactoring.init   Ê "".initdoneÂ·   Ø  0runtime.morestack_noctxt        € € .€ 
+ (X TgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb TgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb   ˆ/home/khk/work/khk/go/src/github.com/godoctor/godoctor/doc/vimdoc.goş(type..hash.[8]string     dH‹%    H;avpHƒì(H‹L$81ÀHÇD$   H‹l$H9è}DH‰D$ H‹\$0Hƒû t>H‰ÅHÁåHëH‰$H‰L$8H‰L$è    H‹L$H‹D$ HÿÀH‹l$H9è|¼H‰L$@HƒÄ(Ã‰ë¾è    éwÿÿÿÌÌÌÌÌÌÌ
+      ¬  runtime.strhash   €  0runtime.morestack_noctxt   0P  
+"".autotmp_0101 type.int "".autotmp_0100 type.int "".~r2  type.uintptr "".h type.uintptr "".p  type.*[8]string PgOPO   
+ U; TgclocalsÂ·0b86ef39f3fed835f14ba5f4d7c62fa2 TgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb   Š/home/khk/work/khk/go/src/github.com/godoctor/godoctor/doc/install.goş$type..eq.[8]string à  àdH‹%    H;a†Î   HƒìX1ÀHÇD$(   H‹l$(H9è’   H‰D$0H‹\$`Hƒû „–   H‰ÅHÁåHëH‹3H‹KH‹\$hHƒû tvH‰ÅHÁåHëH‹H‹CH9ÁuVH‰t$HH‰4$H‰L$PH‰L$H‰T$8H‰T$H‰D$@H‰D$è    ¶\$ €û t H‹D$0HÿÀH‹l$(H9èŒnÿÿÿÆD$pHƒÄXÃÆD$p HƒÄXÃ‰ë†‰écÿÿÿè    éÿÿÿÌÌÌÌÌ
+      ¼   runtime.eqstring   Ä  0runtime.morestack_noctxt   0°  "".autotmp_0105 ?type.string "".autotmp_0104 type.string "".autotmp_0103 _type.int "".autotmp_0102 Otype.int "".~r2  type.bool "".q type.*[8]string "".p  type.*[8]string ,°´¯°	¯°¯ ğ ğ  S TgclocalsÂ·3bb21ca8fe1d99a3e492463bd711418a TgclocalsÂ·a8eabfc4a4514ed6b3b0c61e9680e440   Š/home/khk/work/khk/go/src/github.com/godoctor/godoctor/doc/install.goş.type..hash."".refacDesc     dH‹%    H;avvHƒì H‹\$(H‰$Hƒ<$ tYH‹\$0H‰\$è    H‹D$H‹\$(H‰$Hƒ<$ t,Hƒ$H‰D$0H‰D$HÇD$   è    H‹\$H‰\$8HƒÄ Ã‰%    ëË‰%    ëè    éqÿÿÿÌ
+      \  runtime.strhash   À  runtime.memhash   Œ  0runtime.morestack_noctxt   0@  "".~r2  type.uintptr "".h type.uintptr "".p  $type.*"".refacDesc @_?@?   
+ -c TgclocalsÂ·0b86ef39f3fed835f14ba5f4d7c62fa2 TgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb   Š/home/khk/work/khk/go/src/github.com/godoctor/godoctor/doc/install.goş*type..eq."".refacDesc     dH‹%    H;a†§   HƒìHH‹\$PHƒû „   H‹3H‹KH‹\$XHƒû twH‹H‹CH9ÁuaH‰t$8H‰4$H‰L$@H‰L$H‰T$(H‰T$H‰D$0H‰D$è    ¶\$ €û t+H‹l$PH‹]L‹D$XI‹hH9ët
+ÆD$` HƒÄHÃÆD$`HƒÄHÃÆD$` HƒÄHÃ‰ë…‰élÿÿÿè    é<ÿÿÿÌÌÌÌÌÌÌÌÌÌÌÌ
+      Ø   runtime.eqstring   ö  0runtime.morestack_noctxt   0  
+"".autotmp_0107 ?type.string "".autotmp_0106 type.string "".~r2  type.bool "".q $type.*"".refacDesc "".p  $type.*"".refacDesc 8ƒ		 Ğ Ğ 
+ ke TgclocalsÂ·3bb21ca8fe1d99a3e492463bd711418a TgclocalsÂ·a8eabfc4a4514ed6b3b0c61e9680e440   Š/home/khk/work/khk/go/src/github.com/godoctor/godoctor/doc/install.goş4type..hash.[1]interface {}     dH‹%    H;avpHƒì(H‹L$81ÀHÇD$   H‹l$H9è}DH‰D$ H‹\$0Hƒû t>H‰ÅHÁåHëH‰$H‰L$8H‰L$è    H‹L$H‹D$ HÿÀH‹l$H9è|¼H‰L$@HƒÄ(Ã‰ë¾è    éwÿÿÿÌÌÌÌÌÌÌ
+      ¬  (runtime.nilinterhash   €  0runtime.morestack_noctxt   0P  
+"".autotmp_0109 type.int "".autotmp_0108 type.int "".~r2  type.uintptr "".h type.uintptr "".p  *type.*[1]interface {} PgOPO   
+ U; TgclocalsÂ·0b86ef39f3fed835f14ba5f4d7c62fa2 TgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb   Š/home/khk/work/khk/go/src/github.com/godoctor/godoctor/doc/install.goş0type..eq.[1]interface {} à  àdH‹%    H;a†Î   HƒìX1ÀHÇD$(   H‹l$(H9è’   H‰D$0H‹\$hHƒû „–   H‰ÅHÁåHëH‹H‹sH‹\$`Hƒû tvH‰ÅHÁåHëH‹H‹SH9ÈuVH‰D$8H‰$H‰T$@H‰T$H‰L$HH‰L$H‰t$PH‰t$è    ¶\$ €û t H‹D$0HÿÀH‹l$(H9èŒnÿÿÿÆD$pHƒÄXÃÆD$p HƒÄXÃ‰ë†‰écÿÿÿè    éÿÿÿÌÌÌÌÌ
+      ¼  runtime.efaceeq   Ä  0runtime.morestack_noctxt   0°  "".autotmp_0113 ?"type.interface {} "".autotmp_0112 "type.interface {} "".autotmp_0111 _type.int "".autotmp_0110 Otype.int "".~r2  type.bool "".q *type.*[1]interface {} "".p  *type.*[1]interface {} ,°´¯°	¯°¯ ğ ğ  S TgclocalsÂ·3bb21ca8fe1d99a3e492463bd711418a TgclocalsÂ·a8eabfc4a4514ed6b3b0c61e9680e440   Š/home/khk/work/khk/go/src/github.com/godoctor/godoctor/doc/install.goş(type..hash.[3]string     dH‹%    H;avpHƒì(H‹L$81ÀHÇD$   H‹l$H9è}DH‰D$ H‹\$0Hƒû t>H‰ÅHÁåHëH‰$H‰L$8H‰L$è    H‹L$H‹D$ HÿÀH‹l$H9è|¼H‰L$@HƒÄ(Ã‰ë¾è    éwÿÿÿÌÌÌÌÌÌÌ
+      ¬  runtime.strhash   €  0runtime.morestack_noctxt   0P  
+"".autotmp_0115 type.int "".autotmp_0114 type.int "".~r2  type.uintptr "".h type.uintptr "".p  type.*[3]string PgOPO   
+ U; TgclocalsÂ·0b86ef39f3fed835f14ba5f4d7c62fa2 TgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb   Š/home/khk/work/khk/go/src/github.com/godoctor/godoctor/doc/install.goş$type..eq.[3]string à  àdH‹%    H;a†Î   HƒìX1ÀHÇD$(   H‹l$(H9è’   H‰D$0H‹\$`Hƒû „–   H‰ÅHÁåHëH‹3H‹KH‹\$hHƒû tvH‰ÅHÁåHëH‹H‹CH9ÁuVH‰t$HH‰4$H‰L$PH‰L$H‰T$8H‰T$H‰D$@H‰D$è    ¶\$ €û t H‹D$0HÿÀH‹l$(H9èŒnÿÿÿÆD$pHƒÄXÃÆD$p HƒÄXÃ‰ë†‰écÿÿÿè    éÿÿÿÌÌÌÌÌ
+      ¼   runtime.eqstring   Ä  0runtime.morestack_noctxt   0°  "".autotmp_0119 ?type.string "".autotmp_0118 type.string "".autotmp_0117 _type.int "".autotmp_0116 Otype.int "".~r2  type.bool "".q type.*[3]string "".p  type.*[3]string ,°´¯°	¯°¯ ğ ğ  S TgclocalsÂ·3bb21ca8fe1d99a3e492463bd711418a TgclocalsÂ·a8eabfc4a4514ed6b3b0c61e9680e440   Š/home/khk/work/khk/go/src/github.com/godoctor/godoctor/doc/install.goş4type..hash.[0]"".refacDesc     dH‹%    H;avpHƒì(H‹L$81ÀHÇD$    H‹l$H9è}DH‰D$ H‹\$0Hƒû t>H‰ÅHkíHëH‰$H‰L$8H‰L$è    H‹L$H‹D$ HÿÀH‹l$H9è|¼H‰L$@HƒÄ(Ã‰ë¾è    éwÿÿÿÌÌÌÌÌÌÌ
+      ¬  .type..hash."".refacDesc   €  0runtime.morestack_noctxt   0P  
+"".autotmp_0121 type.int "".autotmp_0120 type.int "".~r2  type.uintptr "".h type.uintptr "".p  *type.*[0]"".refacDesc PgOPO   
+ U; TgclocalsÂ·0b86ef39f3fed835f14ba5f4d7c62fa2 TgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb   Š/home/khk/work/khk/go/src/github.com/godoctor/godoctor/doc/install.goş0type..eq.[0]"".refacDesc €  €dH‹%    H;a†  Hƒìh1ÀHÇD$(    H‹l$(H9èË   H‰D$0H‹L$pHƒù „æ   H‹\$xH‰ÅHkíHéHƒû „Æ   H‰ÅHkíHëH‰L$@Hƒù „¦   H‹1H‹IH‰\$8Hƒû „‰   H‹H‹CH9ÁupH‰t$XH‰4$H‰L$`H‰L$H‰T$HH‰T$H‰D$PH‰D$è    ¶\$ €û t:H‹l$@H‹]L‹D$8I‹hH9ëu#H‹D$0HÿÀH‹l$(H9èŒ5ÿÿÿÆ„$€   HƒÄhÃÆ„$€    HƒÄhÃ‰épÿÿÿ‰éSÿÿÿ‰é3ÿÿÿ‰éÿÿÿè    éÅşÿÿÌÌÌÌÌ
+      €   runtime.eqstring   ä  0runtime.morestack_noctxt   0Ğ  "".autotmp_0127 ?type.string "".autotmp_0126 type.string "".autotmp_0125 _$type.*"".refacDesc "".autotmp_0124 O$type.*"".refacDesc "".autotmp_0123 type.int "".autotmp_0122 otype.int "".~r2  type.bool "".q *type.*[0]"".refacDesc "".p  *type.*[0]"".refacDesc ,ĞğÏĞÏĞÏ À À  ¿ TgclocalsÂ·51af24152615272c3d9efc8538f95767 TgclocalsÂ·34eab47d33fa46b254c22cdccfd2dc77   Š/home/khk/work/khk/go/src/github.com/godoctor/godoctor/doc/install.goş„type..hash.[8]github.com/godoctor/godoctor/refactoring.Refactoring     dH‹%    H;avpHƒì(H‹L$81ÀHÇD$   H‹l$H9è}DH‰D$ H‹\$0Hƒû t>H‰ÅHÁåHëH‰$H‰L$8H‰L$è    H‹L$H‹D$ HÿÀH‹l$H9è|¼H‰L$@HƒÄ(Ã‰ë¾è    éwÿÿÿÌÌÌÌÌÌÌ
+      ¬  "runtime.interhash   €  0runtime.morestack_noctxt   0P  
+"".autotmp_0129 type.int "".autotmp_0128 type.int "".~r2  type.uintptr "".h type.uintptr "".p  ztype.*[8]github.com/godoctor/godoctor/refactoring.Refactoring PgOPO   
+ U; TgclocalsÂ·0b86ef39f3fed835f14ba5f4d7c62fa2 TgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb   Š/home/khk/work/khk/go/src/github.com/godoctor/godoctor/doc/install.goş€type..eq.[8]github.com/godoctor/godoctor/refactoring.Refactoring à  àdH‹%    H;a†Î   HƒìX1ÀHÇD$(   H‹l$(H9è’   H‰D$0H‹\$hHƒû „–   H‰ÅHÁåHëH‹H‹sH‹\$`Hƒû tvH‰ÅHÁåHëH‹H‹SH9ÈuVH‰D$8H‰$H‰T$@H‰T$H‰L$HH‰L$H‰t$PH‰t$è    ¶\$ €û t H‹D$0HÿÀH‹l$(H9èŒnÿÿÿÆD$pHƒÄXÃÆD$p HƒÄXÃ‰ë†‰écÿÿÿè    éÿÿÿÌÌÌÌÌ
+      ¼  runtime.ifaceeq   Ä  0runtime.morestack_noctxt   0°  "".autotmp_0133 ?rtype.github.com/godoctor/godoctor/refactoring.Refactoring "".autotmp_0132 rtype.github.com/godoctor/godoctor/refactoring.Refactoring "".autotmp_0131 _type.int "".autotmp_0130 Otype.int "".~r2  type.bool "".q ztype.*[8]github.com/godoctor/godoctor/refactoring.Refactoring "".p  ztype.*[8]github.com/godoctor/godoctor/refactoring.Refactoring ,°´¯°	¯°¯ ğ ğ  S TgclocalsÂ·3bb21ca8fe1d99a3e492463bd711418a TgclocalsÂ·a8eabfc4a4514ed6b3b0c61e9680e440   Š/home/khk/work/khk/go/src/github.com/godoctor/godoctor/doc/install.goş8go.string.hdr."installGuide"                       0go.string."installGuide"   ş0go.string."installGuide"    installGuide  ş$"".hdr..gostring.1             §!         ""..gostring.1   ş""..gostring.1 Ğ†  Ğ†<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>{{.AboutText}} Installation Guide</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <style>
+  html {
+    font-family: Arial;
+    font-size: 0.688em;
+    line-height: 1.364em;
+    background-color: white;
+    color: black;
+  }
+  a {
+    color: black;
+    text-decoration: underline;
+  }
+  a: hover {
+    text-decoration: none;
+  }
+  tt {
+    font-size: 1.2em;
+  }
+  h1 {
+    text-align: center;
+    font-size: 2.6em;
+    font-weight: bold;
+    padding: 20px 0 20px 0;
+    background-color: #e0e0e0;
+  }
+  h2 {
+    text-align: left;
+    font-size: 2.5em;
+    font-weight: bold;
+    padding: 10px 0 10px 0;
+    background-color: #e0e0e0;
+  }
+  h3 {
+    text-align: left;
+    font-size: 1.75em;
+    font-weight: bold;
+    padding: 5px 0 2px 0;
+    border-bottom: 2px dashed #c0c0c0;
+  }
+  h4 {
+    text-align: left;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 5px 0 0 0;
+  }
+  .highlight {
+    background-color: yellow;
+  }
+  .dotted {
+    border: 1px dotted;
+  }
+ 
+  .clicktoshow {
+    display: none;
+    font-size: 10px;
+    font-weight: normal;
+    color: #808080;
+  }
+  .showable {
+    display: block;
+  }
+
+  #toc2col .column1 {
+    width: 250px;
+    padding: 0;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+  }
+  #toc2col .column2 {
+    width: 628px;
+    padding: 10px 0 10px 0;
+  }
+
+  .box {
+    background-color: #c0c0c0;
+    width: 210px;
+  }
+  .box h2 {
+    text-align: center;
+    font-size: 1.364em;
+    line-height: 1em;
+    font-weight: bold;
+    padding: 3px 0 3px 0;
+    margin-top: 40px;
+    color:#ffffff;
+    background-color: #000000;
+  }
+  .box ul       { list-style: none; padding: 0; margin: 0; }
+  .box ul li    { padding: 5px 0 1px 15px; font-weight: bold;}
+  .box ul ul li { padding: 1px 0 1px 30px; font-weight: normal;}
+
+  .man h1 {
+    text-align: center;
+    font-size: 1.8em;
+    line-height: 1em;
+    font-weight: bold;
+    padding: 3px 0 3px 0;
+    margin-top: 5px;
+    background-color: #ffffff;
+    color: black;
+  }
+  .man h2 {
+    text-align: left;
+    font-size: 1.4em;
+    line-height: 1em;
+    font-weight: bold;
+    padding: 3px 0 3px 0;
+    margin-top: 20px;
+    background-color: #ffffff;
+  }
+
+  .vimdoc pre {
+    font-size:1.0em;
+    margin-left: 20px;
+  }
+  </style>
+  <script language="JavaScript">
+    function setDisplay(selectors, value) {
+      var divs = document.querySelectorAll(selectors);
+      for (var i = 0; i < divs.length; i++) {
+        divs[i].style.display = value;
+      }
+    }
+
+    function show(id) {
+      setDisplay('.showable', 'none');
+      setDisplay('.clicktoshow', 'block');
+      document.getElementById(id).style.display = 'block';
+      document.getElementById(id + '-click').style.display = 'none';
+    }
+
+    function showAll() {
+      setDisplay('.showable', 'block');
+      setDisplay('.clicktoshow', 'none');
+    }
+
+    function hideAll() {
+      setDisplay('.showable', 'none');
+      setDisplay('.clicktoshow', 'block');
+    }
+  </script>
+</head>
+<body id="toc2col">
+    <!-- BEGIN BODY -->
+    <div id="middle">
+      <div class="container">
+        <div class="column1">
+          <div class="box">
+            <div class="corner_bottom_left">
+              <div class="corner_top_right">
+                <div class="corner_top_left">
+                  <div class="indent">
+                    <!-- BEGIN TOC -->
+                    <h2>Installation</h2>
+                      <ul class="toc2">
+                      <li><a onClick="show('install-vim');" href="#install-vim">For vim users</a></li>
+                      <li><a onClick="show('install-godoctor');" href="#install-godoctor">For users of other editors</a></li>
+                    </ul>
+                    <p style="text-align: center; font-size: 10px; color: #808080;">
+                      <a href="#" onClick="showAll();">Show All</a> |
+                      <a href="#" onClick="hideAll();">Hide All</a>
+                    </p>
+                    <!-- END TOC -->
+                    <br/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column2">
+          <div class="indent">
+            <!-- BEGIN CONTENT -->
+<h1>{{.AboutText}} Installation Guide</h1>
+<a name="install"></a>
+<div id="install">
+  <style>
+  .question {
+    font-family: Arial, helvetica;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+  }
+  .answers {
+    text-align: center;
+  }
+  .yes {
+    color: #008000;
+  }
+  .no {
+    color: #800000;
+  }
+  .showable {
+    display: none;
+  }
+  </style>
+  <p class="question">Do you use Vim?</p>
+  <p class="answers"><a href="#install-vim" onClick="show('install-vim');"><span class="yes">&#x2713;</span>&nbsp;Yes</a>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     <a href="#install-godoctor" onClick="show('install-godoctor');"><span class="no">&#x2717;</span>&nbsp;No</a></p>
+</div>
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<a name="install-vim"></a>
+<div id="install-vim" class="showable">
+  <h2>Installation for Vim Users</h2>
+  <p>The Go Doctor Vim plug-in (godoctor.vim) follows the standard runtime path
+  structure, so we recommend using a plug-in manager (like
+  <a target="_blank" href="https://github.com/tpope/vim-pathogen">Pathogen</a>)
+  to install it.  In addition, <code>filetype plugin indent on</code> must also
+  be set (add this to your <code>~/.vimrc</code>).</p>
+  <ul>
+    <li><a target="_blank" href="https://github.com/tpope/vim-pathogen">Pathogen</a>
+      <ul>
+      <li><pre>git clone https://github.com/godoctor/godoctor.vim.git \
+~/.vim/bundle/godoctor.vim</pre></li>
+      </ul></li>
+    <li><a target="_blank" href="https://github.com/junegunn/vim-plug">vim-plug</a>
+      <ul>
+      <li><pre>Plug 'godoctor/godoctor.vim'</pre></li>
+      </ul></li>
+    <li><a target="_blank" href="https://github.com/Shougo/neobundle.vim">NeoBundle</a>
+      <ul>
+      <li><pre>NeoBundle 'godoctor/godoctor.vim'</pre></li>
+      </ul></li>
+    <li><a target="_blank" href="https://github.com/gmarik/vundle">Vundle</a>
+      <ul>
+      <li><pre>Plugin 'godoctor/godoctor.vim'</pre></li>
+      </ul></li>
+    <li>Manual
+      <ul>
+      <li><pre>git clone https://github.com/godoctor/godoctor.vim ~/.vim/godoctor.vim</pre></li>
+      <li>Add these lines to ~/.vimrc<br/>
+<pre>
+if exists("g:did_load_filetypes")
+  filetype off
+  filetype plugin indent off
+endif
+set rtp+=~/.vim/godoctor.vim
+filetype plugin indent on
+syntax on
+</pre>
+</li>
+      </ul></li>
+  </ul>
+  <p>If the <tt>godoctor</tt> executable is not already installed and in your
+  <tt>$PATH</tt>, just type <tt>:GoDoctorInstall</tt>. This will install it to
+  <tt>$GOPATH/bin</tt>, which will also need to be in your <tt>$PATH</tt>,
+  which assumes you have <tt>$GOPATH</tt> set.  <tt>git</tt> must be installed
+  for <tt>:GoDoctorInstall</tt> to work.</p>
+  <p>We took express care not to conflict with anything in
+  <a href="https://github.com/fatih/vim-go">https://github.com/fatih/vim-go</a>.
+  This means (<tt>vim-go</tt> note aside) that it is safe to have
+  <tt>vim-go</tt> installed alongside <tt>godoctor.vim</tt>. Notably, vim-go
+  has <tt>:GoRename</tt> and <tt>:GoRefactor</tt> where we have
+  <tt>:Rename</tt> and <tt>:Refactor</tt> when editing a <tt>.go</tt> file.</p>
+</div>
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<a name="install-godoctor"></a>
+<div id="install-godoctor" class="showable">
+  <h2>Installation for Users of Other Editors</h2>
+  <p>At the moment, the Go Doctor only has a Vim plug-in.  Contributing a
+  plug-in for another editor (emacs, Sublime Text, etc.) would be a great way
+  to <a href="http://godoctor.com/contrib.html">contribute</a>.</p>
+  <p>However, you can still use the <b>Go Doctor command line tool</b>.  To
+  install:</p>
+  <ul>
+    <li><tt>go get github.com/godoctor/godoctor</tt></li>
+    <li><tt>go install github.com/godoctor/godoctor</tt></li>
+  </ul>
+  <p>For examples of how to use the command line tool, see the
+  <a href="http://gorefactor.org/doc.html#EXAMPLES"><tt>godoctor</tt> man
+  page</a>, or
+  <a href="http://gorefactor.org/doc.html#offline">install a local copy of the
+  man page</a>.</p>
+</div>
+            <!-- END CONTENT -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END BODY -->
+</body>
+</html>
+  şTgclocalsÂ·84510d9aff15d4d8f2b045830ea8d023 P  P                                şTgclocalsÂ·d5a15a79b1f04b0121064612d964be95 P  P                               ş&go.string.hdr."man"                       go.string."man"   şgo.string."man"   man  ş$"".hdr..gostring.2             İ         ""..gostring.2   ş""..gostring.2 À  ¼.\" Save this as godoctor.1 and process using
+.\"     groff -man -Tascii godoctor.1
+.\" or for PostScript output:
+.\"     groff -t -mandoc -Tps godoctor.1 > godoctor.ps
+.\" or for HTML output:
+.\"     groff -t -mandoc -Thtml godoctor.1 > godoctor.1.html
+.TH godoctor 1 "" "{{.AboutText}}" ""
+.SH NAME
+godoctor \- refactor Go source code
+.SH SYNOPSIS
+.B godoctor
+[
+.I flag
+.I ...
+.B ]
+.I refactoring
+[
+.I args
+.I ...
+.B ]
+.SH DESCRIPTION
+godoctor refactors Go Source code, outputting a patch file with the changes (unless the -w or -complete flag is specified).
+.PP
+The Go Doctor can be run from the command line, but it is more easily used from an editor like Vim.
+.PP
+For more information and detailed instructions, see the complete documentation at http://gorefactor.org
+.SH OPTIONS
+The following
+.I flags
+control the behavior of the godoctor:
+{{range .Flags}}
+.TP
+.B -{{.Name}}
+{{.Usage}}
+{{end}}
+.PP
+The
+.I refactoring
+determines the refactoring to perform:
+{{range .Refactorings}}
+.TP
+.B {{.Key}}
+{{.Description.Synopsis}}
+{{end}}
+.PP
+The
+.I args
+are specific to each refactoring.  For a list of the arguments a particular refactoring expects, run that refactoring without any arguments.  For example:
+.B godoctor
+rename
+.SH EXAMPLES
+.TP
+Display a list of available refactorings:
+.B godoctor
+-list
+.PP
+.TP
+Display usage information for the Rename refactoring:
+.B godoctor
+rename
+.PP
+.TP
+Rename the identifier in main.go at line 5, column 6 to bar, outputting a patch file:
+.B godoctor
+-pos 5,6:5,6
+-file main.go
+rename
+bar
+.PP
+.TP
+Toy example: Pipe a file to the godoctor and rename n to foo, displaying the result:
+echo 'package main; import "fmt"; func main() { n := 1; fmt.Println(n) }' | godoctor -pos 1,43:1,43 -w rename foo
+.PP
+.SH EXIT STATUS
+.TP
+0
+Success
+.TP
+1
+One or more command line arguments were invalid
+.TP
+2
+Help/usage information was displayed; no commands were executed
+.TP
+3
+The refactoring could not be completed; output contains a detailed error log
+.SH AUTHOR
+See http://gorefactor.org
+  şTgclocalsÂ·7ca107d5b8cb95a14bd193094477472d X  X	          ”  ”  ”  ”  ”   ”   ”   ”  şTgclocalsÂ·3e3decd2fff89ac2bb8cf1e2922f638b X  X	                                  şTgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb           şTgclocalsÂ·01f39aad45108f89f4e159d8e5a20cc9             ş,go.string.hdr."<body>"                       $go.string."<body>"   ş$go.string."<body>"   <body>  ş.go.string.hdr."</body>"                       &go.string."</body>"   ş&go.string."</body>"   </body>  şBgo.string.hdr."<pre>\n%s\n</pre>"                       :go.string."<pre>\n%s\n</pre>"   ş:go.string."<pre>\n%s\n</pre>"     <pre>
+%s
+</pre>  ş2go.string.hdr."userGuide"             	          *go.string."userGuide"   ş*go.string."userGuide"    userGuide  ş$"".hdr..gostring.3             0         ""..gostring.3   ş""..gostring.3 °À  ¨À<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>{{.AboutText}} User's Guide</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <style>
+  html {
+    font-family: Arial;
+    font-size: 0.688em;
+    line-height: 1.364em;
+    background-color: white;
+    color: black;
+  }
+  a {
+    color: black;
+    text-decoration: underline;
+  }
+  a: hover {
+    text-decoration: none;
+  }
+  tt {
+    font-size: 1.2em;
+  }
+  h1 {
+    text-align: center;
+    font-size: 2.6em;
+    font-weight: bold;
+    padding: 20px 0 20px 0;
+    background-color: #e0e0e0;
+  }
+  h2 {
+    text-align: left;
+    font-size: 2.5em;
+    font-weight: bold;
+    padding: 10px 0 10px 0;
+    background-color: #e0e0e0;
+  }
+  h3 {
+    text-align: left;
+    font-size: 1.75em;
+    font-weight: bold;
+    padding: 5px 0 2px 0;
+    border-bottom: 2px dashed #c0c0c0;
+  }
+  h4 {
+    text-align: left;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 5px 0 0 0;
+  }
+  .highlight {
+    background-color: yellow;
+  }
+  .dotted {
+    border: 1px dotted;
+  }
+ 
+  .clicktoshow {
+    display: show;
+    //float: right;
+    font-size: 10px;
+    font-weight: normal;
+    color: #808080;
+  }
+  .showable {
+    display: none;
+  }
+
+  #toc2col .column1 {
+    width: 250px;
+    padding: 0;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+  }
+  #toc2col .column2 {
+    width: 628px;
+    padding: 10px 0 10px 0;
+  }
+
+  .box {
+    background-color: #c0c0c0;
+    width: 210px;
+  }
+  .box h2 {
+    text-align: center;
+    font-size: 1.364em;
+    line-height: 1em;
+    font-weight: bold;
+    padding: 3px 0 3px 0;
+    margin-top: 40px;
+    color:#ffffff;
+    background-color: #000000;
+  }
+  .box ul       { list-style: none; padding: 0; margin: 0; }
+  .box ul li    { padding: 5px 0 1px 15px; font-weight: bold;}
+  .box ul ul li { padding: 1px 0 1px 30px; font-weight: normal;}
+
+  .man h1 {
+    text-align: center;
+    font-size: 1.8em;
+    line-height: 1em;
+    font-weight: bold;
+    padding: 3px 0 3px 0;
+    margin-top: 5px;
+    background-color: #ffffff;
+    color: black;
+  }
+  .man h2 {
+    text-align: left;
+    font-size: 1.4em;
+    line-height: 1em;
+    font-weight: bold;
+    padding: 3px 0 3px 0;
+    margin-top: 20px;
+    background-color: #ffffff;
+  }
+
+  .vimdoc pre {
+    font-size:1.0em;
+    margin-left: 20px;
+  }
+  </style>
+  <script language="JavaScript">
+    function setDisplay(selectors, value) {
+      var divs = document.querySelectorAll(selectors);
+      for (var i = 0; i < divs.length; i++) {
+        divs[i].style.display = value;
+      }
+    }
+
+    function show(id) {
+      setDisplay('.showable', 'none');
+      setDisplay('.clicktoshow', 'block');
+      document.getElementById(id).style.display = 'block';
+      document.getElementById(id + '-click').style.display = 'none';
+    }
+
+    function showAll() {
+      setDisplay('.showable', 'block');
+      setDisplay('.clicktoshow', 'none');
+    }
+
+    function hideAll() {
+      setDisplay('.showable', 'none');
+      setDisplay('.clicktoshow', 'block');
+    }
+  </script>
+</head>
+<body id="toc2col">
+    <!-- BEGIN BODY -->
+    <div id="middle">
+      <div class="container">
+        <div class="column1">
+          <div class="box">
+            <div class="corner_bottom_left">
+              <div class="corner_top_right">
+                <div class="corner_top_left">
+                  <div class="indent">
+                    <!-- BEGIN TOC -->
+                    <h2>Getting Started</h2>
+                    <ul class="toc2">
+                      <li><a onClick="show('starting');" href="#starting">Getting Started</a></li>
+                      <li><a onClick="show('documentation');" href="#documentation">Online Documentation</a></li>
+                      <li><a onClick="show('offline');" href="#offline">Installing Local Documentation</a></li>
+                    </ul>
+                    <h2>Refactorings</h2>
+                    <ul class="toc2">
+                      {{range .Refactorings}}
+                      <li><a onClick="show('refactoring-{{.Key}}');" href="#refactoring-{{.Key}}">{{.Description.Name}}</a></li>
+                      {{end}}
+                    </ul>
+                    <h2>References</h2>
+                    <ul class="toc2">
+                      <li><a onClick="show('godoctor-man');" href="#godoctor-man">Man Page (<tt>godoctor.1</tt>)</a></li>
+                      <li><a onClick="show('godoctor-vim');" href="#godoctor-vim">Vim Plug-in Reference</a></li>
+                      <li><a onClick="show('license');" href="#license">License</a></li>
+                    </ul>
+		    <p style="text-align: center; font-size: 10px; color: #808080;">
+                      <a href="#" onClick="showAll();">Show All</a> |
+                      <a href="#" onClick="hideAll();">Hide All</a>
+                    </p>
+                    <!-- END TOC -->
+                    <br/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column2">
+          <div class="indent">
+            <!-- BEGIN CONTENT -->
+<h1>{{.AboutText}} User's Guide</h1>
+<a name="starting"></a>
+<h3>Getting Started</h3>
+<div id="starting-click" class="clicktoshow">
+  <a href="#starting" onClick="show('starting');">Show&nbsp;&raquo;</a>
+</div>
+<div id="starting" class="showable">
+  <p>If this is your first time using the Go Doctor, see the
+  <a href="http://gorefactor.org/starting.html">Getting Started</a> page on the
+  Go Doctor Web site.  It contains videos (and basic instructions) showing some
+  typical uses of the Go Doctor using the Vim plug-in.</p>
+  <p>You will probably want to run the Go Doctor from Vim, since it allows you
+  to rename variables, extract functions, and perform other refactorings with
+  just a few keystrokes.  Detailed information about the Vim plug-in is
+  available in the <a onClick="show('godoctor-vim');" href="#godoctor-vim">Vim
+  Plug-in Reference</a>.  If you are inclined to use the command-line
+  <tt>godoctor</tt> tool directly, the <a onClick="show('godoctor-man');"
+  href="#godoctor-man"><tt>godoctor</tt> man page</a> contains several examples
+  illustrating typical invocations.</p>
+  <p>Later parts of this user manual contain detailed information on each of
+  the refactorings supported by the Go Doctor.</p>
+</div>
+<a name="documentation"></a>
+<h3>Online Documentation</h3>
+<div id="documentation-click" class="clicktoshow">
+  <a href="#documentation" onClick="show('documentation');">Show&nbsp;&raquo;</a>
+</div>
+<div id="documentation" class="showable">
+  <p>The latest documentation for the Go Doctor (including this user manual,
+  the <tt>godoctor</tt> man page, and the Vim Plug-in Reference) is always
+  available online at <a target="_blank"
+  href="http://gorefactor.org">http://gorefactor.org</a>.  If you want to
+  install a local copy of the documentation, see below.</p>
+</div>
+<a name="offline"></a>
+<h3>Installing Local Documentation</h3>
+<div id="offline-click" class="clicktoshow">
+  <a href="#offline" onClick="show('offline');">Show&nbsp;&raquo;</a>
+</div>
+<div id="offline" class="showable">
+  <p>If you do not want to use the online documentation, you can install the Go
+  Doctor documentation locally.  The <tt>godoctor</tt> tool generates its own
+  documentation.  It can generate a local copy of the Installation Guide and
+  User Guide on the Go Doctor Web site; it can generate a Unix man page for the
+  <tt>godoctor</tt> tool; it can also generate more complete documentation for
+  the Vim plug-in (by default, the Vim plug-in includes stub documentation
+  pointing to the Go Doctor Web site).</p>
+  <ul>
+    <li><b>To generate a local copy of the Installation Guide:</b><br/><br/>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <tt>godoctor -doc install &gt;install.html</tt></li>
+    <li><b>To generate a local copy of the User's Guide:</b><br/><br/>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <tt>godoctor -doc user &gt;user.html</tt></li>
+    <li><b>To generate a local copy of the godoctor man page,</b><br/><br/>
+      use the <tt>godoctor</tt> tool to generate the man page, then save it as
+      <i>godoctor.1</i> in a directory on your MANPATH.  For example, if you
+      installed <tt>godoctor</tt> into /usr/local/bin, you will probably want
+      to install the man page into /usr/local/share/man:<br/><br/>
+      <pre>sudo mkdir -p /usr/local/share/man/man1</pre><br/>
+      <pre>sudo sh -c 'godoctor -doc man &gt;/usr/local/share/man/man1/godoctor.1'</pre><br/></li>
+    <li><b>To install complete documentation for the Vim plug-in:</b>
+    <ol class="enum">
+      <li>Use the <tt>godoctor</tt> tool to generate the Vim documentation, and
+        overwrite the <b>godoctor-vim.txt</b> file in the Vim plug-in's
+        <i>doc</i> directory.  For example:<br/><br/>
+        <pre>godoctor -doc vim &gt;~/.vim/godoctor.vim/doc/godoctor-vim.txt</pre></li>
+      <li>In Vim, run<br/><br/>
+        <pre>:helptags ~/.vim/godoctor.vim/doc</pre><br/>
+        to generate help tags from the plug-in documentation.</li>
+      <li>To view the Vim plug-in documentation, execute<br/><br/>
+        <tt>:help godoctor</tt></li>
+    </ol>
+  </ul>
+</div>
+<a name="refactorings"></a>
+<h2>Refactorings</h2>
+<div id="refactorings"></div>
+{{range .Refactorings}}
+<a name="refactoring-{{.Key}}"></a>
+<h3>Refactoring: {{.Description.Name}}</h3>
+<div id="refactoring-{{.Key}}-click" class="clicktoshow">
+  <a href="#refactoring-{{.Key}}" onClick="show('refactoring-{{.Key}}');">Show&nbsp;&raquo;</a>
+</div>
+<div id="refactoring-{{.Key}}" class="showable">
+  {{.Description.HTMLDoc}}
+</div>
+{{end}}
+<div id="references">
+  <a name="references"></a>
+  <h2>References</h2>
+</div>
+<a name="godoctor-man"></a>
+<h3><tt>godoctor</tt> Man Page</h3>
+<div id="godoctor-man-click" class="clicktoshow">
+  <a href="#godoctor-man" onClick="show('godoctor-man');">Show&nbsp;&raquo;</a>
+</div>
+<div id="godoctor-man" class="showable">
+  <div class="man">
+    {{.ManPageHTML}}
+  </div>
+</div>
+<a name="godoctor-vim"></a>
+<h3>Vim Plugin Reference</h3>
+<div id="godoctor-vim-click" class="clicktoshow">
+  <a href="#godoctor-vim" onClick="show('godoctor-vim');">Show&nbsp;&raquo;</a>
+</div>
+<div id="godoctor-vim" class="showable">
+  <div class="vimdoc">
+  {{.VimdocHTML}}
+  </div>
+</div>
+<a name="license"></a>
+<h3>License</h3>
+<div id="license-click" class="clicktoshow">
+  <a href="#license" onClick="show('license');">Show&nbsp;&raquo;</a>
+</div>
+<div id="license" class="showable">
+  <p>Copyright &copy; Auburn University and others.  All rights reserved.</p>
+  <p>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:</p>
+  <p>1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.</p>
+  <p>2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</p>
+  <p>3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.</p>
+  <p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+</div>
+            <!-- END CONTENT -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END BODY -->
+</body>
+</html>
+  şTgclocalsÂ·ec2d9eb592849fdab57ceceb37b8a474 X  X	              L  L             şTgclocalsÂ·131f5c5fef94b8c22b16bfba8de7fed4 X  X	      =   =   =   =   =   =   =   =   =    ş$go.string.hdr."-t"                       go.string."-t"   şgo.string."-t"   -t  ş.go.string.hdr."-mandoc"                       &go.string."-mandoc"   ş&go.string."-mandoc"   -mandoc  ş,go.string.hdr."-Thtml"                       $go.string."-Thtml"   ş$go.string."-Thtml"   -Thtml  ş*go.string.hdr."groff"                       "go.string."groff"   ş"go.string."groff"   groff  ş4go.string.hdr."[ERROR] %s"             
+          ,go.string."[ERROR] %s"   ş,go.string."[ERROR] %s"    [ERROR] %s  şTgclocalsÂ·6779eed2d9f981460ee56f372a014e4a X  X	                   À„ À     şTgclocalsÂ·490a2a9efb10252a7b0aa546b2e3be1f X  X	                                  şTgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb           şTgclocalsÂ·b9336996773e215995755fe256cd9398             ş>>go.itab.*bytes.Buffer.io.Writer     ş*go.string.hdr."<nil>"                       "go.string."<nil>"   ş"go.string."<nil>"   <nil>  şTgclocalsÂ·16f1c07421a53dc03f92fa721c56a33b 0  0                     şTgclocalsÂ·babf67053e2268db034990a6005bd1e9 0  0                   şTgclocalsÂ·7024b982732eae976264a490eae42a7c €  €   $              P     P     P   á  P    P     P    şTgclocalsÂ·cfef0af79bfc1068adf3cf64963f7fcd H  H                            ş&go.string.hdr."vim"                       go.string."vim"   şgo.string."vim"   vim  ş$"".hdr..gostring.4             ‡         ""..gostring.4   ş""..gostring.4 N  N*godoctor-vim.txt*
+*godoctor*
+                                   - = = = -                                 ~
+
+
+                           T H E   G O   D O C T O R                         ~
+ 
+                           a golang refactoring tool                         ~
+
+
+                                   - = = = -                                 ~
+
+
+                             http://gorefactor.org/
+
+
+
+                          Vim Plugin Reference Manual                        ~
+
+
+==============================================================================
+CONTENTS                                                   *godoctor-contents*
+
+    1.Intro.........................................|godoctor-intro|
+    2.Commands......................................|godoctor-commands|
+    3.Global Options................................|godoctor-global-options|
+    4.License.......................................|godoctor-license|
+
+
+==============================================================================
+1. Intro                                                      *godoctor-intro*
+
+The Go Doctor provides source code refactoring for golang programs.
+
+Complete documentation for the Go Doctor--including installation instructions,
+a "quick start" introduction, and descriptions of all refactorings--can be
+found at the Go Doctor Web site:
+
+    https://gorefactor.org/
+
+This documentation provides a reference for the commands and options unique to
+the Go Doctor Vim plugin.
+
+This documentation was generated for {{.AboutText}}.
+
+==============================================================================
+2. Commands                                                *godoctor-commands*
+
+:Refactor                                                          *:Refactor*
+:GoRefactor                                                      *:GoRefactor*
+
+The Refactor and GoRefactor commands are synonymous; either can be used to
+initiate a Go refactoring.  These commands are available only when a Go source
+file is being edited.
+
+The command name is followed by the refactoring name and arguments (if any).
+For example, to rename an identifier in a Go program to "foo", move the cursor
+over the identifier (or select it), and issue the command:
+
+Example: >
+    :Refactor rename foo
+<
+
+Vim will autocomplete the refactoring name ("rename" in the example above).
+
+A list of files modified and errors that occurred (if any) are displayed in the
+|location-list|.
+
+:Rename                                                              *:Rename*
+
+The Rename command is a shortcut for ":Refactor rename" and is otherwise used
+similarly.
+
+==============================================================================
+3. Global Options                                    *godoctor-global-options*
+
+                                                              *'doctor_scope'*
+Default: ""
+If this is set, its value is passed to the godoctor via the "-scope" flag.
+
+For example: >
+    let g:doctor_scope='/path/to/main.go'
+<
+
+Usually, the scope will point to the program entrypoint (main package) for the
+program you want to refactor.  If an explicit scope is not set, the Go Doctor
+assumes that the current directory contains a Go package, and it uses that
+package as the scope.
+
+==============================================================================
+4. License                                                  *godoctor-license*
+
+Copyright Auburn University and others.  All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its contributors
+   may be used to endorse or promote products derived from this software
+   without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+ vim:textwidth=78:shiftwidth=4:filetype=help:norl:
+  şTgclocalsÂ·7ca107d5b8cb95a14bd193094477472d X  X	          ”  ”  ”  ”  ”   ”   ”   ”  şTgclocalsÂ·3e3decd2fff89ac2bb8cf1e2922f638b X  X	                                  şTgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb           şTgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb           şTgclocalsÂ·23e8278e2b69a3a75fa59b23c49ed6ad              şTgclocalsÂ·218e13df677c61453fa96b70d57ce5c3         =    şTgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb           şTgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb           şTgclocalsÂ·008e235a1392cc90d1ed9ad2f7e76d87 (  (                 şTgclocalsÂ·37a2283f5c69c342946cad8073b58fca (  (                şTgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb           şTgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb           ş""".statictmp_0042  `type.[3]string `                                                go.string."-t"      &go.string."-mandoc"   @  $go.string."-Thtml"   ş>"".initdoneÂ·  type.uint8   ş."".PrintInstallGuideÂ·f              ("".PrintInstallGuide   ş$"".PrintManPageÂ·f              "".PrintManPage   ş("".PrintUserGuideÂ·f              """.PrintUserGuide   ş6"".PrintUserGuideAsGivenÂ·f              0"".PrintUserGuideAsGiven   ş("".convertManPageÂ·f              """.convertManPage   ş("".extractBetweenÂ·f              """.extractBetween   ş""".printVimdocÂ·f              "".printVimdoc   ş"".prepareÂ·f              "".prepare   ş""".PrintVimdocÂ·f              "".PrintVimdoc   ş8"".convertManPage.func1.1Â·f              2"".convertManPage.func1.1   ş4"".convertManPage.func1Â·f              ."".convertManPage.func1   ş."".printVimdoc.func1Â·f              ("".printVimdoc.func1   ş&"".prepare.func1Â·f               "".prepare.func1   ş"".initÂ·f              "".init   ş"runtime.gcbits.01    ş.go.string.hdr."[]uint8"                       &go.string."[]uint8"   ş&go.string."[]uint8"   []uint8  ştype.[]uint8                 ß~.8                                                 
+0   runtime.algarray   @  "runtime.gcbits.01   P  .go.string.hdr."[]uint8"   p  *go.weak.type.*[]uint8   €  type.uint8   ş6go.typelink.[]uint8	[]uint8              type.[]uint8   şruntime.gcbits.      ş0go.string.hdr."[8]uint8"                       (go.string."[8]uint8"   ş(go.string."[8]uint8"    [8]uint8  ştype.[8]uint8 °  °               >ù0´ ‘                                                               0   runtime.algarray   @  runtime.gcbits.   P  0go.string.hdr."[8]uint8"   p  ,go.weak.type.*[8]uint8   €  type.uint8     type.[]uint8   ş:go.typelink.[8]uint8	[8]uint8              type.[8]uint8   ş0go.string.hdr."[]string"                       (go.string."[]string"   ş(go.string."[]string"    []string  ştype.[]string                 Ó¨ó
+                                                 
+0   runtime.algarray   @  "runtime.gcbits.01   P  0go.string.hdr."[]string"   p  ,go.weak.type.*[]string   €  type.string   ş:go.typelink.[]string	[]string              type.[]string   şTgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb           şTgclocalsÂ·0b86ef39f3fed835f14ba5f4d7c62fa2             şTgclocalsÂ·a8eabfc4a4514ed6b3b0c61e9680e440              şTgclocalsÂ·3bb21ca8fe1d99a3e492463bd711418a             ş0type..hashfunc.[8]string              (type..hash.[8]string   ş,type..eqfunc.[8]string              $type..eq.[8]string   ş&type..alg.[8]string                        0type..hashfunc.[8]string     ,type..eqfunc.[8]string   ş&runtime.gcbits.5555   UU ş2go.string.hdr."[8]string"             	          *go.string."[8]string"   ş*go.string."[8]string"    [8]string  ştype.[8]string °  °€       x       USŒ>                                                                0  &type..alg.[8]string   @  &runtime.gcbits.5555   P  2go.string.hdr."[8]string"   p  .go.weak.type.*[8]string   €  type.string     type.[]string   ş>go.typelink.[8]string	[8]string              type.[8]string   şHgo.string.hdr."[]*template.Template"                       @go.string."[]*template.Template"   ş@go.string."[]*template.Template" 0  *[]*template.Template  ş<type.[]*text/template.Template                 /ua¦                                                 
+0   runtime.algarray   @  "runtime.gcbits.01   P  Hgo.string.hdr."[]*template.Template"   p  Ngo.weak.type.*[]*text/template.Template   €  8type.*text/template.Template   ştgo.typelink.[]*template.Template	[]*text/template.Template              <type.[]*text/template.Template   ş type..hashfunc64             @          ,runtime.memhash_varlen   ştype..eqfunc64             @          .runtime.memequal_varlen   ştype..alg64                         type..hashfunc64     type..eqfunc64   ş"runtime.gcbits.ff   ÿ şJgo.string.hdr."[8]*template.Template"                       Bgo.string."[8]*template.Template"   şBgo.string."[8]*template.Template" 0  ,[8]*template.Template  ş>type.[8]*text/template.Template °  °@       @       Œ**                                                                0  type..alg64   @  "runtime.gcbits.ff   P  Jgo.string.hdr."[8]*template.Template"   p  Pgo.weak.type.*[8]*text/template.Template   €  8type.*text/template.Template     <type.[]*text/template.Template   şxgo.typelink.[8]*template.Template	[8]*text/template.Template              >type.[8]*text/template.Template   şjgo.string.hdr."*map.bucket[string]*template.Template"             %          bgo.string."*map.bucket[string]*template.Template"   şbgo.string."*map.bucket[string]*template.Template" P  L*map.bucket[string]*template.Template  ş^type.*map.bucket[string]*text/template.Template                 ã@=ú 6                                                
+0   runtime.algarray   @  "runtime.gcbits.01   P  jgo.string.hdr."*map.bucket[string]*template.Template"   p  pgo.weak.type.**map.bucket[string]*text/template.Template   €  \type.map.bucket[string]*text/template.Template   ş.runtime.gcbits.aaaafe03   ªªş şhgo.string.hdr."map.bucket[string]*template.Template"             $          `go.string."map.bucket[string]*template.Template"   ş`go.string."map.bucket[string]*template.Template" P  Jmap.bucket[string]*template.Template  ş.go.string.hdr."topbits"                       &go.string."topbits"   ş&go.string."topbits"   topbits  ş(go.string.hdr."keys"                        go.string."keys"   ş go.string."keys"   
+keys  ş,go.string.hdr."values"                       $go.string."values"   ş$go.string."values"   values  ş0go.string.hdr."overflow"                       (go.string."overflow"   ş(go.string."overflow"    overflow  ş\type.map.bucket[string]*text/template.Template ğ  ğĞ       Ğ       ¿§\_                                                                                                                                                                              ˆ                                       È       0à  runtime.algarray   @  .runtime.gcbits.aaaafe03   P  hgo.string.hdr."map.bucket[string]*template.Template"   p  ngo.weak.type.*map.bucket[string]*text/template.Template   €° \type.map.bucket[string]*text/template.Template   °  .go.string.hdr."topbits"   Ğ  type.[8]uint8   €  (go.string.hdr."keys"      type.[8]string   Ğ  ,go.string.hdr."values"   ğ  >type.[8]*text/template.Template      0go.string.hdr."overflow"   À  ^type.*map.bucket[string]*text/template.Template   ş"runtime.gcbits.2c   , şbgo.string.hdr."map.hdr[string]*template.Template"             !          Zgo.string."map.hdr[string]*template.Template"   şZgo.string."map.hdr[string]*template.Template" P  Dmap.hdr[string]*template.Template  ş*go.string.hdr."count"                       "go.string."count"   ş"go.string."count"   count  ş*go.string.hdr."flags"                       "go.string."flags"   ş"go.string."flags"   flags  ş"go.string.hdr."B"                       go.string."B"   şgo.string."B"   B  ş*go.string.hdr."hash0"                       "go.string."hash0"   ş"go.string."hash0"   hash0  ş.go.string.hdr."buckets"                       &go.string."buckets"   ş&go.string."buckets"   buckets  ş4go.string.hdr."oldbuckets"             
+          ,go.string."oldbuckets"   ş,go.string."oldbuckets"    oldbuckets  ş2go.string.hdr."nevacuate"             	          *go.string."nevacuate"   ş*go.string."nevacuate"    nevacuate  şVtype.map.hdr[string]*text/template.Template °  °0       0       µÛ›n                                                                                                                                                                              	                                                                                                                                                                                                    (       *0à  runtime.algarray   @  "runtime.gcbits.2c   P  bgo.string.hdr."map.hdr[string]*template.Template"   p  hgo.weak.type.*map.hdr[string]*text/template.Template   €° Vtype.map.hdr[string]*text/template.Template   °  *go.string.hdr."count"   Ğ  type.int   €  *go.string.hdr."flags"      type.uint8   Ğ  "go.string.hdr."B"   ğ  type.uint8      *go.string.hdr."hash0"   À  type.uint32   ğ  .go.string.hdr."buckets"     ^type.*map.bucket[string]*text/template.Template   À  4go.string.hdr."oldbuckets"   à  ^type.*map.bucket[string]*text/template.Template     2go.string.hdr."nevacuate"   °  type.uintptr   à  0go.string.hdr."overflow"   €  &type.unsafe.Pointer   şZgo.string.hdr."map[string]*template.Template"                       Rgo.string."map[string]*template.Template"   şRgo.string."map[string]*template.Template" @  <map[string]*template.Template  şNtype.map[string]*text/template.Template Ğ  Ğ              ;Qß 5                                                                          Ğ 0€  runtime.algarray   @  "runtime.gcbits.01   P  Zgo.string.hdr."map[string]*template.Template"   p  `go.weak.type.*map[string]*text/template.Template   €  type.string     8type.*text/template.Template      \type.map.bucket[string]*text/template.Template   °  Vtype.map.hdr[string]*text/template.Template   ş˜go.typelink.map[string]*template.Template	map[string]*text/template.Template              Ntype.map[string]*text/template.Template   ş>go.string.hdr."[]reflect.Value"                       6go.string."[]reflect.Value"   ş6go.string."[]reflect.Value"     []reflect.Value  ş(type.[]reflect.Value                 ¼íµú                                                 
+0   runtime.algarray   @  "runtime.gcbits.01   P  >go.string.hdr."[]reflect.Value"   p  :go.weak.type.*[]reflect.Value   €  $type.reflect.Value   şVgo.typelink.[]reflect.Value	[]reflect.Value              (type.[]reflect.Value   ş"type..hashfunc192             À          ,runtime.memhash_varlen   ştype..eqfunc192             À          .runtime.memequal_varlen   ştype..alg192                        "type..hashfunc192     type..eqfunc192   ş*runtime.gcbits.dbb66d   Û¶m ş@go.string.hdr."[8]reflect.Value"                       8go.string."[8]reflect.Value"   ş8go.string."[8]reflect.Value" 0  "[8]reflect.Value  ş*type.[8]reflect.Value °  °À       ¸       'µ%                                                                0  type..alg192   @  *runtime.gcbits.dbb66d   P  @go.string.hdr."[8]reflect.Value"   p  <go.weak.type.*[8]reflect.Value   €  $type.reflect.Value     (type.[]reflect.Value   şZgo.typelink.[8]reflect.Value	[8]reflect.Value              *type.[8]reflect.Value   ş`go.string.hdr."*map.bucket[string]reflect.Value"                        Xgo.string."*map.bucket[string]reflect.Value"   şXgo.string."*map.bucket[string]reflect.Value" P  B*map.bucket[string]reflect.Value  şJtype.*map.bucket[string]reflect.Value                 X×˜~ 6                                                
+0   runtime.algarray   @  "runtime.gcbits.01   P  `go.string.hdr."*map.bucket[string]reflect.Value"   p  \go.weak.type.**map.bucket[string]reflect.Value   €  Htype.map.bucket[string]reflect.Value   ş6runtime.gcbits.aaaab66ddb02   ªª¶mÛ ş^go.string.hdr."map.bucket[string]reflect.Value"                       Vgo.string."map.bucket[string]reflect.Value"   şVgo.string."map.bucket[string]reflect.Value" @  @map.bucket[string]reflect.Value  şHtype.map.bucket[string]reflect.Value ğ  ğP      P      ò[k                                                                                                                                                                              ˆ                                       H      0à  runtime.algarray   @  6runtime.gcbits.aaaab66ddb02   P  ^go.string.hdr."map.bucket[string]reflect.Value"   p  Zgo.weak.type.*map.bucket[string]reflect.Value   €° Htype.map.bucket[string]reflect.Value   °  .go.string.hdr."topbits"   Ğ  type.[8]uint8   €  (go.string.hdr."keys"      type.[8]string   Ğ  ,go.string.hdr."values"   ğ  *type.[8]reflect.Value      0go.string.hdr."overflow"   À  Jtype.*map.bucket[string]reflect.Value   şXgo.string.hdr."map.hdr[string]reflect.Value"                       Pgo.string."map.hdr[string]reflect.Value"   şPgo.string."map.hdr[string]reflect.Value" @  :map.hdr[string]reflect.Value  şBtype.map.hdr[string]reflect.Value °  °0       0       _ˆÁ                                                                                                                                                                              	                                                                                                                                                                                                    (       *0à  runtime.algarray   @  "runtime.gcbits.2c   P  Xgo.string.hdr."map.hdr[string]reflect.Value"   p  Tgo.weak.type.*map.hdr[string]reflect.Value   €° Btype.map.hdr[string]reflect.Value   °  *go.string.hdr."count"   Ğ  type.int   €  *go.string.hdr."flags"      type.uint8   Ğ  "go.string.hdr."B"   ğ  type.uint8      *go.string.hdr."hash0"   À  type.uint32   ğ  .go.string.hdr."buckets"     Jtype.*map.bucket[string]reflect.Value   À  4go.string.hdr."oldbuckets"   à  Jtype.*map.bucket[string]reflect.Value     2go.string.hdr."nevacuate"   °  type.uintptr   à  0go.string.hdr."overflow"   €  &type.unsafe.Pointer   şPgo.string.hdr."map[string]reflect.Value"                       Hgo.string."map[string]reflect.Value"   şHgo.string."map[string]reflect.Value" @  2map[string]reflect.Value  ş:type.map[string]reflect.Value Ğ  Ğ              ëj 5                                                                          P0€  runtime.algarray   @  "runtime.gcbits.01   P  Pgo.string.hdr."map[string]reflect.Value"   p  Lgo.weak.type.*map[string]reflect.Value   €  type.string     $type.reflect.Value      Htype.map.bucket[string]reflect.Value   °  Btype.map.hdr[string]reflect.Value   şzgo.typelink.map[string]reflect.Value	map[string]reflect.Value              :type.map[string]reflect.Value   şVgo.string.hdr."struct { AboutText string }"                       Ngo.string."struct { AboutText string }"   şNgo.string."struct { AboutText string }" @  8struct { AboutText string }  ş2go.string.hdr."AboutText"             	          *go.string."AboutText"   ş*go.string."AboutText"    AboutText  ş@type.struct { AboutText string } €  €              ³ÕjÇ                                                                                                       0À  runtime.algarray   @  "runtime.gcbits.01   P  Vgo.string.hdr."struct { AboutText string }"   p  Rgo.weak.type.*struct { AboutText string }   €° @type.struct { AboutText string }   °  2go.string.hdr."AboutText"   Ğ  type.string   ş8go.string.hdr."[]*flag.Flag"                       0go.string."[]*flag.Flag"   ş0go.string."[]*flag.Flag"    []*flag.Flag  ş"type.[]*flag.Flag                 êAn                                                 
+0   runtime.algarray   @  "runtime.gcbits.01   P  8go.string.hdr."[]*flag.Flag"   p  4go.weak.type.*[]*flag.Flag   €  type.*flag.Flag   şJgo.typelink.[]*flag.Flag	[]*flag.Flag              "type.[]*flag.Flag   şTgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb           şTgclocalsÂ·0b86ef39f3fed835f14ba5f4d7c62fa2             şTgclocalsÂ·a8eabfc4a4514ed6b3b0c61e9680e440              şTgclocalsÂ·3bb21ca8fe1d99a3e492463bd711418a             ş6type..hashfunc."".refacDesc              .type..hash."".refacDesc   ş2type..eqfunc."".refacDesc              *type..eq."".refacDesc   ş,type..alg."".refacDesc                        6type..hashfunc."".refacDesc     2type..eqfunc."".refacDesc   ş<go.string.hdr."*doc.refacDesc"                       4go.string."*doc.refacDesc"   ş4go.string."*doc.refacDesc"    *doc.refacDesc  ş$type.*"".refacDesc                  a—Vš 6                                                
+0   runtime.algarray   @  "runtime.gcbits.01   P  <go.string.hdr."*doc.refacDesc"   p  6go.weak.type.**"".refacDesc   €  "type."".refacDesc   ş"runtime.gcbits.05    ş:go.string.hdr."doc.refacDesc"                       2go.string."doc.refacDesc"   ş2go.string."doc.refacDesc"    doc.refacDesc  ş&go.string.hdr."Key"                       go.string."Key"   şgo.string."Key"   Key  ş6go.string.hdr."Description"                       .go.string."Description"   ş.go.string."Description"    Description  ş2go.string.hdr."refacDesc"             	          *go.string."refacDesc"   ş*go.string."refacDesc"    refacDesc  ş`go.string.hdr."github.com/godoctor/godoctor/doc"                        Xgo.string."github.com/godoctor/godoctor/doc"   şXgo.string."github.com/godoctor/godoctor/doc" P  Bgithub.com/godoctor/godoctor/doc  ş"go.importpath."".                        Xgo.string."github.com/godoctor/godoctor/doc"   ş"type."".refacDesc                    äÃ ä                                                                                                                                                                                      0  ,type..alg."".refacDesc   @  "runtime.gcbits.05   P  :go.string.hdr."doc.refacDesc"   p  $type.*"".refacDesc   €° "type."".refacDesc   °  &go.string.hdr."Key"   Ğ  type.string   €  6go.string.hdr."Description"      ttype.*github.com/godoctor/godoctor/refactoring.Description   `Ğ "type."".refacDesc   Ğ  2go.string.hdr."refacDesc"   à  "go.importpath."".   ğ  "type."".refacDesc   ş>go.string.hdr."[]doc.refacDesc"                       6go.string."[]doc.refacDesc"   ş6go.string."[]doc.refacDesc"     []doc.refacDesc  ş&type.[]"".refacDesc                 Ä,…                                                 
+0   runtime.algarray   @  "runtime.gcbits.01   P  >go.string.hdr."[]doc.refacDesc"   p  8go.weak.type.*[]"".refacDesc   €  "type."".refacDesc   şTgo.typelink.[]doc.refacDesc	[]"".refacDesc              &type.[]"".refacDesc   ş>go.string.hdr."*doc.docContent"                       6go.string."*doc.docContent"   ş6go.string."*doc.docContent"     *doc.docContent  ş&type.*"".docContent                  •Šœ 6                                                
+0   runtime.algarray   @  "runtime.gcbits.01   P  >go.string.hdr."*doc.docContent"   p  8go.weak.type.**"".docContent   €  $type."".docContent   ş"runtime.gcbits.25   % ş<go.string.hdr."doc.docContent"                       4go.string."doc.docContent"   ş4go.string."doc.docContent"    doc.docContent  ş*go.string.hdr."Flags"                       "go.string."Flags"   ş"go.string."Flags"   Flags  ş8go.string.hdr."Refactorings"                       0go.string."Refactorings"   ş0go.string."Refactorings"    Refactorings  ş4go.string.hdr."docContent"             
+          ,go.string."docContent"   ş,go.string."docContent"    docContent  ş$type."".docContent  ğ  ğ@       0       Zë@î                                                                                                                                                                              (                                               0à  runtime.algarray   @  "runtime.gcbits.25   P  <go.string.hdr."doc.docContent"   p  &type.*"".docContent   €° $type."".docContent   °  2go.string.hdr."AboutText"   Ğ  type.string   €  *go.string.hdr."Flags"      "type.[]*flag.Flag   Ğ  8go.string.hdr."Refactorings"   ğ  &type.[]"".refacDesc   `  $type."".docContent      4go.string.hdr."docContent"   °  "go.importpath."".   Àğ $type."".docContent   şJgo.string.hdr."*doc.UserGuideContent"                       Bgo.string."*doc.UserGuideContent"   şBgo.string."*doc.UserGuideContent" 0  ,*doc.UserGuideContent  ş2type.*"".UserGuideContent                  Œ ;ò 6                                                
+0   runtime.algarray   @  "runtime.gcbits.01   P  Jgo.string.hdr."*doc.UserGuideContent"   p  Dgo.weak.type.**"".UserGuideContent   €  0type."".UserGuideContent   ş&runtime.gcbits.2505   % şHgo.string.hdr."doc.UserGuideContent"                       @go.string."doc.UserGuideContent"   ş@go.string."doc.UserGuideContent" 0  *doc.UserGuideContent  ş6go.string.hdr."ManPageHTML"                       .go.string."ManPageHTML"   ş.go.string."ManPageHTML"    ManPageHTML  ş4go.string.hdr."VimdocHTML"             
+          ,go.string."VimdocHTML"   ş,go.string."VimdocHTML"    VimdocHTML  ş@go.string.hdr."UserGuideContent"                       8go.string."UserGuideContent"   ş8go.string."UserGuideContent" 0  "UserGuideContent  ş0type."".UserGuideContent  ğ  ğ`       X       V&›                                                                                                                                       @                                       P                                               0à  runtime.algarray   @  &runtime.gcbits.2505   P  Hgo.string.hdr."doc.UserGuideContent"   p  2type.*"".UserGuideContent   €° 0type."".UserGuideContent   À  "go.importpath."".   Ğ  $type."".docContent   €  6go.string.hdr."ManPageHTML"      type.string   Ğ  4go.string.hdr."VimdocHTML"   ğ  type.string   `  0type."".UserGuideContent      @go.string.hdr."UserGuideContent"   °  "go.importpath."".   Àğ 0type."".UserGuideContent   ş"runtime.gcbits.03    ş8go.string.hdr."interface {}"                       0go.string."interface {}"   ş0go.string."interface {}"    interface {}  ş"type.interface {} °  °              çW                                                                  
+0€  runtime.algarray   @  "runtime.gcbits.03   P  8go.string.hdr."interface {}"   p  4go.weak.type.*interface {}   €° "type.interface {}   ş<go.string.hdr."[]interface {}"                       4go.string."[]interface {}"   ş4go.string."[]interface {}"    []interface {}  ş&type.[]interface {}                 p“ê/                                                 
+0   runtime.algarray   @  "runtime.gcbits.01   P  <go.string.hdr."[]interface {}"   p  8go.weak.type.*[]interface {}   €  "type.interface {}   şRgo.typelink.[]interface {}	[]interface {}              &type.[]interface {}   şTgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb           şTgclocalsÂ·0b86ef39f3fed835f14ba5f4d7c62fa2             şTgclocalsÂ·a8eabfc4a4514ed6b3b0c61e9680e440              şTgclocalsÂ·3bb21ca8fe1d99a3e492463bd711418a             ş<type..hashfunc.[1]interface {}              4type..hash.[1]interface {}   ş8type..eqfunc.[1]interface {}              0type..eq.[1]interface {}   ş2type..alg.[1]interface {}                        <type..hashfunc.[1]interface {}     8type..eqfunc.[1]interface {}   ş>go.string.hdr."[1]interface {}"                       6go.string."[1]interface {}"   ş6go.string."[1]interface {}"     [1]interface {}  ş(type.[1]interface {} °  °              P‘[ú                                                                0  2type..alg.[1]interface {}   @  "runtime.gcbits.03   P  >go.string.hdr."[1]interface {}"   p  :go.weak.type.*[1]interface {}   €  "type.interface {}     &type.[]interface {}   şVgo.typelink.[1]interface {}	[1]interface {}              (type.[1]interface {}   ş@go.string.hdr."*[1]interface {}"                       8go.string."*[1]interface {}"   ş8go.string."*[1]interface {}" 0  "*[1]interface {}  ş*type.*[1]interface {}                 ¿¨5 6                                                
+0   runtime.algarray   @  "runtime.gcbits.01   P  @go.string.hdr."*[1]interface {}"   p  <go.weak.type.**[1]interface {}   €  (type.[1]interface {}   şTgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb           şTgclocalsÂ·0b86ef39f3fed835f14ba5f4d7c62fa2             şTgclocalsÂ·a8eabfc4a4514ed6b3b0c61e9680e440              şTgclocalsÂ·3bb21ca8fe1d99a3e492463bd711418a             ş0type..hashfunc.[3]string              (type..hash.[3]string   ş,type..eqfunc.[3]string              $type..eq.[3]string   ş&type..alg.[3]string                        0type..hashfunc.[3]string     ,type..eqfunc.[3]string   ş"runtime.gcbits.15    ş2go.string.hdr."[3]string"             	          *go.string."[3]string"   ş*go.string."[3]string"    [3]string  ştype.[3]string °  °0       (       CÙiB                                                                0  &type..alg.[3]string   @  "runtime.gcbits.15   P  2go.string.hdr."[3]string"   p  .go.weak.type.*[3]string   €  type.string     type.[]string   ş>go.typelink.[3]string	[3]string              type.[3]string   ş4go.string.hdr."*[3]string"             
+          ,go.string."*[3]string"   ş,go.string."*[3]string"    *[3]string  ştype.*[3]string                 
++é 6                                                
+0   runtime.algarray   @  "runtime.gcbits.01   P  4go.string.hdr."*[3]string"   p  0go.weak.type.**[3]string   €  type.[3]string   ş:go.string.hdr."[0]*flag.Flag"                       2go.string."[0]*flag.Flag"   ş2go.string."[0]*flag.Flag"    [0]*flag.Flag  ş$type.[0]*flag.Flag °  °                ŞÈYÿ ‘                                                                0   runtime.algarray   @  runtime.gcbits.   P  :go.string.hdr."[0]*flag.Flag"   p  6go.weak.type.*[0]*flag.Flag   €  type.*flag.Flag     "type.[]*flag.Flag   şNgo.typelink.[0]*flag.Flag	[0]*flag.Flag              $type.[0]*flag.Flag   şTgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb           şTgclocalsÂ·0b86ef39f3fed835f14ba5f4d7c62fa2             şTgclocalsÂ·34eab47d33fa46b254c22cdccfd2dc77                   şTgclocalsÂ·51af24152615272c3d9efc8538f95767                  ş<type..hashfunc.[0]"".refacDesc              4type..hash.[0]"".refacDesc   ş8type..eqfunc.[0]"".refacDesc              0type..eq.[0]"".refacDesc   ş2type..alg.[0]"".refacDesc                        <type..hashfunc.[0]"".refacDesc     8type..eqfunc.[0]"".refacDesc   ş@go.string.hdr."[0]doc.refacDesc"                       8go.string."[0]doc.refacDesc"   ş8go.string."[0]doc.refacDesc" 0  "[0]doc.refacDesc  ş(type.[0]"".refacDesc °  °                t) ‘                                                                0  2type..alg.[0]"".refacDesc   @  runtime.gcbits.   P  @go.string.hdr."[0]doc.refacDesc"   p  :go.weak.type.*[0]"".refacDesc   €  "type."".refacDesc     &type.[]"".refacDesc   şXgo.typelink.[0]doc.refacDesc	[0]"".refacDesc              (type.[0]"".refacDesc   şRgo.string.hdr."[]refactoring.Refactoring"                       Jgo.string."[]refactoring.Refactoring"   şJgo.string."[]refactoring.Refactoring" @  4[]refactoring.Refactoring  şvtype.[]github.com/godoctor/godoctor/refactoring.Refactoring                 Rhí                                                 
+0   runtime.algarray   @  "runtime.gcbits.01   P  Rgo.string.hdr."[]refactoring.Refactoring"   p  ˆgo.weak.type.*[]github.com/godoctor/godoctor/refactoring.Refactoring   €  rtype.github.com/godoctor/godoctor/refactoring.Refactoring   ş¸go.typelink.[]refactoring.Refactoring	[]github.com/godoctor/godoctor/refactoring.Refactoring              vtype.[]github.com/godoctor/godoctor/refactoring.Refactoring   şTgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb           şTgclocalsÂ·0b86ef39f3fed835f14ba5f4d7c62fa2             şTgclocalsÂ·a8eabfc4a4514ed6b3b0c61e9680e440              şTgclocalsÂ·3bb21ca8fe1d99a3e492463bd711418a             şŒtype..hashfunc.[8]github.com/godoctor/godoctor/refactoring.Refactoring              „type..hash.[8]github.com/godoctor/godoctor/refactoring.Refactoring   şˆtype..eqfunc.[8]github.com/godoctor/godoctor/refactoring.Refactoring              €type..eq.[8]github.com/godoctor/godoctor/refactoring.Refactoring   ş‚type..alg.[8]github.com/godoctor/godoctor/refactoring.Refactoring                        Œtype..hashfunc.[8]github.com/godoctor/godoctor/refactoring.Refactoring     ˆtype..eqfunc.[8]github.com/godoctor/godoctor/refactoring.Refactoring   ş&runtime.gcbits.ffff   ÿÿ şTgo.string.hdr."[8]refactoring.Refactoring"                       Lgo.string."[8]refactoring.Refactoring"   şLgo.string."[8]refactoring.Refactoring" @  6[8]refactoring.Refactoring  şxtype.[8]github.com/godoctor/godoctor/refactoring.Refactoring °  °€       €       35">                                                                0  ‚type..alg.[8]github.com/godoctor/godoctor/refactoring.Refactoring   @  &runtime.gcbits.ffff   P  Tgo.string.hdr."[8]refactoring.Refactoring"   p  Šgo.weak.type.*[8]github.com/godoctor/godoctor/refactoring.Refactoring   €  rtype.github.com/godoctor/godoctor/refactoring.Refactoring     vtype.[]github.com/godoctor/godoctor/refactoring.Refactoring   ş¼go.typelink.[8]refactoring.Refactoring	[8]github.com/godoctor/godoctor/refactoring.Refactoring              xtype.[8]github.com/godoctor/godoctor/refactoring.Refactoring   ştgo.string.hdr."*map.bucket[string]refactoring.Refactoring"             *          lgo.string."*map.bucket[string]refactoring.Refactoring"   şlgo.string."*map.bucket[string]refactoring.Refactoring" `  V*map.bucket[string]refactoring.Refactoring  ş˜type.*map.bucket[string]github.com/godoctor/godoctor/refactoring.Refactoring                 "9PE 6                                                
+0   runtime.algarray   @  "runtime.gcbits.01   P  tgo.string.hdr."*map.bucket[string]refactoring.Refactoring"   p  ªgo.weak.type.**map.bucket[string]github.com/godoctor/godoctor/refactoring.Refactoring   €  –type.map.bucket[string]github.com/godoctor/godoctor/refactoring.Refactoring   ş2runtime.gcbits.aaaafeff03 
+  
+ªªşÿ şrgo.string.hdr."map.bucket[string]refactoring.Refactoring"             )          jgo.string."map.bucket[string]refactoring.Refactoring"   şjgo.string."map.bucket[string]refactoring.Refactoring" `  Tmap.bucket[string]refactoring.Refactoring  ş–type.map.bucket[string]github.com/godoctor/godoctor/refactoring.Refactoring ğ  ğ            J|°                                                                                                                                                                              ˆ                                             0à  runtime.algarray   @  2runtime.gcbits.aaaafeff03   P  rgo.string.hdr."map.bucket[string]refactoring.Refactoring"   p  ¨go.weak.type.*map.bucket[string]github.com/godoctor/godoctor/refactoring.Refactoring   €° –type.map.bucket[string]github.com/godoctor/godoctor/refactoring.Refactoring   °  .go.string.hdr."topbits"   Ğ  type.[8]uint8   €  (go.string.hdr."keys"      type.[8]string   Ğ  ,go.string.hdr."values"   ğ  xtype.[8]github.com/godoctor/godoctor/refactoring.Refactoring      0go.string.hdr."overflow"   À  ˜type.*map.bucket[string]github.com/godoctor/godoctor/refactoring.Refactoring   şlgo.string.hdr."map.hdr[string]refactoring.Refactoring"             &          dgo.string."map.hdr[string]refactoring.Refactoring"   şdgo.string."map.hdr[string]refactoring.Refactoring" P  Nmap.hdr[string]refactoring.Refactoring  ştype.map.hdr[string]github.com/godoctor/godoctor/refactoring.Refactoring °  °0       0       ¸€í                                                                                                                                                                              	                                                                                                                                                                                                    (       *0à  runtime.algarray   @  "runtime.gcbits.2c   P  lgo.string.hdr."map.hdr[string]refactoring.Refactoring"   p  ¢go.weak.type.*map.hdr[string]github.com/godoctor/godoctor/refactoring.Refactoring   €° type.map.hdr[string]github.com/godoctor/godoctor/refactoring.Refactoring   °  *go.string.hdr."count"   Ğ  type.int   €  *go.string.hdr."flags"      type.uint8   Ğ  "go.string.hdr."B"   ğ  type.uint8      *go.string.hdr."hash0"   À  type.uint32   ğ  .go.string.hdr."buckets"     ˜type.*map.bucket[string]github.com/godoctor/godoctor/refactoring.Refactoring   À  4go.string.hdr."oldbuckets"   à  ˜type.*map.bucket[string]github.com/godoctor/godoctor/refactoring.Refactoring     2go.string.hdr."nevacuate"   °  type.uintptr   à  0go.string.hdr."overflow"   €  &type.unsafe.Pointer   şdgo.string.hdr."map[string]refactoring.Refactoring"             "          \go.string."map[string]refactoring.Refactoring"   ş\go.string."map[string]refactoring.Refactoring" P  Fmap[string]refactoring.Refactoring  şˆtype.map[string]github.com/godoctor/godoctor/refactoring.Refactoring Ğ  Ğ              	ÂÇ¬ 5                                                                          0€  runtime.algarray   @  "runtime.gcbits.01   P  dgo.string.hdr."map[string]refactoring.Refactoring"   p  šgo.weak.type.*map[string]github.com/godoctor/godoctor/refactoring.Refactoring   €  type.string     rtype.github.com/godoctor/godoctor/refactoring.Refactoring      –type.map.bucket[string]github.com/godoctor/godoctor/refactoring.Refactoring   °  type.map.hdr[string]github.com/godoctor/godoctor/refactoring.Refactoring   şÜgo.typelink.map[string]refactoring.Refactoring	map[string]github.com/godoctor/godoctor/refactoring.Refactoring              ˆtype.map[string]github.com/godoctor/godoctor/refactoring.Refactoring   ş"runtime.gcbits.02    şzgo.string.hdr."struct { F uintptr; content *doc.docContent }"             -          rgo.string."struct { F uintptr; content *doc.docContent }"   şrgo.string."struct { F uintptr; content *doc.docContent }" `  \struct { F uintptr; content *doc.docContent }  ş$go.string.hdr.".F"                       go.string.".F"   şgo.string.".F"   .F  ş.go.string.hdr."content"                       &go.string."content"   ş&go.string."content"   content  şbtype.struct { F uintptr; content *"".docContent } Ğ  Ğ              ú±                                                                                                                                              0À  runtime.algarray   @  "runtime.gcbits.02   P  zgo.string.hdr."struct { F uintptr; content *doc.docContent }"   p  tgo.weak.type.*struct { F uintptr; content *"".docContent }   €° btype.struct { F uintptr; content *"".docContent }   °  $go.string.hdr.".F"   À  "go.importpath."".   Ğ  type.uintptr   €  .go.string.hdr."content"     "go.importpath."".      &type.*"".docContent   ş<go.string.hdr."*[0]*flag.Flag"                       4go.string."*[0]*flag.Flag"   ş4go.string."*[0]*flag.Flag"    *[0]*flag.Flag  ş&type.*[0]*flag.Flag                 ùæ 6                                                
+0   runtime.algarray   @  "runtime.gcbits.01   P  <go.string.hdr."*[0]*flag.Flag"   p  8go.weak.type.**[0]*flag.Flag   €  $type.[0]*flag.Flag   şBgo.string.hdr."*[0]doc.refacDesc"                       :go.string."*[0]doc.refacDesc"   ş:go.string."*[0]doc.refacDesc" 0  $*[0]doc.refacDesc  ş*type.*[0]"".refacDesc                 }»ô 6                                                
+0   runtime.algarray   @  "runtime.gcbits.01   P  Bgo.string.hdr."*[0]doc.refacDesc"   p  <go.weak.type.**[0]"".refacDesc   €  (type.[0]"".refacDesc   ş|go.string.hdr."*struct { F uintptr; content *doc.docContent }"             .          tgo.string."*struct { F uintptr; content *doc.docContent }"   ştgo.string."*struct { F uintptr; content *doc.docContent }" `  ^*struct { F uintptr; content *doc.docContent }  şdtype.*struct { F uintptr; content *"".docContent }                 (ïà7 6                                                
+0   runtime.algarray   @  "runtime.gcbits.01   P  |go.string.hdr."*struct { F uintptr; content *doc.docContent }"   p  vgo.weak.type.**struct { F uintptr; content *"".docContent }   €  btype.struct { F uintptr; content *"".docContent }   ş4go.string.hdr."*[8]string"             
+          ,go.string."*[8]string"   ş,go.string."*[8]string"    *[8]string  ştype.*[8]string                 ­”o 6                                                
+0   runtime.algarray   @  "runtime.gcbits.01   P  4go.string.hdr."*[8]string"   p  0go.weak.type.**[8]string   €  type.[8]string   şVgo.string.hdr."*[8]refactoring.Refactoring"                       Ngo.string."*[8]refactoring.Refactoring"   şNgo.string."*[8]refactoring.Refactoring" @  8*[8]refactoring.Refactoring  şztype.*[8]github.com/godoctor/godoctor/refactoring.Refactoring                 ÚK·£ 6                                                
+0   runtime.algarray   @  "runtime.gcbits.01   P  Vgo.string.hdr."*[8]refactoring.Refactoring"   p  Œgo.weak.type.**[8]github.com/godoctor/godoctor/refactoring.Refactoring   €  xtype.[8]github.com/godoctor/godoctor/refactoring.Refactoring   ş(go.string.hdr."flag"                        go.string."flag"   ş go.string."flag"   
+flag  ş&go.importpath.flag.                        go.string."flag"   ş&go.string.hdr."fmt"                       go.string."fmt"   şgo.string."fmt"   fmt  ş$go.importpath.fmt.                       go.string."fmt"   ş$go.string.hdr."io"                       go.string."io"   şgo.string."io"   io  ş"go.importpath.io.                       go.string."io"   ş:go.string.hdr."text/template"                       2go.string."text/template"   ş2go.string."text/template"    text/template  ş8go.importpath.text/template.                       2go.string."text/template"   ş*go.string.hdr."bytes"                       "go.string."bytes"   ş"go.string."bytes"   bytes  ş(go.importpath.bytes.                       "go.string."bytes"   ş.go.string.hdr."strings"                       &go.string."strings"   ş&go.string."strings"   strings  ş,go.importpath.strings.                       &go.string."strings"   ş.go.string.hdr."os/exec"                       &go.string."os/exec"   ş&go.string."os/exec"   os/exec  ş,go.importpath.os/exec.                       &go.string."os/exec"   şfgo.string.hdr."github.com/godoctor/godoctor/engine"             #          ^go.string."github.com/godoctor/godoctor/engine"   ş^go.string."github.com/godoctor/godoctor/engine" P  Hgithub.com/godoctor/godoctor/engine  şdgo.importpath.github.com/godoctor/godoctor/engine.             #          ^go.string."github.com/godoctor/godoctor/engine"   şpgo.string.hdr."github.com/godoctor/godoctor/refactoring"             (          hgo.string."github.com/godoctor/godoctor/refactoring"   şhgo.string."github.com/godoctor/godoctor/refactoring" `  Rgithub.com/godoctor/godoctor/refactoring  şngo.importpath.github.com/godoctor/godoctor/refactoring.             (          hgo.string."github.com/godoctor/godoctor/refactoring"   ş.type..hash.[8]stringÂ·f              (type..hash.[8]string   ş*type..eq.[8]stringÂ·f              $type..eq.[8]string   ş4type..hash."".refacDescÂ·f              .type..hash."".refacDesc   ş0type..eq."".refacDescÂ·f              *type..eq."".refacDesc   ş:type..hash.[1]interface {}Â·f              4type..hash.[1]interface {}   ş6type..eq.[1]interface {}Â·f              0type..eq.[1]interface {}   ş.type..hash.[3]stringÂ·f              (type..hash.[3]string   ş*type..eq.[3]stringÂ·f              $type..eq.[3]string   ş:type..hash.[0]"".refacDescÂ·f              4type..hash.[0]"".refacDesc   ş6type..eq.[0]"".refacDescÂ·f              0type..eq.[0]"".refacDesc   şŠtype..hash.[8]github.com/godoctor/godoctor/refactoring.RefactoringÂ·f              „type..hash.[8]github.com/godoctor/godoctor/refactoring.Refactoring   ş†type..eq.[8]github.com/godoctor/godoctor/refactoring.RefactoringÂ·f              €type..eq.[8]github.com/godoctor/godoctor/refactoring.Refactoring   ÿÿgo13ld 
