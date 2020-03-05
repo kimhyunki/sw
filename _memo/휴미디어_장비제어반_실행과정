@@ -4,7 +4,7 @@ echo "tcpdump src 192.168.0.199 and tcp port 9090 -x  -c 1 | tail -7 | awk -F':'
 
 tcpdump src 192.168.0.199 and tcp port 9090 -x  -c 1 | tail -7 | awk -F':' '{ print $2 }' | ./app-tcpcap
 
-tcpdump src 192.168.0.199 and tcp port 9090 -x -c 1 | ./app-tcpcapjk
+tcpdump src 192.168.0.199 and tcp port 9090 -x -c 1 | ./app-tcpcap
 
 
 1. win pc 의 고정 IP 설정 
