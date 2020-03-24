@@ -35,3 +35,90 @@ ERROR: pull access denied for base/home-main-ds, repository does not exist or ma
 press enter
 ^Ckhk@ubuntu:~/work/falinux/fullcycle/wpo/homepage-service$ 
 
+-------------
+
+khk@ubuntu:~/work/falinux/fullcycle/wpo/homepage-service$ ./run.sh 
+name=home-ktest-single-mem-info
+path=/ktest/single/mem-info/
+'copy-dir/deploy-kustomize.sh' -> 'kcert2-home-ktest-single-mem-info/docker/deploy-kustomize.sh'
+'copy-dir/kustomize/' -> 'kcert2-home-ktest-single-mem-info/kustomize'
+'copy-dir/kustomize/ingress.yaml' -> 'kcert2-home-ktest-single-mem-info/kustomize/ingress.yaml'
+'copy-dir/kustomize/kustomization.yaml' -> 'kcert2-home-ktest-single-mem-info/kustomize/kustomization.yaml'
+'copy-dir/kustomize/service.yaml' -> 'kcert2-home-ktest-single-mem-info/kustomize/service.yaml'
+'copy-dir/kustomize/deployment.yaml' -> 'kcert2-home-ktest-single-mem-info/kustomize/deployment.yaml'
+home-ktest-single-mem-info select
+
+> nodent-runtime@3.2.1 install /apps/home-ktest-single-mem-info/node_modules/nodent-runtime
+> node build.js
+
+## Built /apps/home-ktest-single-mem-info/node_modules/nodent-runtime/dist/index.js
+
+> yorkie@2.0.0 install /apps/home-ktest-single-mem-info/node_modules/yorkie
+> node bin/install.js
+
+setting up Git hooks
+can't find .git directory, skipping Git hooks installation
+
+> core-js@3.1.4 postinstall /apps/home-ktest-single-mem-info/node_modules/apollo-env/node_modules/core-js
+> node scripts/postinstall || echo "ignore"
+
+
+> core-js@2.6.9 postinstall /apps/home-ktest-single-mem-info/node_modules/core-js
+> node scripts/postinstall || echo "ignore"
+
+
+> protobufjs@6.8.8 postinstall /apps/home-ktest-single-mem-info/node_modules/protobufjs
+> node scripts/postinstall
+
+
+> nodemon@1.19.1 postinstall /apps/home-ktest-single-mem-info/node_modules/nodemon
+> node bin/postinstall || exit 0
+
+Love nodemon? You can now support the project via the open collective:
+ > https://opencollective.com/nodemon/donate
+
+
+> cypress@3.3.1 postinstall /apps/home-ktest-single-mem-info/node_modules/cypress
+> node index.js --exec install
+
+ ✔  Downloaded Cypress
+ ✔  Unzipped Cypress
+ ✔  Finished Installation /apps/.cypress-cache/3.3.1
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.9 (node_modules/fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.9: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+
+added 1941 packages from 2402 contributors and audited 38152 packages in 65.86s
+found 2035 vulnerabilities (1173 low, 20 moderate, 839 high, 3 critical)
+  run `npm audit fix` to fix them, or `npm audit` for details
+
+kcert2-home-ktest-single-mem-info dev sever
+Run a one-off command on a service.
+
+For example:
+
+    $ docker-compose run web python manage.py shell
+
+By default, linked services will be started, unless they are already
+running. If you do not want to start linked services, use
+`docker-compose run --no-deps SERVICE COMMAND [ARGS...]`.
+
+Usage: run [options] [-p PORT...] [-e KEY=VAL...] SERVICE [COMMAND] [ARGS...]
+
+Options:
+    -d                    Detached mode: Run container in the background, print
+                          new container name.
+    --name NAME           Assign a name to the container
+    --entrypoint CMD      Override the entrypoint of the image.
+    -e KEY=VAL            Set an environment variable (can be used multiple times)
+    -u, --user=""         Run as specified username or uid
+    --no-deps             Don't start linked services.
+    --rm                  Remove container after run. Ignored in detached mode.
+    -p, --publish=[]      Publish a container's port(s) to the host
+    --service-ports       Run command with the service's ports enabled and mapped
+                          to the host.
+    -T                    Disable pseudo-tty allocation. By default `docker-compose run`
+                          allocates a TTY.
+    -w, --workdir=""      Working directory inside the container
+
+
+
