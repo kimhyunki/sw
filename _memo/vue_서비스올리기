@@ -15,3 +15,23 @@ Pulling base-home-main-ds (base/home-main-ds:0.2)...
 ERROR: pull access denied for base/home-main-ds, repository does not exist or may require 'docker login': denied: requested access to the resource is denied
 press enter
 
+-------------
+
+khk@ubuntu:~/work/falinux/fullcycle/wpo/homepage-service$ ./run.sh 
+name=home-downloder-single-nuvoton-NUC972DF62Y
+path=nuvoton-NUC972DF62Y
+'copy-dir/deploy-kustomize.sh' -> 'kcert2-home-downloder-single-nuvoton-NUC972DF62Y/docker/deploy-kustomize.sh'
+'copy-dir/kustomize/ingress.yaml' -> 'kcert2-home-downloder-single-nuvoton-NUC972DF62Y/kustomize/ingress.yaml'
+'copy-dir/kustomize/kustomization.yaml' -> 'kcert2-home-downloder-single-nuvoton-NUC972DF62Y/kustomize/kustomization.yaml'
+'copy-dir/kustomize/deployment.yaml' -> 'kcert2-home-downloder-single-nuvoton-NUC972DF62Y/kustomize/deployment.yaml'
+'copy-dir/kustomize/service.yaml' -> 'kcert2-home-downloder-single-nuvoton-NUC972DF62Y/kustomize/service.yaml'
+home-downloader-single-nuvoton-NUC972DF62Y select
+Pulling base-home-main-ds (base/home-main-ds:0.2)...
+ERROR: pull access denied for base/home-main-ds, repository does not exist or may require 'docker login': denied: requested access to the resource is denied
+
+kcert2-home-downloader-single-nuvoton-nuc972df62y dev sever
+Pulling base-home-main-ds (base/home-main-ds:0.2)...
+ERROR: pull access denied for base/home-main-ds, repository does not exist or may require 'docker login': denied: requested access to the resource is denied
+press enter
+^Ckhk@ubuntu:~/work/falinux/fullcycle/wpo/homepage-service$ 
+
