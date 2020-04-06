@@ -1,0 +1,313 @@
+U-Boot SPL 2015.04 (Mar 16 2020 - 15:54:14)
+detected max. frequency: 1000 - retuning MPU-PLL to: 1000 MHz.
+Using default environment
+
+
+
+U-Boot 2015.04 (Mar 16 2020 - 15:54:14)
+
+       Watchdog enabled
+I2C:   ready
+DRAM:  512 MiB
+MMC:   OMAP SD/MMC: 0, OMAP SD/MMC: 1
+Using default environment
+
+Net:   Timed out in wait_for_event: status=0000
+Check if pads/pull-ups of bus 1 are properly configured
+cpsw
+Error: cpsw address not set.
+, usb_ether
+Hit any key to stop autoboot:  0 
+
+Booting from eMMC (Boot partition bootting)...
+switch to partitions #0, OK
+mmc1(part 0) is current device
+reading am335x-bbb.dtb
+61605 bytes read in 9 ms (6.5 MiB/s)
+reading uImage
+5164936 bytes read in 279 ms (17.7 MiB/s)
+reading rootfs.cpio.uboot
+17601805 bytes read in 944 ms (17.8 MiB/s)
+## Booting kernel from Legacy Image at 81000000 ...
+   Image Name:   Linux-4.4.36
+   Created:      2020-03-16   3:14:04 UTC
+   Image Type:   ARM Linux Kernel Image (uncompressed)
+   Data Size:    5164872 Bytes = 4.9 MiB
+   Load Address: 80008000
+   Entry Point:  80008000
+   Verifying Checksum ... OK
+## Loading init Ramdisk from Legacy Image at 82000000 ...
+   Image Name:   
+   Created:      2020-03-16   3:46:58 UTC
+   Image Type:   ARM Linux RAMDisk Image (uncompressed)
+   Data Size:    17601741 Bytes = 16.8 MiB
+   Load Address: 00000000
+   Entry Point:  00000000
+   Verifying Checksum ... OK
+## Flattened Device Tree blob at 80800000
+   Booting using the fdt blob at 0x80800000
+   Loading Kernel Image ... OK
+   Loading Ramdisk to 8ef36000, end 8ffff4cd ... OK
+   Loading Device Tree to 8ef23000, end 8ef350a4 ... OK
+
+Starting kernel ...
+
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Linux version 4.4.36 (khk@bbb) (gcc version 6.4.0 (Buildroot 2018.02.9) ) #1 Mon Mar 16 12:13:48 KST 2020
+[    0.000000] CPU: ARMv7 Processor [413fc082] revision 2 (ARMv7), cr=10c5387d
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+[    0.000000] Machine model: TI AM335x BBB
+[    0.000000] cma: Reserved 24 MiB at 0x9e000000
+[    0.000000] Memory policy: Data cache writeback
+[    0.000000] CPU: All CPU(s) started in SVC mode.
+[    0.000000] AM335X ES2.1 (sgx neon )
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 129536
+[    0.000000] Kernel command line: console=ttyO0,115200n8 exec=/app/run.sh
+[    0.000000] PID hash table entries: 2048 (order: 1, 8192 bytes)
+[    0.000000] Dentry cache hash table entries: 65536 (order: 6, 262144 bytes)
+[    0.000000] Inode-cache hash table entries: 32768 (order: 5, 131072 bytes)
+[    0.000000] Memory: 464868K/522240K available (7131K kernel code, 284K rwdata, 2760K rodata, 288K init, 223K bss, 32796K reserved, 24576K cma-reserved, 0K highmem)
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+[    0.000000]     fixmap  : 0xffc00000 - 0xfff00000   (3072 kB)
+[    0.000000]     vmalloc : 0xe0800000 - 0xff800000   ( 496 MB)
+[    0.000000]     lowmem  : 0xc0000000 - 0xe0000000   ( 512 MB)
+[    0.000000]     pkmap   : 0xbfe00000 - 0xc0000000   (   2 MB)
+[    0.000000]     modules : 0xbf000000 - 0xbfe00000   (  14 MB)
+[    0.000000]       .text : 0xc0008000 - 0xc09b1064   (9893 kB)
+[    0.000000]       .init : 0xc09b2000 - 0xc09fa000   ( 288 kB)
+[    0.000000]       .data : 0xc09fa000 - 0xc0a41208   ( 285 kB)
+[    0.000000]        .bss : 0xc0a44000 - 0xc0a7bcc8   ( 224 kB)
+[    0.000000] NR_IRQS:16 nr_irqs:16 16
+[    0.000000] IRQ: Found an INTC at 0xfa200000 (revision 5.0) with 128 interrupts
+[    0.000000] OMAP clockevent source: timer2 at 24000000 Hz
+[    0.000013] sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 89478484971ns
+[    0.000033] clocksource: timer1: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 79635851949 ns
+[    0.000042] OMAP clocksource: timer1 at 24000000 Hz
+[    0.000797] clocksource_probe: no matching clocksources found
+[    0.001019] Console: colour dummy device 80x30
+[    0.001048] Calibrating delay loop... 996.14 BogoMIPS (lpj=4980736)
+[    0.089241] pid_max: default: 32768 minimum: 301
+[    0.089326] Security Framework initialized
+[    0.089366] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.089375] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.090022] CPU: Testing write buffer coherency: ok
+[    0.090347] Setting up static identity map for 0x80008200 - 0x80008258
+[    0.091901] devtmpfs: initialized
+[    0.107129] VFP support v0.3: implementor 41 architecture 3 part 30 variant c rev 3
+[    0.119443] omap_hwmod: debugss: _wait_target_disable failed
+[    0.161380] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+[    0.163146] pinctrl core: initialized pinctrl subsystem
+[    0.164345] NET: Registered protocol family 16
+[    0.166016] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.173869] OMAP GPIO hardware version 0.1
+[    0.186272] No ATAGs?
+[    0.186303] hw-breakpoint: debug architecture 0x4 unsupported.
+[    0.187248] omap4_sram_init:Unable to allocate sram needed to handle errata I688
+[    0.187265] omap4_sram_init:Unable to get sram pool needed to handle errata I688
+[    0.224398] edma 49000000.edma: TI EDMA DMA engine driver
+[    0.230696] SCSI subsystem initialized
+[    0.231224] usbcore: registered new interface driver usbfs
+[    0.231325] usbcore: registered new interface driver hub
+[    0.231407] usbcore: registered new device driver usb
+[    0.232082] omap_i2c 44e0b000.i2c: could not find pctldev for node /ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_i2c0_pins, deferring probe
+[    0.232126] omap_i2c 4802a000.i2c: could not find pctldev for node /ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_i2c1_pins, deferring probe
+[    0.232153] omap_i2c 4819c000.i2c: could not find pctldev for node /ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_i2c2_pins, deferring probe
+[    0.232311] media: Linux media interface: v0.10
+[    0.232404] Linux video capture interface: v2.00
+[    0.232513] pps_core: LinuxPPS API ver. 1 registered
+[    0.232520] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.232579] PTP clock support registered
+[    0.235137] omap-mailbox 480c8000.mailbox: omap mailbox rev 0x400
+[    0.235534] Advanced Linux Sound Architecture Driver Initialized.
+[    0.236198] Bluetooth: Core ver 2.21
+[    0.236254] NET: Registered protocol family 31
+[    0.236261] Bluetooth: HCI device and connection manager initialized
+[    0.236318] Bluetooth: HCI socket layer initialized
+[    0.236329] Bluetooth: L2CAP socket layer initialized
+[    0.236358] Bluetooth: SCO socket layer initialized
+[    0.237732] clocksource: Switched to clocksource timer1
+[    0.253349] NET: Registered protocol family 2
+[    0.253978] TCP established hash table entries: 4096 (order: 2, 16384 bytes)
+[    0.254021] TCP bind hash table entries: 4096 (order: 2, 16384 bytes)
+[    0.254060] TCP: Hash tables configured (established 4096 bind 4096)
+[    0.254137] UDP hash table entries: 256 (order: 0, 4096 bytes)
+[    0.254155] UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)
+[    0.254278] NET: Registered protocol family 1
+[    0.254854] RPC: Registered named UNIX socket transport module.
+[    0.254866] RPC: Registered udp transport module.
+[    0.254871] RPC: Registered tcp transport module.
+[    0.254876] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.255451] Unpacking initramfs...
+[    1.291097] Freeing initrd memory: 17192K (cef36000 - d0000000)
+[    1.291509] hw perfevents: enabled with armv7_cortex_a8 PMU driver, 5 counters available
+[    1.293818] futex hash table entries: 256 (order: -1, 3072 bytes)
+[    1.295522] VFS: Disk quotas dquot_6.6.0
+[    1.295580] VFS: Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)
+[    1.295989] NFS: Registering the id_resolver key type
+[    1.296048] Key type id_resolver registered
+[    1.296056] Key type id_legacy registered
+[    1.296076] nfs4filelayout_init: NFSv4 File Layout Driver Registering...
+[    1.296141] ntfs: driver 2.1.32 [Flags: R/W].
+[    1.299953] NET: Registered protocol family 38
+[    1.300011] io scheduler noop registered
+[    1.300023] io scheduler deadline registered
+[    1.300068] io scheduler cfq registered (default)
+[    1.301144] pinctrl-single 44e10800.pinmux: 142 pins at pa f9e10800 size 568
+[    1.304077] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+[    1.307535] omap_uart 44e09000.serial: no wakeirq for uart0
+[    1.307718] 44e09000.serial: ttyO0 at MMIO 0x44e09000 (irq = 158, base_baud = 3000000) is a OMAP UART0
+[    1.961719] console [ttyO0] enabled
+[    1.965892] omap_uart 481a8000.serial: no wakeirq for uart4
+[    1.972022] 481a8000.serial: ttyO4 at MMIO 0x481a8000 (irq = 159, base_baud = 3000000) is a OMAP UART4
+[    1.982987] omap_rng 48310000.rng: OMAP Random Number Generator ver. 20
+[    1.990417] [drm] Initialized drm 1.1.0 20060810
+[    2.003624] loop: module loaded
+[    2.008486] nbd: registered device at major 43
+[    2.024972] mtdoops: mtd device (mtddev=name/number) must be supplied
+[    2.033693] vcan: Virtual CAN interface driver
+[    2.038854] CAN device driver interface
+[    2.043952] c_can_platform 481d0000.can: c_can_platform device registered (regs=fa1d0000, irq=166)
+[    2.117782] davinci_mdio 4a101000.mdio: davinci mdio revision 1.6
+[    2.124188] davinci_mdio 4a101000.mdio: detected phy mask fffffffe
+[    2.135545] libphy: 4a101000.mdio: probed
+[    2.139844] davinci_mdio 4a101000.mdio: phy[0]: device 4a101000.mdio:00, driver unknown
+[    2.149192] cpsw 4a100000.ethernet: Detected MACID = 40:bd:32:20:cb:49
+[    2.156156] cpsw 4a100000.ethernet: cpts: overflow check period 850
+[    2.163707] cpsw 4a100000.ethernet: cpsw: Detected MACID = 40:bd:32:20:cb:4b
+[    2.172167] usbcore: registered new interface driver asix
+[    2.178256] usbcore: registered new interface driver ax88179_178a
+[    2.184835] usbcore: registered new interface driver cdc_ether
+[    2.191087] usbcore: registered new interface driver smsc95xx
+[    2.197285] usbcore: registered new interface driver rndis_host
+[    2.203594] usbcore: registered new interface driver cdc_subset
+[    2.209999] usbcore: registered new interface driver cdc_ncm
+[    2.216827] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    2.223903] ehci-omap: OMAP-EHCI Host Controller driver
+[    2.229835] usbcore: registered new interface driver cdc_acm
+[    2.235770] cdc_acm: USB Abstract Control Model driver for USB modems and ISDN adapters
+[    2.244436] usbcore: registered new interface driver cdc_wdm
+[    2.250563] usbcore: registered new interface driver usb-storage
+[    2.257103] usbcore: registered new interface driver usbserial
+[    2.263386] usbcore: registered new interface driver cp210x
+[    2.269365] usbserial: USB Serial support registered for cp210x
+[    2.275645] usbcore: registered new interface driver ftdi_sio
+[    2.281842] usbserial: USB Serial support registered for FTDI USB Serial Device
+[    2.289658] usbcore: registered new interface driver option
+[    2.295566] usbserial: USB Serial support registered for GSM modem (1-port)
+[    2.305075] 47401300.usb-phy supply vcc not found, using dummy regulator
+[    2.313772] 47401b00.usb-phy supply vcc not found, using dummy regulator
+[    2.323299] musb-hdrc musb-hdrc.0.auto: Failed to request rx1.
+[    2.329720] musb-hdrc musb-hdrc.0.auto: musb_init_controller failed with status -517
+[    2.348827] mousedev: PS/2 mouse device common for all mice
+[    2.356247] TI-am335x-tsc TI-am335x-tsc: ti,charge-delay not specified
+[    2.363677] input: ti-tsc as /devices/platform/ocp/44e0d000.tscadc/TI-am335x-tsc/input/input0
+[    2.374171] omap_rtc 44e3e000.rtc: rtc core: registered 44e3e000.rtc as rtc0
+[    2.382133] i2c /dev entries driver
+[    2.386989] omap_wdt: OMAP Watchdog Timer Rev 0x01: initial timeout 60 sec
+[    2.394763] Bluetooth: Virtual HCI driver ver 1.5
+[    2.400058] Bluetooth: HCI UART driver ver 2.3
+[    2.404719] Bluetooth: HCI UART protocol H4 registered
+[    2.410127] Bluetooth: HCI UART protocol BCSP registered
+[    2.415692] Bluetooth: HCI UART protocol LL registered
+[    2.421085] Bluetooth: HCI UART protocol ATH3K registered
+[    2.426741] Bluetooth: HCI UART protocol Three-wire (H5) registered
+[    2.433485] Bluetooth: HCI UART protocol Intel registered
+[    2.439329] Bluetooth: HCI UART protocol BCM registered
+[    2.444808] Bluetooth: HCI UART protocol QCA registered
+[    2.450518] usbcore: registered new interface driver bcm203x
+[    2.456644] usbcore: registered new interface driver bpa10x
+[    2.462615] usbcore: registered new interface driver bfusb
+[    2.468539] usbcore: registered new interface driver btusb
+[    2.474298] Bluetooth: Generic Bluetooth SDIO driver ver 0.1
+[    2.480456] usbcore: registered new interface driver ath3k
+[    2.487284] omap_hsmmc 48060000.mmc: Got CD GPIO
+[    2.568218] ledtrig-cpu: registered to indicate activity on CPUs
+[    2.574801] omap-aes 53500000.aes: OMAP AES hw accel rev: 3.2
+[    2.582217] omap-sham 53100000.sham: hw accel on OMAP rev 4.3
+[    2.589542] usbcore: registered new interface driver usbhid
+[    2.595388] usbhid: USB HID core driver
+[    2.600133]  remoteproc0: wkup_m3 is available
+[    2.604807]  remoteproc0: Note: remoteproc is still under development and considered experimental.
+[    2.614225]  remoteproc0: THE BINARY FORMAT IS NOT YET FINALIZED, and backward compatibility isn't yet guaranteed.
+[    2.625215]  remoteproc0: Direct firmware load for am335x-pm-firmware.elf failed with error -2
+[    2.634279]  remoteproc0: failed to load am335x-pm-firmware.elf
+[    2.644583] oprofile: using arm/armv7
+[    2.648557] mmc0: host does not support reading read-only switch, assuming write-enable
+[    2.657541] Initializing XFRM netlink socket
+[    2.662153] mmc0: new high speed SDHC card at address 0007
+[    2.667972] NET: Registered protocol family 17
+[    2.672667] NET: Registered protocol family 15
+[    2.677379] bridge: automatic filtering via arp/ip/ip6tables has been deprecated. Update your scripts to load br_netfilter if you need this.
+[    2.691324] mmcblk0: mmc0:0007 SD4GB 3.71 GiB 
+[    2.696682] can: controller area network core (rev 20120528 abi 9)
+[    2.703310]  mmcblk0: p1 p2
+[    2.706492] NET: Registered protocol family 29
+[    2.712155] can: raw protocol (rev 20120528)
+[    2.716709] can: broadcast manager protocol (rev 20120528 t)
+[    2.723730] can: netlink gateway (rev 20130117) max_hops=1
+[    2.731641] Bluetooth: RFCOMM TTY layer initialized
+[    2.736866] Bluetooth: RFCOMM socket layer initialized
+[    2.742332] Bluetooth: RFCOMM ver 1.11
+[    2.746327] Bluetooth: BNEP (Ethernet Emulation) ver 1.3
+[    2.751937] Bluetooth: BNEP filters: protocol multicast
+[    2.757426] Bluetooth: BNEP socket layer initialized
+[    2.762695] Bluetooth: HIDP (Human Interface Emulation) ver 1.2
+[    2.768956] Bluetooth: HIDP socket layer initialized
+[    2.774252] lib80211: common routines for IEEE802.11 drivers
+[    2.780324] Key type dns_resolver registered
+[    2.784968] omap_voltage_late_init: Voltage driver support not added
+[    2.795363] ThumbEE CPU extension supported.
+[    2.800133] Registering SWP/SWPB emulation handler
+[    2.808515] input: tps65217_pwr_but as /devices/platform/ocp/44e0b000.i2c/i2c-0/0-0024/input/input1
+[    2.831787] mmc1: MAN_BKOPS_EN bit is not set
+[    2.839951] mmc1: new high speed MMC card at address 0001
+[    2.846964] mmcblk1: mmc1:0001 M62704 3.56 GiB 
+[    2.852350] mmcblk1boot0: mmc1:0001 M62704 partition 1 2.00 MiB
+[    2.859140] mmcblk1boot1: mmc1:0001 M62704 partition 2 2.00 MiB
+[    2.867262]  mmcblk1: p1 p2
+[    2.872226] tps65217 0-0024: TPS65217 ID 0xe version 1.2
+[    2.879965] omap_i2c 44e0b000.i2c: bus 0 rev0.11 at 400 kHz
+[    2.887087] omap_i2c 4802a000.i2c: bus 1 rev0.11 at 100 kHz
+[    2.895839] omap_i2c 4819c000.i2c: bus 2 rev0.11 at 100 kHz
+[    2.904602] musb-hdrc musb-hdrc.0.auto: MUSB HDRC host driver
+[    2.910982] musb-hdrc musb-hdrc.0.auto: new USB bus registered, assigned bus number 1
+[    2.919474] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002
+[    2.926593] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    2.934183] usb usb1: Product: MUSB HDRC host driver
+[    2.939401] usb usb1: Manufacturer: Linux 4.4.36 musb-hcd
+[    2.945059] usb usb1: SerialNumber: musb-hdrc.0.auto
+[    2.950934] hub 1-0:1.0: USB hub found
+[    2.955034] hub 1-0:1.0: 1 port detected
+[    2.961693] asoc-simple-card sound: tlv320aic3x-hifi <-> 48038000.mcasp mapping ok
+[    2.969761] asoc-simple-card sound: ASoC: Failed to create External Speaker debugfs file
+[    2.980473] hctosys: unable to open rtc device (rtc1)
+[    2.989870] Bluetooth: Starting self testing
+[    3.055300] Bluetooth: ECDH test passed in 59500 usecs
+[    3.074949] Bluetooth: SMP test passed in 163 usecs
+[    3.080275] Bluetooth: Finished self testing
+[    3.084996] ALSA device list:
+[    3.088142]   #0: wad-sound
+[    3.091754] Freeing unused kernel memory: 288K (c09b2000 - c09fa000)
+[    3.213871] EXT4-fs (mmcblk1p2): recovery complete
+[    3.219550] EXT4-fs (mmcblk1p2): mounted filesystem with ordered data mode. Opts: (null)
+Starting logging: OK
+ALSA: Restoring mixer settings...
+OK
+Starting mdev...
+modprobe: can't change directory to '/lib/modules': No such file or directory
+Initializing random number generator... [    4.055416] random: dd: uninitialized urandom read (512 bytes read, 11 bits of entropy available)
+done.
+Starting system message bus: [    4.151633] random: dbus-uuidgen: uninitialized urandom read (12 bytes read, 11 bits of entropy available)
+[    4.161967] random: dbus-uuidgen: uninitialized urandom read (8 bytes read, 11 bits of entropy available)
+[    4.180303] random: dbus-daemon: uninitialized urandom read (12 bytes read, 11 bits of entropy available)
+[    4.195489] random: dbus-daemon: uninitialized urandom read (12 bytes read, 11 bits of entropy available)
+done
+Starting bluetoothStarting ftp: OK
+Can't get device info: No such device
+Starting sshd: [    4.350300] random: bluetoothd: uninitialized urandom read (4 bytes read, 11 bits of entropy available)
+[    4.386470] random: sshd: uninitialized urandom read (32 bytes read, 11 bits of entropy available)
+OK
+Starting telnet: OK
+OK
+Can't get device info: No such device

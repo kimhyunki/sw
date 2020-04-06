@@ -1,0 +1,268 @@
+******************************
+PSH KERNEL VERSION: b0182727
+                WR: 20104000
+******************************
+
+SCU IPC: 0x800000d0  0xfffce92c
+
+PSH miaHOB version: TNG.B0.VVBD.0000000c
+
+microkernel built 23:15:13 Apr 24 2014
+
+******* PSH loader *******
+PCM page cache size = 192 KB 
+Cache Constraint = 0 Pages
+Arming IPC driver ..
+Adding page store pool ..
+PagestoreAddr(IMR Start Address) = 0x04899000
+pageStoreSize(IMR Size)          = 0x00080000
+
+*** Ready to receive application *** 
+
+
+U-Boot 2014.04 (Aug 20 2014 - 16:08:32)
+
+       Watchdog enabled
+DRAM:  980.6 MiB
+MMC:   tangier_sdhci: 0
+In:    serial
+Out:   serial
+Err:   serial
+Hit any key to stop autoboot:  0 
+Target:blank
+Partitioning already done...
+Flashing already done...
+GADGET DRIVER: usb_dnl_dfu
+reading vmlinuz
+5124192 bytes read in 128 ms (38.2 MiB/s)
+Valid Boot Flag
+Setup Size = 0x00003c00
+Magic signature found
+Using boot protocol version 2.0c
+Linux kernel version 3.10.17-poky-edison+ (sys_dswci@ncsndgbuild04) #1 SMP PREEMPT Wed Aug 20 16:09:18 CEST 2014
+Building boot_params at 0x00090000
+Loading bzImage at address 00100000 (5108832 bytes)
+Magic signature found
+Kernel command line: "root=PARTUUID=012b3303-34ac-284d-99b4-34e03a2335f4 rootfstype=ext4 console=ttyMFD2 earlyprintk=ttyMFD2,keep loglevel=6 systemd.unit=multi-user.target hardware_id=00 g_multi.iSerialNumber=8405f5f14b8a0d5c934b1db50a683d67"
+
+Starting kernel ...
+
+[    0.000000] Linux version 3.10.17-poky-edison+ (sys_dswci@ncsndgbuild04) (gcc version 4.8.2 (GCC) ) #1 SMP PREEMPT Wed Aug 20 16:09:18 CEST 2014
+[    0.000000] 121MB HIGHMEM available.
+[    0.000000] 891MB LOWMEM available.
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x00001000-0x00ffffff]
+[    0.000000]   Normal   [mem 0x01000000-0x37bfdfff]
+[    0.000000]   HighMem  [mem 0x37bfe000-0x3f4fffff]
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x00001000-0x00097fff]
+[    0.000000]   node   0: [mem 0x00100000-0x03ffffff]
+[    0.000000]   node   0: [mem 0x06000000-0x3f4fffff]
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 249247
+[    0.000000] Kernel command line: root=PARTUUID=012b3303-34ac-284d-99b4-34e03a2335f4 rootfstype=ext4 console=ttyMFD2 earlyprintk=ttyMFD2,keep loglevel=6 systemd.unit=multi-user.target hardware_id=00 g_multi.iSerialNumber=8405f5f14b8a0d5c934b1db50a683d67
+[    0.001877] ENERGY_PERF_BIAS: Set to 'normal', was 'performance'
+[    0.001877] ENERGY_PERF_BIAS: View and update with x86_energy_perf_policy(8)
+[    0.203612] SCSI subsystem initialized
+[    0.211237] PCI: Probing PCI hardware
+[    0.237839] intel_pmu_driver 0000:00:14.0: PMU DRIVER Probe called
+[    0.239184] intel_pmu_driver 0000:00:14.0: after pmu initialization
+[    0.506572] [BOOT] RESETSRC0=0x00 RESETSRC1=0x00 (PMIT interrupt tree)
+[    0.506645] [BOOT] SCU_TR[0]=0x00020011
+[    0.506660] [BOOT] SCU_TR[1]=0x00000220
+[    0.506673] [BOOT] SCU_TR[2]=0x00000000
+[    0.506686] [BOOT] SCU_TR[3]=0x00000000
+[    0.506698] [BOOT] IA_TR=0x00000000 (oshob)
+[    0.507036] [BOOT] RR=[fastboot] WD=0x00 ALARM=0x00 (osnib)
+[    0.507051] [BOOT] WAKESRC=[no matching osip entry] (osnib)
+[    0.507066] [BOOT] RESETSRC0=0x00 RESETSRC1=0x00 (osnib)
+[    0.511060] cryptomgr_test (29) used greatest stack depth: 7548 bytes left
+[    0.516283] type=2000 audit(946684815.440:1): initialized
+[    0.658132] bounce pool size: 64 pages
+[    0.675539] NFS: Registering the id_resolver key type
+[    0.675607] Key type id_resolver registered
+[    0.675625] Key type id_legacy registered
+[    0.678536] cryptomgr_test (46) used greatest stack depth: 7540 bytes left
+[    0.678761] cryptomgr_test (47) used greatest stack depth: 7372 bytes left
+[    0.680627] Key type asymmetric registered
+[    0.680649] Asymmetric key parser 'x509' registered
+[    0.783982] pca953x 1-0020: failed reading register
+[    0.790460] pca953x: probe of 1-0020 failed with error -121
+[    0.800445] pca953x 1-0021: failed reading register
+[    0.800523] pca953x: probe of 1-0021 failed with error -121
+[    0.800861] pca953x 1-0022: failed reading register
+[    0.800939] pca953x: probe of 1-0022 failed with error -121
+[    0.801262] pca953x 1-0023: failed reading register
+[    0.801339] pca953x: probe of 1-0023 failed with error -121
+[    1.001277] thermal thermal_zone0: failed to read out thermal zone 0
+[    1.008145] thermal thermal_zone1: failed to read out thermal zone 1
+[    1.013110] thermal thermal_zone2: failed to read out thermal zone 2
+[    1.628616] Bridge firewalling registered
+[    1.636133] Key type dns_resolver registered
+[    1.690238] pmic_ccsm pmic_ccsm: Error reading battery profile from battid frmwrk
+[    1.695959] pmic_ccsm pmic_ccsm: Battery Over heat exception
+[    1.696048] pmic_ccsm pmic_ccsm: Battery0 temperature inside boundary
+
+Welcome to Linux!
+
+[    2.167233] mmc2: queuing unknown CIS tuple 0x91 (3 bytes)
+[    2.172102] systemd-system- (91) used greatest stack depth: 6364 bytes left
+[    2.195496] systemd-fstab-generator[90]: Checking was requested for "rootfs", but it is not a device.
+[  OK  ] Reached target Remote File Systems.atest stack depth: 6320 bytes left
+         Expecting device dev-ttyMFD2.device...
+         Expecting device dev-mmcblk1p1.device...
+[  OK  ] Reached target Paths.
+[  OK  ] Set up automount Arbitrary Executable File Formats F...utomount Point.
+[  OK  ] Reached target Swap.
+[  OK  ] Set up automount boot.automount.: Directory /boot to mount over is not empty, mounting anyway.
+[  OK  ] Set up automount home.automount.: Directory /home to mount over is not empty, mounting anyway.
+[  OK  ] Created slice Root Slice.
+[  OK  ] Listening on Delayed Shutdown Socket.
+[  OK  ] Listening on /dev/initctl Compatibility Named Pipe.
+[  OK  ] Listening on Syslog Socket.
+[  OK  ] Listening on udev Kernel Socket.
+[  OK  ] Listening on udev Control Socket.
+[  OK  ] Created slice User and Session Slice.
+[  OK  ] Listening on Journal Socket.
+[  OK  ] Created slice System Slice.
+         Starting Remount Root and Kernel File Systems...
+         Starting Load Kernel Modules...
+         Starting udev Coldplug all Devices...
+         Starting Create list of required static device nodes...rrent kernel...
+[    3.660607] dhd_module_init in
+[    3.663705] found wifi platform device wlan
+[    3.675109] Power-up adapter 'DHD generic adapter'
+         Mounting Debug File System...
+         Starting Apply Kernel Variables...
+         Mounting POSIX Message Queue File System...
+[  OK  ] Created slice system-getty.slice.
+[  OK  ] Created slice system-serial\x2dgetty.slice.
+         Starting Journal Service...
+[  OK  ] Started Journal Service.
+[  OK  ] Reached target Slices.
+[    4.046654] wifi_platform_set_power = 1
+         Mounting Temporary Directory...
+[  OK  ] Set up automount factory.automount.
+[    4.254887] wifi_platform_bus_enumerate device present 1
+[  OK  ] Mounted POSIX Message Queue File System.
+[    4.280750] bcmsdh_sdmmc: bcmsdh_sdmmc_probe Enter
+[    4.285659] bcmsdh_sdmmc: bcmsdh_sdmmc_probe Enter
+[    4.285724] bus num (host idx)=2, slot num (rca)=1
+[    4.285779] found adapter info 'DHD generic adapter'
+[  OK  ] Mounted Debug File System.
+[  OK  ] Mounted Temporary Directory.
+[    4.348011] F1 signature OK, socitype:0x1 chip:0xa94c rev:0x2 pkg:0x0
+[    4.349624] DHD: dongle ram size is set to 524288(orig 524288) at 0x0
+[  OK  ] Started Remount Root and Kernel File Systems.
+[    4.364091] wifi_platform_get_mac_addr
+[    4.364206] wifi_get_mac_addr_intel: unable to open /config/wifi/mac.txt
+[    4.384923] wl_create_event_handler(): thread:wl_event_handler:72 started
+[    4.404867] dhd_attach(): thread:dhd_watchdog_thread:73 started
+[    4.419643] dhd_attach(): thread:dhd_dpc:74 started
+[    4.419724] dhd_deferred_work_init: work queue initialized 
+[  OK  ] Started Create list of required static device nodes ...current kernel.
+[    4.441086] Dongle Host Driver, version 1.141.59 (r)
+[    4.441086] Compiled in /data/jenkins_worker/workspace/edison-weekly/broadcom_cws/wlan/driver_bcm43x on Aug 20 2014 at 16:10:17
+[    4.465481] Register interface [wlan0]  MAC: 00:90:4c:11:22:33
+[    4.465481] 
+[    4.465575] dhd_prot_ioctl : bus is down. we have nothing to do
+[    4.479390] bcmsdh_sdmmc: bcmsdh_sdmmc_probe Enter
+[    4.479578] wifi_platform_set_power = 0
+[    4.480696] wifi_platform_bus_enumerate device present 0
+[  OK  ] Started Apply Kernel Variables.
+[    4.596341] g_multi gadget: using random self ethernet address
+[    4.596437] g_multi gadget: using random host ethernet address
+[    4.626495] systemd-cgroups (99) used greatest stack depth: 6300 bytes left
+[  OK  ] Started Load Kernel Modules.used greatest stack depth: 5368 bytes left
+[  OK  ] Started udev Coldplug all Devices.
+         Mounting FUSE Control File System...
+         Mounting Configuration File System...
+         Starting Create Static Device Nodes in /dev...
+         Starting Load/Save Random Seed...
+[  OK  ] Mounted Configuration File System.
+[  OK  ] Mounted FUSE Control File System.
+[  OK  ] Started Create Static Device Nodes in /dev.
+[  OK  ] Started Load/Save Random Seed.
+         Starting udev Kernel Device Manager...
+[  OK  ] Reached target Local File Systems (Pre).
+         Mounting /var/volatile...
+[  OK  ] Started udev Kernel Device Manager.
+[  OK  ] Mounted /var/volatile.
+[  OK  ] Reached target Local File Systems.
+         Starting Trigger Flushing of Journal to Persistent Storage...
+         Starting Create Volatile Files and Directories...
+[  OK  ] Started Trigger Flushing of Journal to Persistent Storage.
+[  OK  ] Started Create Volatile Files and Directories.
+[  OK  ] Found device /dev/ttyMFD2.
+[  OK  ] Created slice system-systemd\x2drfkill.slice.
+         Starting Load/Save RF Kill Switch Status of rfkill1...
+         Starting Load/Save RF Kill Switch Status of rfkill2...
+         Starting Load/Save RF Kill Switch Status of rfkill0...
+         Starting Network Time Synchronization...
+         Starting Update UTMP about System Boot/Shutdown...
+[  OK  ] Started Load/Save RF Kill Switch Status of rfkill1.
+[  OK  ] Started Load/Save RF Kill Switch Status of rfkill2.
+[  OK  ] Started Load/Save RF Kill Switch Status of rfkill0.
+[  OK  ] Started Network Time Synchronization.
+[  OK  ] Started Update UTMP about System Boot/Shutdown.
+[  OK  ] Reached target System Initialization.
+[  OK  ] Reached target Timers.
+[  OK  ] Listening on D-Bus System Message Bus Socket.
+[  OK  ] Listening on sshd.socket.
+[  OK  ] Reached target Sound Card.
+[  OK  ] Reached target Sockets.
+[  OK  ] Reached target Basic System.
+         Starting Watchdog sample daemon...
+[  OK  ] Started Watchdog sample daemon.
+         Starting USB Ethernet gadget...
+[    7.508361] dwc3-device dwc3-device.1: dwc3-gadget is already bound to g_multi
+         Starting Crashlog service...
+[  OK  ] Started Crashlog service.
+         Starting Edison RM button handler...
+[  OK  ] Started Edison RM button handler.
+         Starting Kernel Logging Service...
+[  OK  ] Started Kernel Logging Service.
+         Starting Bluetooth rf kill event daemon...
+[  OK  ] Started Bluetooth rf kill event daemon.
+         Starting Daemon to handle arduino sketches...
+[  OK  ] Started Daemon to handle arduino sketches.
+         Starting Daemon to reset sketches...
+[  OK  ] Started Daemon to reset sketches.
+         Starting System Logging Service...
+[  OK  ] Started System Logging Service.
+         Starting Login Service...
+         Starting Permit User Sessions...
+         Starting D-Bus System Message Bus...
+[  OK  ] Started D-Bus System Message Bus.
+         Starting Network Service...
+[    8.514323] systemd[1]: Unit sketch_reset.service entered failed state.
+[  OK  ] Started Permit User Sessions.
+[  OK  ] Started USB Ethernet gadget.
+[  OK  ] Started Network Service.
+[  OK  ] Started Login Service.
+[  OK  ] Created slice system-systemd\x2dfsck.slice.
+         Starting File System Check on /dev/disk/by-partlabel/factory...
+[  OK  ] Reached target Network.
+         Starting Mosquitto - lightweight server implementati...SN protocols...
+[  OK  ] Started Mosquitto - lightweight server implementatio...T-SN protocols.
+         Starting Zero-configuration networking...
+[  OK  ] Started Zero-configuration networking.
+         Starting Intel_XDK_Daemon...
+[  OK  ] Started Intel_XDK_Daemon.
+         Starting Network Name Resolution...
+         Starting Getty on tty1...
+[  OK  ] Started Getty on tty1.
+         Starting Serial Getty on ttyMFD2...
+[  OK  ] Started Serial Getty on ttyMFD2.
+[  OK  ] Reached target Login Prompts.
+         Starting HSU runtime pm service...
+[  OK  ] Started Network Name Resolution.
+[  OK  ] Started File System Check on /dev/disk/by-partlabel/factory.
+[  OK  ] Started HSU runtime pm service.
+[    9.561729] systemd-fsck[203]: /dev/mmcblk0p5: clean, 13/128 files, 40/1024 blocks
+         Mounting /factory...
+[  OK  ] Mounted /factory.
+
+Poky (Yocto Project Reference Distro) 1.6 edison ttyMFD2
+
+edison login: 
