@@ -1,0 +1,359 @@
+U-Boot 2016.01 (Oct 07 2019 - 17:22:36 +0900)
+
+Model: Zynq EZ_ZYNQ7 Development Board
+Board: Xilinx Zynq
+I2C:   ready
+DRAM:  ECC disabled 512 MiB
+MMC:   sdhci@e0100000: 0
+reading uEnv.txt
+In:    serial@e0001000
+Out:   serial@e0001000
+Err:   serial@e0001000
+Model: Zynq EZ_ZYNQ7 Development Board
+Board: Xilinx Zynq
+Net:   ZYNQ GEM: e000b000, phyaddr 0, interface rgmii-id
+eth0: ethernet@e000b000
+Hit any key to stop autoboot:  0 
+reading all-test-zynq_v1.1.bit
+4045676 bytes read in 695 ms (5.6 MiB/s)
+  design filename = "design_1_wrapper;UserID=0XFFFFFFFF;Version=2018.2"
+  part number = "7z020clg400"
+  date = "2019/09/26"
+  time = "12:04:15"
+  bytes in bitstream = 4045564
+zynq_align_dma_buffer: Align buffer at 100070 to 100000(swap 1)
+
+Fail to probe I2C
+Device: sdhci@e0100000
+Manufacturer ID: 3
+OEM: 5344
+Name: SU04G 
+Tran Speed: 50000000
+Rd Block Len: 512
+SD version 3.0
+High Capacity: Yes
+Capacity: 3.7 GiB
+Bus Width: 4-bit
+Erase Group Size: 512 Bytes
+
+Fail to probe I2C
+Copying Linux from sdcard to RAM...
+reading uImage
+4124504 bytes read in 710 ms (5.5 MiB/s)
+reading zynq-all-test-zynq_v1.1.dtb
+11326 bytes read in 21 ms (526.4 KiB/s)
+reading rootfs.cpio.uboot
+11027521 bytes read in 1846 ms (5.7 MiB/s)
+## Booting kernel from Legacy Image at 02080000 ...
+   Image Name:   Linux-4.4.0-xilinx
+   Image Type:   ARM Linux Kernel Image (uncompressed)
+   Data Size:    4124440 Bytes = 3.9 MiB
+   Load Address: 00008000
+   Entry Point:  00008000
+   Verifying Checksum ... OK
+## Loading init Ramdisk from Legacy Image at 04000000 ...
+   Image Name:   
+   Image Type:   ARM Linux RAMDisk Image (uncompressed)
+   Data Size:    11027457 Bytes = 10.5 MiB
+   Load Address: 00000000
+   Entry Point:  00000000
+   Verifying Checksum ... OK
+## Flattened Device Tree blob at 02000000
+   Booting using the fdt blob at 0x2000000
+   Loading Kernel Image ... OK
+   Loading Ramdisk to 1e891000, end 1f315401 ... OK
+   Loading Device Tree to 1e88b000, end 1e890c3d ... OK
+
+Starting kernel ...
+
+Booting Linux on physical CPU 0x0
+Linux version 4.4.0-xilinx (root@wchung) (gcc version 5.4.0 (Buildroot 2017.02.5-g8a26c33) ) #1 SMP PREEMPT Mon Oct 7 17:35:17 KST 2019
+CPU: ARMv7 Processor [413fc090] revision 0 (ARMv7), cr=18c5387d
+CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+Machine model: Zynq EZ_ZYNQ7 Development Board
+cma: Reserved 16 MiB at 0x1d800000
+Memory policy: Data cache writealloc
+PERCPU: Embedded 12 pages/cpu @dfbcc000 s19276 r8192 d21684 u49152
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 130048
+Kernel command line: console=ttyPS0,115200 earlyprintk root=/dev/ram0 rw ethact=Gem.e000b000 exec=/app/run.sh eth=00:0A:35:2F:02:8E bootdevice=sd ramdisk_size=32768
+PID hash table entries: 2048 (order: 1, 8192 bytes)
+Dentry cache hash table entries: 65536 (order: 6, 262144 bytes)
+Inode-cache hash table entries: 32768 (order: 5, 131072 bytes)
+Memory: 484040K/524288K available (5613K kernel code, 242K rwdata, 2000K rodata, 264K init, 233K bss, 23864K reserved, 16384K cma-reserved, 0K highmem)
+Virtual kernel memory layout:
+    vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+    fixmap  : 0xffc00000 - 0xfff00000   (3072 kB)
+    vmalloc : 0xe0800000 - 0xff800000   ( 496 MB)
+    lowmem  : 0xc0000000 - 0xe0000000   ( 512 MB)
+    pkmap   : 0xbfe00000 - 0xc0000000   (   2 MB)
+    modules : 0xbf000000 - 0xbfe00000   (  14 MB)
+      .text : 0xc0008000 - 0xc07777ac   (7614 kB)
+      .init : 0xc0778000 - 0xc07ba000   ( 264 kB)
+      .data : 0xc07ba000 - 0xc07f6ba0   ( 243 kB)
+       .bss : 0xc07f6ba0 - 0xc0830fb0   ( 234 kB)
+Preemptible hierarchical RCU implementation.
+        Build-time adjustment of leaf fanout to 32.
+        RCU restricting CPUs from NR_CPUS=4 to nr_cpu_ids=2.
+RCU: Adjusting geometry for rcu_fanout_leaf=32, nr_cpu_ids=2
+NR_IRQS:16 nr_irqs:16 16
+slcr mapped to e0800000
+L2C: platform modifies aux control register: 0x72360000 -> 0x72760000
+L2C: DT/platform modifies aux control register: 0x72360000 -> 0x72760000
+L2C-310 erratum 769419 enabled
+L2C-310 enabling early BRESP for Cortex-A9
+L2C-310 full line of zeros enabled for Cortex-A9
+L2C-310 ID prefetch enabled, offset 1 lines
+L2C-310 dynamic clock gating enabled, standby mode enabled
+L2C-310 cache controller enabled, 8 ways, 512 kB
+L2C-310: CACHE_ID 0x410000c8, AUX_CTRL 0x76760001
+zynq_clock_init: clkc starts at e0800100
+Zynq clock init
+sched_clock: 64 bits at 333MHz, resolution 3ns, wraps every 4398046511103ns
+clocksource: arm_global_timer: mask: 0xffffffffffffffff max_cycles: 0x4ce07af025, max_idle_ns: 440795209040 ns
+clocksource: ttc_clocksource: mask: 0xffff max_cycles: 0xffff, max_idle_ns: 537538477 ns
+timer #0 at e0808000, irq=17
+Console: colour dummy device 80x30
+Calibrating delay loop... 1332.01 BogoMIPS (lpj=6660096)
+pid_max: default: 32768 minimum: 301
+Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
+CPU: Testing write buffer coherency: ok
+CPU0: thread -1, cpu 0, socket 0, mpidr 80000000
+Setting up static identity map for 0x8280 - 0x82d8
+CPU1: thread -1, cpu 1, socket 0, mpidr 80000001
+Brought up 2 CPUs
+SMP: Total of 2 processors activated (2664.03 BogoMIPS).
+CPU: All CPU(s) started in SVC mode.
+devtmpfs: initialized
+VFP support v0.3: implementor 41 architecture 3 part 30 variant 9 rev 4
+clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+pinctrl core: initialized pinctrl subsystem
+NET: Registered protocol family 16
+DMA: preallocated 256 KiB pool for atomic coherent allocations
+cpuidle: using governor ladder
+cpuidle: using governor menu
+hw-breakpoint: found 5 (+1 reserved) breakpoint and 1 watchpoint registers.
+hw-breakpoint: maximum watchpoint size is 4 bytes.
+zynq-ocm f800c000.ocmc: ZYNQ OCM pool: 256 KiB @ 0xe0880000
+zynq-pinctrl 700.pinctrl: zynq pinctrl initialized
+XGpio: /amba/gpio@41200000: registered, base is 879
+vgaarb: loaded
+SCSI subsystem initialized
+usbcore: registered new interface driver usbfs
+usbcore: registered new interface driver hub
+usbcore: registered new device driver usb
+media: Linux media interface: v0.10
+Linux video capture interface: v2.00
+pps_core: LinuxPPS API ver. 1 registered
+pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+PTP clock support registered
+EDAC MC: Ver: 3.0.0
+Advanced Linux Sound Architecture Driver Initialized.
+clocksource: Switched to clocksource arm_global_timer
+NET: Registered protocol family 2
+TCP established hash table entries: 4096 (order: 2, 16384 bytes)
+TCP bind hash table entries: 4096 (order: 3, 32768 bytes)
+TCP: Hash tables configured (established 4096 bind 4096)
+UDP hash table entries: 256 (order: 1, 8192 bytes)
+UDP-Lite hash table entries: 256 (order: 1, 8192 bytes)
+NET: Registered protocol family 1
+RPC: Registered named UNIX socket transport module.
+RPC: Registered udp transport module.
+RPC: Registered tcp transport module.
+RPC: Registered tcp NFSv4.1 backchannel transport module.
+Trying to unpack rootfs image as initramfs...
+Freeing initrd memory: 10772K (de891000 - df316000)
+hw perfevents: enabled with armv7_cortex_a9 PMU driver, 7 counters available
+futex hash table entries: 512 (order: 3, 32768 bytes)
+jffs2: version 2.2. (NAND) (SUMMARY)  © 2001-2006 Red Hat, Inc.
+io scheduler noop registered
+io scheduler deadline registered
+io scheduler cfq registered (default)
+dma-pl330 f8003000.dmac: Loaded driver for PL330 DMAC-241330
+dma-pl330 f8003000.dmac:        DBUFF-128x8bytes Num_Chans-8 Num_Peri-4 Num_Events-16
+42c00000.uartlite: ttyUL0 at MMIO 0x42c00000 (irq = 168, base_baud = 0) is a uartlite
+42c10000.uartlite: ttyUL1 at MMIO 0x42c10000 (irq = 169, base_baud = 0) is a uartlite
+42c20000.uartlite: ttyUL2 at MMIO 0x42c20000 (irq = 170, base_baud = 0) is a uartlite
+42c30000.uartlite: ttyUL3 at MMIO 0x42c30000 (irq = 171, base_baud = 0) is a uartlite
+e0001000.serial: ttyPS0 at MMIO 0xe0001000 (irq = 144, base_baud = 3125000) is a xuartps
+console [ttyPS0] enabled
+xdevcfg f8007000.devcfg: ioremap 0xf8007000 to e08c6000
+[drm] Initialized drm 1.1.0 20060810
+brd: module loaded
+loop: module loaded
+m25p80 spi0.0: found n25q128a13, expected n25q128a11
+m25p80 spi0.0: Controller not in SPI_TX_QUAD mode, just use extended SPI mode
+m25p80 spi0.0: n25q128a13 (16384 Kbytes)
+5 ofpart partitions found on MTD device spi0.0
+Creating 5 MTD partitions on "spi0.0":
+0x000000000000-0x000000100000 : "qspi-fsbl-uboot"
+0x000000100000-0x000000600000 : "qspi-linux"
+0x000000600000-0x000000620000 : "qspi-device-tree"
+0x000000620000-0x000000c00000 : "qspi-rootfs"
+0x000000c00000-0x000001000000 : "qspi-bitstream"
+CAN device driver interface
+libphy: MACB_mii_bus: probed
+macb e000b000.ethernet eth0: Cadence GEM rev 0x00020118 at 0xe000b000 irq 146 (00:0a:35:2f:02:8e)
+macb e000b000.ethernet eth0: attached PHY driver [Marvell 88E1510] (mii_bus:phy_addr=e000b000.etherne:00, irq=-1)
+e1000e: Intel(R) PRO/1000 Network Driver - 3.2.6-k
+e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+xilinx_emaclite 40e00000.ethernet: Device Tree Probing
+libphy: Xilinx Emaclite MDIO: probed
+mdio_bus 40e00000: /amba/ethernet@40e00000/mdio/phy@0 has invalid PHY address
+mdio_bus 40e00000: scan phy phy at address 0
+mdio_bus 40e00000: scan phy phy at address 1
+mdio_bus 40e00000: scan phy phy at address 2
+mdio_bus 40e00000: scan phy phy at address 3
+mdio_bus 40e00000: scan phy phy at address 4
+mdio_bus 40e00000: scan phy phy at address 5
+mdio_bus 40e00000: scan phy phy at address 6
+mdio_bus 40e00000: scan phy phy at address 7
+mdio_bus 40e00000: scan phy phy at address 8
+mdio_bus 40e00000: scan phy phy at address 9
+mdio_bus 40e00000: scan phy phy at address 10
+mdio_bus 40e00000: scan phy phy at address 11
+mdio_bus 40e00000: scan phy phy at address 12
+mdio_bus 40e00000: scan phy phy at address 13
+mdio_bus 40e00000: scan phy phy at address 14
+mdio_bus 40e00000: scan phy phy at address 15
+mdio_bus 40e00000: scan phy phy at address 16
+mdio_bus 40e00000: scan phy phy at address 17
+mdio_bus 40e00000: scan phy phy at address 18
+mdio_bus 40e00000: scan phy phy at address 19
+mdio_bus 40e00000: scan phy phy at address 20
+mdio_bus 40e00000: scan phy phy at address 21
+mdio_bus 40e00000: scan phy phy at address 22
+mdio_bus 40e00000: scan phy phy at address 23
+mdio_bus 40e00000: scan phy phy at address 24
+mdio_bus 40e00000: scan phy phy at address 25
+mdio_bus 40e00000: scan phy phy at address 26
+mdio_bus 40e00000: scan phy phy at address 27
+mdio_bus 40e00000: scan phy phy at address 28
+mdio_bus 40e00000: scan phy phy at address 29
+mdio_bus 40e00000: scan phy phy at address 30
+mdio_bus 40e00000: scan phy phy at address 31
+xilinx_emaclite 40e00000.ethernet: MAC address is now 00:0a:35:00:00:00
+xilinx_emaclite 40e00000.ethernet: Xilinx EmacLite at 0x40E00000 mapped to 0xE0900000, irq=166
+xilinx_emaclite 40e10000.ethernet: Device Tree Probing
+libphy: Xilinx Emaclite MDIO: probed
+mdio_bus 40e10000: /amba/ethernet@40e10000/mdio/phy@0 has invalid PHY address
+mdio_bus 40e10000: scan phy phy at address 0
+mdio_bus 40e10000: scan phy phy at address 1
+mdio_bus 40e10000: scan phy phy at address 2
+mdio_bus 40e10000: scan phy phy at address 3
+mdio_bus 40e10000: scan phy phy at address 4
+mdio_bus 40e10000: scan phy phy at address 5
+mdio_bus 40e10000: scan phy phy at address 6
+mdio_bus 40e10000: scan phy phy at address 7
+mdio_bus 40e10000: scan phy phy at address 8
+mdio_bus 40e10000: scan phy phy at address 9
+mdio_bus 40e10000: scan phy phy at address 10
+mdio_bus 40e10000: scan phy phy at address 11
+mdio_bus 40e10000: scan phy phy at address 12
+mdio_bus 40e10000: scan phy phy at address 13
+mdio_bus 40e10000: scan phy phy at address 14
+mdio_bus 40e10000: scan phy phy at address 15
+mdio_bus 40e10000: scan phy phy at address 16
+mdio_bus 40e10000: scan phy phy at address 17
+mdio_bus 40e10000: scan phy phy at address 18
+mdio_bus 40e10000: scan phy phy at address 19
+mdio_bus 40e10000: scan phy phy at address 20
+mdio_bus 40e10000: scan phy phy at address 21
+mdio_bus 40e10000: scan phy phy at address 22
+mdio_bus 40e10000: scan phy phy at address 23
+mdio_bus 40e10000: scan phy phy at address 24
+mdio_bus 40e10000: scan phy phy at address 25
+mdio_bus 40e10000: scan phy phy at address 26
+mdio_bus 40e10000: scan phy phy at address 27
+mdio_bus 40e10000: scan phy phy at address 28
+mdio_bus 40e10000: scan phy phy at address 29
+mdio_bus 40e10000: scan phy phy at address 30
+mdio_bus 40e10000: scan phy phy at address 31
+xilinx_emaclite 40e10000.ethernet: MAC address is now 00:0a:35:00:00:01
+xilinx_emaclite 40e10000.ethernet: Xilinx EmacLite at 0x40E10000 mapped to 0xE0920000, irq=167
+usbcore: registered new interface driver rt2800usb
+usbcore: registered new interface driver r8152
+usbcore: registered new interface driver asix
+usbcore: registered new interface driver ax88179_178a
+usbcore: registered new interface driver cdc_ether
+usbcore: registered new interface driver net1080
+usbcore: registered new interface driver cdc_subset
+usbcore: registered new interface driver zaurus
+usbcore: registered new interface driver cdc_ncm
+ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+ehci-pci: EHCI PCI platform driver
+usbcore: registered new interface driver usb-storage
+usbcore: registered new interface driver usbserial
+usbcore: registered new interface driver usbserial_generic
+usbserial: USB Serial support registered for generic
+usbcore: registered new interface driver cp210x
+usbserial: USB Serial support registered for cp210x
+usbcore: registered new interface driver ftdi_sio
+usbserial: USB Serial support registered for FTDI USB Serial Device
+usbcore: registered new interface driver pl2303
+usbserial: USB Serial support registered for pl2303
+e0002000.usb supply vbus not found, using dummy regulator
+ULPI transceiver vendor/product ID 0x0424/0x0007
+Found SMSC USB3320 ULPI transceiver.
+ULPI integrity check: passed.
+ci_hdrc ci_hdrc.0: EHCI Host Controller
+ci_hdrc ci_hdrc.0: new USB bus registered, assigned bus number 1
+ci_hdrc ci_hdrc.0: USB 2.0 started, EHCI 1.00
+hub 1-0:1.0: USB hub found
+hub 1-0:1.0: 1 port detected
+mousedev: PS/2 mouse device common for all mice
+i2c /dev entries driver
+EDAC MC: ECC not enabled
+Xilinx Zynq CpuIdle Driver started
+sdhci: Secure Digital Host Controller Interface driver
+sdhci: Copyright(c) Pierre Ossman
+sdhci-pltfm: SDHCI platform and OF driver helper
+sdhci-arasan e0100000.sdhci: No vmmc regulator found
+sdhci-arasan e0100000.sdhci: No vqmmc regulator found
+mmc0: SDHCI controller on e0100000.sdhci [e0100000.sdhci] using ADMA
+ledtrig-cpu: registered to indicate activity on CPUs
+usbcore: registered new interface driver usbhid
+usbhid: USB HID core driver
+NET: Registered protocol family 10
+sit: IPv6 over IPv4 tunneling driver
+NET: Registered protocol family 17
+can: controller area network core (rev 20120528 abi 9)
+NET: Registered protocol family 29
+can: raw protocol (rev 20120528)
+can: broadcast manager protocol (rev 20120528 t)
+can: netlink gateway (rev 20130117) max_hops=1
+Registering SWP/SWPB emulation handler
+hctosys: unable to open rtc device (rtc0)
+ALSA device list:
+  No soundcards found.
+Freeing unused kernel memory: 264K (c0778000 - c07ba000)
+mmc0: new high speed SDHC card at address aaaa
+mmcblk0: mmc0:aaaa SU04G 3.69 GiB 
+ mmcblk0: p1 p2
+EXT4-fs (mmcblk0p2): recovery complete
+EXT4-fs (mmcblk0p2): mounted filesystem with ordered data mode. Opts: (null)
+Starting logging: OK
+Starting mdev...
+modprobe: can't change directory to '/lib/modules': No such file or directory
+Initializing random number generator... random: dd urandom read with 1 bits of entropy available
+done.
+Starting network: IPv6: ADDRCONF(NETDEV_UP): eth0: link is not ready
+udhcpc: started, v1.26.2
+udhcpc: sending discover
+udhcpc: sending discover
+udhcpc: sending discover
+udhcpc: no lease, failing
+FAIL
+Starting ftp: OK
+Starting sshd: OK
+Starting telnet: OK
+/etc/init.d/S80falinux: line 9: /app/serial_loopback: No such file or directory
+rdate: bad address 'time.bora.net'
+Running Iperf Server as a daemon
+The Iperf daemon process ID : 932
+OK
+/etc/init.d/S80falinux: line 17: ./app-webconnect: No such file or directory
+xilinx_emaclite 40e00000.ethernet eth1: Link is Down
+
+Welcome to FALINUX
+zynq login: 
