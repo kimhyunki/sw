@@ -1,6 +1,0 @@
-tree 3b001b76b508a5c77bde9d9db07d74dc9529447f
-parent 31bc15e5832968f33f4caa0061c589ce21125a81
-author 김현기 <khkraining@falinux.com> 1546909888 +0900
-committer 김현기 <khkraining@falinux.com> 1546909888 +0900
-
-init, exit {} 수정
